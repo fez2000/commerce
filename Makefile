@@ -1,10 +1,10 @@
-OBJECTS= main.o article.o commande.o client.o fonctions.o livraison.o data.o histo.o
+OBJECTS= main.o article.o commande.o client.o fonctions.o livraison.o data.o 
 CFLAGS= -Wall -Wextra -g -c 
 CPP= g++
-do : shell
+do : commerce
 %.o: %.cpp %.h header.h
 	$(CPP) $(CFLAGS)  $< -o $@  
-shell: ${OBJECTS}
-	g++ -o shell ${OBJECTS} 
+commerce: ${OBJECTS}
+	g++ -o commerce ${OBJECTS} 
 clean:
 	rm -rf *.o

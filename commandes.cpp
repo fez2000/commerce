@@ -21,7 +21,7 @@
             int create();
             int remove();
             int update();
-            base find();
+            int find();
             int load();
             int store();
         };

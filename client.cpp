@@ -5,8 +5,7 @@
 namespace client{
 using namespace std;
 
-    client::Base(int num_client, char nom_client, char prenom_client, char date_naiss_client, char sexe):
-        num_client(numero_client), nom_client(nom_client), prenom_client(prenom_client), date_naiss_client(date_naiss_client), sexe(sexe)
+    Base::Base(int num_client, char nom_client, char prenom_client, char date_naiss_client, char sexe)
     {
         ofstream fichier("BD/CLIENT/dico_client.txt", ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
         
@@ -31,5 +30,5 @@ using namespace std;
     {
     }
 } // client
-}
+
     
