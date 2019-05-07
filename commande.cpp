@@ -1,11 +1,11 @@
 #include "commande.h"
 
 namespace commande{
-    base::base(/* args */)
+    Base::Base(/* args */)
     {
     }
     
-    base::~base()
+    Base::~Base()
     {
     }
 }

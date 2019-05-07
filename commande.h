@@ -7,13 +7,13 @@
             @methodes:
             -update: pour mettre a jour un article
         */
-        class base
+        class Base
         {
         private:
             /* data */
         public:
-            base(/* args */);
-            ~base();
+            Base(/* args */);
+            ~Base();
             int updtat();
         };
            

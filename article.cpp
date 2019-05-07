@@ -2,11 +2,11 @@
 
 namespace article{
 
-    base::base(/* args */)
+    Base::Base(/* args */)
     {
     }
     
-    base::~base()
+    Base::~Base()
     {
     }
 }
