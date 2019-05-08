@@ -1,6 +1,7 @@
 #ifndef CLIENTS_H_INCLUDE
 #define CLIENTS_H_INCLUDE
 #include "Client.h"
+#include "../Cellule/Cellule.h"
 namespace Client{
     /* 
         @brief classe de base d'un client permettant d'effectuer des operation elementaire sur un client
@@ -14,7 +15,10 @@ namespace Client{
     class Client
     {
     private:
-        /* data */
+        Cellule<Base> * tete;
+        Cellule<Base> * sentinelle;
+        unsigned long maxLength;
+        unsigned long length;
     public:
         Client(/* args */);
         ~Client();
