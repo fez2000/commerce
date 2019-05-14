@@ -53,7 +53,7 @@
         return suivant;
     }
     template <class T> Cellule<T> * Cellule<T>::get_prev(){
-        return suivant;
+        return precedent;
     }
 
     template <class T> Cellule<T>::Cellule()

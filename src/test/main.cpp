@@ -8,5 +8,6 @@ int main(){
      Article::Article bg("","");
      bg.creer("tomate",100,44,20);
      bg.creer("omate",10,4,2);
+     bg.creer("zomate",10,4,2);
      return 0;
 }

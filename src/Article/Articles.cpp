@@ -15,27 +15,33 @@ namespace Article{
     };
     Article::Article(const char * fichier_chargement = FICAL,const char * fichier_sauvegarde = FICAS)
     {
+
         //load
-        maxNumeroGenerer = 0;
+        maxNumeroGenerer = 1;
+        taille = 0;
+        tete = sentinelle  = 0;
+        charger();
+        
     }
     Article::Article()
     {
-        maxNumeroGenerer = 0;
+        maxNumeroGenerer = 1;
         taille = 0;
         tete = sentinelle  = 0;
+        charger();
     }
     Article::~Article()
     {
     }
     int Article::creer(const char * nom, double prix, unsigned long quantite,unsigned long seuil){
         std::string b(nom);
-        Base a(maxNumeroGenerer,b,prix,quantite,seuil);
+        Base article(maxNumeroGenerer,b,prix,quantite,seuil);
          
         
          Cellule<Base>* c;
-        c = new Cellule<Base>(a);
+        c = new Cellule<Base>(article);
         ajouter_trie(c);
-        std::cout << *this->tete;
+        //std::cout << *this->tete;
          
         table.insert(std::pair<unsigned long,Cellule<Base> * >(maxNumeroGenerer,c));
         maxNumeroGenerer ++;
@@ -85,19 +91,31 @@ namespace Article{
         return table[ref];
     };
     int Article::sauvegarder(){
-        
-    std::ofstream fichier(FICAST);
-    if(fichier){
-        fichier << *this;
-        fichier.close();
-        std::cout << "sauvegarder\n";
-    }else{
-        std::cout << "erreur d'ouverture\n";
+        std::ofstream fichier(FICAST);
+        if(fichier){
+            fichier << *this;
+            fichier.close();
+            std::cout << "sauvegarder\n";
+        }else{
+            std::cout << "erreur d'ouverture\n";
+        }    
+        return 1;
     }
-     
-    return 1;
-    }
+    int Article::charger(){
+        std::ifstream fichier(FICAST);
+        if(fichier){
+            if(fichier.eof())return 0;
+            if(fichier>>*this){
+            fichier.close();    
+            return 1;
+            }
+            fichier.close();
+        }else{
+            std::cout << "erreur d'ouverture\n";
+        }
 
+        return 0;
+    }
     
     
 }

@@ -21,9 +21,10 @@
         class   Article: public Liste< Base >
         {
         private:
-            std::map<unsigned long, Cellule<Base> * > table;
-            unsigned long maxNumeroGenerer;
+            std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
+            unsigned long maxNumeroGenerer;//plus grand id generer
             int sauvegarder();
+            int charger();
         public:
             Article();
             Article(const char *,const char *);
@@ -38,37 +39,43 @@
             int sauvegarder(const char *);
             static Article deserialiser(std::istream&);
             friend std::ostream& operator<<(std::ostream &os, const Article &b) {
-        os << b.taille << ' ' <<b.maxNumeroGenerer ;
-        Cellule<Base> * c = b.tete;
-        while (c!=b.sentinelle)
-        {
-            std::cout << (*c) << std::endl;
-            os << ' ' << (*c);
-            c=c->get_next();
-        }
-        return os;
-    };
+                os << b.taille << ' ' <<b.maxNumeroGenerer ;
+                Cellule<Base> * c = b.tete;
+                while (c!=b.sentinelle)
+                {
+                    os << ' ' << (*c);
+                    c=c->get_next();
+                }
+                return os;
+            };
             friend std::istream& operator>>(std::istream &is, Article &b){
-    if (!is) return is;
-   
-    unsigned int taille,maxNumeroGenerer;
-    if (is >> taille >> maxNumeroGenerer)
-        b.taille = taille;
-        b.maxNumeroGenerer = maxNumeroGenerer;
-        b.tete = b.sentinelle = new Cellule<Base>;
-        Cellule<Base> * c;
-        while (taille >0 )
-        {
-            Base a;
-            if(!(is >> a)) return is;
-            c = new Cellule<Base>(a);
-            b.ajouter_trie(c);
-            taille--;
-        }
+            if (!is) return is;
         
-    return is;
+            unsigned int taille,maxNumeroGenerer;
+            if (is >> taille >> maxNumeroGenerer){
+                
+                b.tete = b.sentinelle = new Cellule<Base>;
+                Cellule<Base> * c;
+                Base  a ;
+                
+                b.maxNumeroGenerer = maxNumeroGenerer;
+                while (taille >0 )
+                {
+
+                    is >> a;
+                    //if(!()) return is;
+                   
+                    std::cout<<" " << a << "\n";
+                    c = new Cellule<Base>(a);
+                    b.ajouter_trie(c);
+                    taille--;
+                }
+               
+                
+            }    
+            return is;
     };   
         };
     
-    }
+    };
 #endif
