@@ -17,7 +17,6 @@ namespace Client{
     private:
         Cellule<Base> * tete;
         Cellule<Base> * sentinelle;
-        unsigned long maxLength;
         unsigned long length;
     public:
         Client(/* args */);

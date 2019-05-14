@@ -1,9 +1,10 @@
 #include <iostream>
 
 #include "../Client/Client.h" 
+#include "../Article/Articles.h"
 using namespace std;
 int main(){
-     Client::Base mon_client(1, 'tchuente', 'patrice', '15/01/1998', 'Mas');
-
-
+     Article::Article b("","");
+     b.creer("toma",125.8,34,12);
+     b.creer("oma",15.8,334,112);
 }
