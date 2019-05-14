@@ -61,11 +61,7 @@
                 b.maxNumeroGenerer = maxNumeroGenerer;
                 while (taille >0 )
                 {
-
                     is >> a;
-                    //if(!()) return is;
-                   
-                    std::cout<<" " << a << "\n";
                     c = new Cellule<Base>(a);
                     b.ajouter_trie(c);
                     taille--;

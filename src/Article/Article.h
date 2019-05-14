@@ -33,6 +33,7 @@
         bool a_ravitailler(void);
         bool tester_reference(unsigned long);
         int tester_libelle(const char *);
+        unsigned long get_reference(void);
         long tester_quantite(unsigned long);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

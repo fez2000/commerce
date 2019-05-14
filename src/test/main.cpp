@@ -7,7 +7,7 @@ int main(){
     
      Article::Article bg("","");
      bg.creer("tomate",100,44,20);
-     bg.creer("omate",10,4,2);
-     bg.creer("zomate",10,4,2);
+     cout <<  *bg.chercher("tomate") << "\n";
+     bg.mettre_a_jour(bg.chercher("tomate")->get().get_reference(),"tomates",1245.3,345,200);
      return 0;
 }

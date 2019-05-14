@@ -20,6 +20,9 @@ namespace Article{
     Base::~Base()
     {
     };
+    unsigned long Base::get_reference(void){
+        return reference;
+    };
     Base* Base::fixer_prix(unsigned long prix){
         this->prix = prix;
         return this;

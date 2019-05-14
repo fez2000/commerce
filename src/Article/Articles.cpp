@@ -1,5 +1,4 @@
 #include "Articles.h"
-#include "stdlib.h"
 #include <iostream>
 #include <fstream>
 
@@ -19,15 +18,12 @@ namespace Article{
         //load
         maxNumeroGenerer = 1;
         taille = 0;
-        tete = sentinelle  = 0;
         charger();
-        
     }
     Article::Article()
     {
         maxNumeroGenerer = 1;
         taille = 0;
-        tete = sentinelle  = 0;
         charger();
     }
     Article::~Article()
@@ -76,7 +72,7 @@ namespace Article{
     };
     Cellule<Base> * Article::chercher(const char * lib){
         Cellule<Base> * b = tete;
-        while (!b->get().tester_libelle(lib) || b != sentinelle)
+        while (b->get().tester_libelle(lib) !=0 && b != sentinelle)
         {
             b = b->get_next();
         }
