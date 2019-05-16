@@ -23,8 +23,8 @@ namespace Commande{
     bool Base::est_livrer(){
         return etat!=ENCOUR;
     };
-    void Base::mettre_etat(int status){
-        etat = status;
+    void Base::livrer(){
+        etat = LIVRER;
     }; 
     unsigned long Base::ref_client(){
         return client;

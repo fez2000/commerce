@@ -11,6 +11,9 @@
     namespace Article{
         /* 
         @brief classe de gestion des  atricles permettant d'effectuer des operations sur un ensemble d'atricle
+        @proprietes:
+                -table: tableau qui lie d'id d'une commande et sa cellule;
+                -maxNumeroGenerer: represente l'id de la prochaine de commande a creer
         @methodes:
             -update: qui permet de chercher un  atricle un   atricle et de le mettre a jour
             -remove: qui permet de supprimer un atricle 

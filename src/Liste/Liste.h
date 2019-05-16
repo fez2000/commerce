@@ -19,7 +19,7 @@ public:
     int ajouter_apres(Cellule<T>* , Cellule<T> *);
     int ajouter_avant(Cellule<T>* , Cellule<T> *);
     int enlever(Cellule<T> v);
-    
+    Cellule<T> * recup_tete();
 };
 
 template <class T> Liste<T>::Liste(){
@@ -34,6 +34,9 @@ template <class T> Liste<T>::~Liste(){
        delete sentinelle->get_next();
    }
    delete sentinelle;
+};
+template <class T> Cellule<T> * Liste<T>::recup_tete(){
+    return tete;
 };
 template <class T> unsigned long Liste<T>::nombre_element(){
     return taille;

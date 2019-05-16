@@ -36,6 +36,30 @@ namespace Commande{
         sauvegarder(); 
         return 1;
     };
+    Liste<Base> Commande::commandes_de(unsigned long id){
+        Liste<Base> t;
+        Cellule<Base> * i;
+
+        i=tete;
+        while(i!=sentinelle){
+            if(i->get().ref_client()==id){
+               t.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return t;
+    };
+    Liste<Base> Commande::commandes_pour(unsigned long id){
+        Liste<Base> t;
+        Cellule<Base> * i;
+
+        i=tete;
+        while(i!=sentinelle){
+            if(i->get().ref_article()==id){
+               t.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return t;
+    };
     Cellule<Base> * Commande::chercher(unsigned long ref){
         Cellule<Base> * b = tete;
         

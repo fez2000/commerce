@@ -46,7 +46,7 @@ namespace Article{
     };
     long Base::tester_quantite(unsigned long q){
         return quantite - q;
-    }
+    };
     Base& Base::operator=(const Base& is){
         if(&is != this){
             prix = is.prix;
@@ -56,23 +56,23 @@ namespace Article{
             libelle = is.libelle;
         }
         return * this;
-    }
+    };
     int operator==(Base b1,Base b2){
         return b1.libelle.compare(b2.libelle.c_str()) == 0;
-    }
+    };
     int operator<(Base b1,Base b2){
         return b1.libelle.compare(b2.libelle.c_str()) < 0;
-    }
+    };
     int operator>(Base b1,Base b2){
         return b1.libelle.compare(b2.libelle.c_str()) > 0;
-    }
+    };
     int operator<=(Base b1,Base b2){
         return b1.libelle.compare(b2.libelle.c_str()) <= 0;
-    }
+    };
     std::ostream& operator<<(std::ostream &os, const Base &b) {
         serialiser(os,b.libelle);
         return os << ' ' <<b.prix  << ' ' << b.quantite << ' ' << b.reference << ' ' << b.seuil;
-    }
+    };
     std::istream& operator>>(std::istream &is, Base &b){
 
         std::string nom;    
@@ -82,5 +82,5 @@ namespace Article{
         if (is >> b.prix >> b.quantite >> b.reference >> b.seuil)
         
         return is;
-    }
+    };
 };

@@ -7,6 +7,12 @@
 {
     /* 
         @brief classe de base d'un  atricle permettant d'effectuer des operations elementaire sur un atricle
+        @proprietes:
+            -refernce: identifiant d'un article
+            -libelle: nom de l'article
+            -prix: prix d'un article
+            -quantite: quantite de l'article disponible
+            -seuil: la quatite a partir de laquelle un article est critique 
         @methodes:
             -fixer_prix: pour mettre a jour le prix d'un  atricle
             -fixer_quantite: pour mettre a jour la quantite  d'atricle disponible

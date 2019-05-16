@@ -10,13 +10,19 @@
 #include <map>
     namespace Commande{
         /* 
-            @brief classe de base d'un commande permettant d'effectuer des operation elementaire sur un commande
+            @brief classe de base d'un commande permettant d'effectuer des operation elementaire sur une commande
+            @proprietes:
+                -table: tableau qui lie d'id d'une commande et sa cellule;
+                -maxNumeroGenerer: represente l'id de la prochaine de commande a creer
             @methodes:
-                -update: qui permet de chercher une commande et de la mettre a jour
-                -remove: qui permet de supprimer un commande 
-                -create: qui permet de creer une nouvelle commande
-                -load: qui permet de charger une commande a partir d'un fichier par defaut commande commande.txt
-                -store: qui permet de specifier ou serons sauvegerder les cleints par defaut sur le fichier de load si pas specifier
+                -modifier: qui permet de chercher une commande et de la mettre a jour
+                -supprimer: qui permet de supprimer une commande    
+                -creer: qui permet de creer une nouvelle commande
+                -charger: charge les commandes a partir d'un fichier commande.txt par defaut
+                -sauvegarder: qui permet de specifier ou serons sauvegerder les cleints par defaut sur le fichier de load si pas specifier
+                -chercher: permet de chercher une commande par id
+                -commandes_de: permet de recuperer les commandes d'un client
+                -commandes_pour: permet de recuperer les commandes effectues sur un article donner
         */
         class Commande:Liste<Base>
         {
@@ -32,6 +38,7 @@
             int modifier(unsigned long,unsigned long,unsigned long,unsigned long,int);
             Cellule<Base>* chercher(unsigned long);
             Liste<Base> commandes_de(unsigned long);
+            Liste<Base> commandes_pour(unsigned long);
             int charger(const char *);
             int sauvegarder(const char *);
             friend std::ostream& operator<<(std::ostream &, const Commande &);
