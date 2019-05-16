@@ -24,17 +24,17 @@ namespace Client{
     private:
         std::map<unsigned long, Cellule<Base> * > tableClient;// Cree un tableau associatif de clients
         unsigned long maxNumeroGenerer;
-        int sauvegarder();
+        int sauvegarder_client();
 
     public:
         Client(/* args */);
         ~Client();
         int creer_client(const char * nom_client, const char * prenom_client, const char * sexs);
-        int supprimer_client();
-        int mettre_a_jour_client();
+        int supprimer_client(unsigned long);
+        int mettre_a_jour_client(const char * nomClient, const char * prenomClient, const char * sexe);
         Base find();
         int charger_client();
-        int sauvegarder_client();
+        int sauvegarder_client(const char *);
 
         static Client deserialiser(std::istream&);
 

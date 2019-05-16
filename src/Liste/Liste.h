@@ -1,6 +1,7 @@
 #ifndef LISTE_H_INCLUDE
 #define LISTE_H_INCLUDE
 #include "../Cellule/Cellule.h"
+#include <iostream>
 #include <fstream>
 template <class T>class Liste
 {
@@ -12,6 +13,7 @@ public:
     Liste();
     ~Liste();
     bool est_vide();
+    unsigned long nombre_element();
     int ajouter(Cellule<T> *);
     int ajouter_trie(Cellule<T> *);
     int ajouter_apres(Cellule<T>* , Cellule<T> *);
@@ -22,24 +24,30 @@ public:
 
 template <class T> Liste<T>::Liste(){
     
-    tete = sentinelle = new Cellule<T> ;
-  
+    tete =  new Cellule<T> ;
+    sentinelle = tete;
     taille = 0;
-} 
+}; 
 template <class T> Liste<T>::~Liste(){
-   
-}
+   while(sentinelle!=tete){
+       sentinelle = sentinelle->get_prev();
+       delete sentinelle->get_next();
+   }
+   delete sentinelle;
+};
+template <class T> unsigned long Liste<T>::nombre_element(){
+    return taille;
+};
 template <class T> bool Liste<T>::est_vide(){
     return taille == 0;
-}
+};
 template <class T> int Liste<T>::ajouter(Cellule<T> * v){
-    
     v->next(tete);
     tete->previous(v);
     tete = v;
     taille++;
     return 1;
-}
+};
 template <class T> int Liste<T>::ajouter_apres(Cellule<T> * v, Cellule<T> * a){
     
     v->get_next()->previous(a);
@@ -48,18 +56,20 @@ template <class T> int Liste<T>::ajouter_apres(Cellule<T> * v, Cellule<T> * a){
     a->previous(v);
     taille++;
     return 1;
-}
+};
 template <class T> int Liste<T>::ajouter_avant(Cellule<T>*  v, Cellule<T>  *a){
-    if(v->get() == tete->get()){
+    if(v == tete){
         return ajouter(a);
     }
+    
     v->get_prev()->next(a);
+    
     a->previous(v->get_prev());
     v->previous(a);
     a->next(v);
     taille++;
     return 1;
-}
+};
 template <class T> int Liste<T>::ajouter_trie(Cellule<T> * a){
     if(taille == 0){
         ajouter(a);
@@ -67,7 +77,7 @@ template <class T> int Liste<T>::ajouter_trie(Cellule<T> * a){
         
     }
     Cellule<T> * b = tete;
-    while ((*b)< (*a))
+    while ((*b)< (*a) && b!= sentinelle)
     {
         b = b->get_next();
     }
@@ -86,6 +96,6 @@ template <class T> int Liste<T>::enlever(Cellule<T> v){
     
     taille--;
     return 1;
-}
+};
 
 #endif

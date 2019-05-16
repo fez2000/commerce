@@ -21,54 +21,25 @@
         class   Article: public Liste< Base >
         {
         private:
-            std::map<unsigned long, Cellule<Base> * > table;
-            unsigned long maxNumeroGenerer;
+            std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
+            unsigned long maxNumeroGenerer;//plus grand id generer
             int sauvegarder();
+            int charger();
         public:
             Article();
-            Article(const char *,const char *);
-            ~Article();
             int creer(const char *, double, unsigned long,unsigned long);
             int supprimer(unsigned long);
             int mettre_a_jour(unsigned long,const char *, double, unsigned long,unsigned long );
             Cellule<Base>* chercher(const char *);
             Cellule<Base>* chercher(unsigned long);
-            Cellule<Base>** critiques();
+            Liste<Base> critiques();
             int charger(const char *);
             int sauvegarder(const char *);
             static Article deserialiser(std::istream&);
-            friend std::ostream& operator<<(std::ostream &os, const Article &b) {
-        os << b.taille << ' ' <<b.maxNumeroGenerer ;
-        Cellule<Base> * c = b.tete;
-        while (c!=b.sentinelle)
-        {
-            std::cout << (*c) << std::endl;
-            os << ' ' << (*c);
-            c=c->get_next();
-        }
-        return os;
-    };
-            friend std::istream& operator>>(std::istream &is, Article &b){
-    if (!is) return is;
-   
-    unsigned int taille,maxNumeroGenerer;
-    if (is >> taille >> maxNumeroGenerer)
-        b.taille = taille;
-        b.maxNumeroGenerer = maxNumeroGenerer;
-        b.tete = b.sentinelle = new Cellule<Base>;
-        Cellule<Base> * c;
-        while (taille >0 )
-        {
-            Base a;
-            if(!(is >> a)) return is;
-            c = new Cellule<Base>(a);
-            b.ajouter_trie(c);
-            taille--;
-        }
-        
-    return is;
-    };   
+            friend std::ostream& operator<<(std::ostream &, const Article &);
+            friend std::istream& operator>>(std::istream &, Article &);   
         };
+        
     
-    }
+    };
 #endif

@@ -41,9 +41,9 @@ clean:
 	rm -rf $(OBJ)/*.o
 	rm -rf $(BIN)/test
 	rm -rf $(BIN)/commerce
-run: $(OBJ)/main.o
+run: commerce
 	./$(BIN)/commerce
 test: ${OBJECTS} ${TESTOBJECTS}   
 	g++ -o $(BIN)/test ${OBJECTS} ${TESTOBJECTS}
-runtest: $(OBJ)/test.o
+runtest: test
 	./$(BIN)/test	

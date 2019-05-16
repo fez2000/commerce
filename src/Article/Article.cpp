@@ -1,5 +1,5 @@
 #include "Article.h"
-
+#include <iostream>
 namespace Article{
 
     Base::Base(unsigned long reference,std::string libelle,unsigned long prix,unsigned long quantite,unsigned long seuil)
@@ -12,9 +12,16 @@ namespace Article{
     };
     Base::Base()
     {
+        this->reference = 0;
+        this->prix = 0;
+        this->quantite = 0;
+        this->seuil = 0;
     };
     Base::~Base()
     {
+    };
+    unsigned long Base::get_reference(void){
+        return reference;
     };
     Base* Base::fixer_prix(unsigned long prix){
         this->prix = prix;
@@ -67,13 +74,13 @@ namespace Article{
         return os << ' ' <<b.prix  << ' ' << b.quantite << ' ' << b.reference << ' ' << b.seuil;
     }
     std::istream& operator>>(std::istream &is, Base &b){
-    if (!is) return is;
-    std::string nom;
-   
-    if (!deserialiser(is, nom)) return is;
-    unsigned int prix,quantite,reference,seuil;
-    if (is >> prix >> quantite >> reference >> seuil)
-        b = Base{reference,nom, prix, quantite, seuil};
-    return is;
+
+        std::string nom;    
+        if (!is) return is;
+        if (!deserialiser(is, nom)) return is;
+        b.libelle = nom;
+        if (is >> b.prix >> b.quantite >> b.reference >> b.seuil)
+        
+        return is;
     }
 };

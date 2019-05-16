@@ -26,6 +26,7 @@ namespace Client
         char modif_client(); // methode permettant la modification d'un client
         char recherche_client(); // methode de recherche d'un client
         bool supp_client(); // methode de suppression d'un client
+        bool tester_reference(unsigned long);
     };
     
    

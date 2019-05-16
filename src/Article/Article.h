@@ -8,7 +8,12 @@
     /* 
         @brief classe de base d'un  atricle permettant d'effectuer des operations elementaire sur un atricle
         @methodes:
-            -update: pour mettre a jour un  atricle
+            -fixer_prix: pour mettre a jour le prix d'un  atricle
+            -fixer_quantite: pour mettre a jour la quantite  d'atricle disponible
+            -ajouter_quantite: pour augmenter une quantite d'atricle
+            -a_ravitailler: teste la quantite d'article disponible est en dessous de seuil
+            -tester_libelle: permet de comparer le libelle avec une chaine retourne 0 si egale 
+            -tester_quantite: permet de comparer deux quantites
     */
     class Base
     {
@@ -28,6 +33,7 @@
         bool a_ravitailler(void);
         bool tester_reference(unsigned long);
         int tester_libelle(const char *);
+        unsigned long get_reference(void);
         long tester_quantite(unsigned long);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

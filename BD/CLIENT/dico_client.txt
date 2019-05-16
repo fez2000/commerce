@@ -1,6 +1,0 @@
-Client numero: 1
-Noms: e
-Prenom: e
-Date de naissance: 8
-Sexe: s
-

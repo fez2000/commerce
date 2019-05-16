@@ -1,3 +1,4 @@
+#include <iostream>
 #include "fonctions.h"
 #include <math.h>
 
@@ -22,18 +23,18 @@ long prochain_nb_premier(long p){
     return p;
 }
 std::ostream& serialiser(std::ostream &os, const std::string &s) {
-   return os << '\"' << s << '\"';
+    return os << '\"' << s << '\"';
 }
 std::istream& deserialiser(std::istream &is, std::string &s) {
    if (!is) return is;
    char c;
-   if (is.get(c) && c != '\"') {
+   if (is>>c && c != '\"') { 
       is.putback(c);
       // mettre is en état d'erreur
       return is;
    }
    std::string temp;
-   while(is.get(c) && c != '\"')
+   while(is>>c && c != '\"')
       temp += c;
    if (is) // ou if ( == '\"') au choix
       s = temp;
