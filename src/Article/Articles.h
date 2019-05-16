@@ -27,51 +27,19 @@
             int charger();
         public:
             Article();
-            Article(const char *,const char *);
-            ~Article();
             int creer(const char *, double, unsigned long,unsigned long);
             int supprimer(unsigned long);
             int mettre_a_jour(unsigned long,const char *, double, unsigned long,unsigned long );
             Cellule<Base>* chercher(const char *);
             Cellule<Base>* chercher(unsigned long);
-            Cellule<Base>** critiques();
+            Liste<Base> critiques();
             int charger(const char *);
             int sauvegarder(const char *);
             static Article deserialiser(std::istream&);
-            friend std::ostream& operator<<(std::ostream &os, const Article &b) {
-                os << b.taille << ' ' <<b.maxNumeroGenerer ;
-                Cellule<Base> * c = b.tete;
-                while (c!=b.sentinelle)
-                {
-                    os << ' ' << (*c);
-                    c=c->get_next();
-                }
-                return os;
-            };
-            friend std::istream& operator>>(std::istream &is, Article &b){
-            if (!is) return is;
-        
-            unsigned int taille,maxNumeroGenerer;
-            if (is >> taille >> maxNumeroGenerer){
-                
-                b.tete = b.sentinelle = new Cellule<Base>;
-                Cellule<Base> * c;
-                Base  a ;
-                
-                b.maxNumeroGenerer = maxNumeroGenerer;
-                while (taille >0 )
-                {
-                    is >> a;
-                    c = new Cellule<Base>(a);
-                    b.ajouter_trie(c);
-                    taille--;
-                }
-               
-                
-            }    
-            return is;
-    };   
+            friend std::ostream& operator<<(std::ostream &, const Article &);
+            friend std::istream& operator>>(std::istream &, Article &);   
         };
+        
     
     };
 #endif

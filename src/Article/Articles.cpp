@@ -12,7 +12,7 @@ namespace Article{
         b = Cellule<Base>{valeur};
         return is;
     };
-    Article::Article(const char * fichier_chargement = FICAL,const char * fichier_sauvegarde = FICAS)
+    Article::Article()
     {
 
         //load
@@ -20,15 +20,8 @@ namespace Article{
         taille = 0;
         charger();
     }
-    Article::Article()
-    {
-        maxNumeroGenerer = 1;
-        taille = 0;
-        charger();
-    }
-    Article::~Article()
-    {
-    }
+
+
     int Article::creer(const char * nom, double prix, unsigned long quantite,unsigned long seuil){
         std::string b(nom);
         Base article(maxNumeroGenerer,b,prix,quantite,seuil);
@@ -47,16 +40,11 @@ namespace Article{
         return 1;
     };
 
-    int Article::supprimer(unsigned long h){
-        Cellule<Base> * b = tete;
-        while (!b->get().tester_reference(h) || b != sentinelle)
-        {
-            b = b->get_next();
-        }
-        if(b != sentinelle){
-            enlever(*b);
-            table.erase(h);
-        }
+    int Article::supprimer(unsigned long id){
+        Cellule<Base> * b = table[id];
+        if(!b)return 0;
+        enlever(*b);
+        table.erase(id);
         sauvegarder();
         return 1;
     };
@@ -82,8 +70,6 @@ namespace Article{
         return NULL;
     };
     Cellule<Base> * Article::chercher(unsigned long ref){
-        Cellule<Base> * b = tete;
-        
         return table[ref];
     };
     int Article::sauvegarder(){
@@ -97,6 +83,18 @@ namespace Article{
         }    
         return 1;
     }
+    Liste<Base> Article::critiques(){
+        Liste<Base> t;
+        Cellule<Base> * i;
+
+        i=tete;
+        while(i!=sentinelle){
+            if(i->get().a_ravitailler()){
+               t.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return t;
+    };
     int Article::charger(){
         std::ifstream fichier(FICAST);
         if(fichier){
@@ -112,6 +110,38 @@ namespace Article{
 
         return 0;
     }
-    
-    
+    std::ostream& operator<<(std::ostream &os, const Article &b) {
+                os << b.taille << ' ' <<b.maxNumeroGenerer ;
+                Cellule<Base> * c = b.tete;
+                while (c!=b.sentinelle)
+                {
+                    os << ' ' << (*c);
+                    c=c->get_next();
+                }
+                return os;
+    };
+    std::istream& operator>>(std::istream &is, Article &b){
+            if (!is) return is;
+        
+            unsigned int taille,maxNumeroGenerer;
+            if (is >> taille >> maxNumeroGenerer){
+                
+                b.tete = b.sentinelle = new Cellule<Base>;
+                Cellule<Base> * c;
+                Base  a ;
+                
+                b.maxNumeroGenerer = maxNumeroGenerer;
+                while (taille >0 )
+                {
+                    is >> a;
+                    c = new Cellule<Base>(a);
+                    b.ajouter_trie(c);
+                    b.table.insert(std::pair<unsigned long,Cellule<Base> * >(a.get_reference(),c));
+                    taille--;
+                }
+               
+                
+            }    
+            return is;
+        };
 }

@@ -24,7 +24,7 @@
             os << b.valeur;
             return os;
         };
-        friend std::istream& operator>>(std::istream &is,Cellule<T> &b);
+        friend std::istream& operator>>(std::istream &,Cellule<T> &);
         friend  int operator<(Cellule<T> b1,Cellule<T> b2){
             return b1.get() < b2.get();
         };

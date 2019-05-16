@@ -12,16 +12,16 @@ namespace Client
     {
     private:
         int numero_client;
-        char nom_client;
-        char prenom_client;
-        char date_nais_client;
-        char sexe;
+        char * nom_client;
+        char * prenom_client;
+        char * date_nais_client;
+        char * sexe;
     public:
 
         // constructeur
         Base(/* args */);
-        Base(int numero_client, char nom_client);
-        Base(int numero_client, char nom_client, char prenom_client, char date_naiss_client, char sexe);
+        Base(int numero_client, const char * nom_client);
+        Base(int numero_client, const char* nom_client, const char* prenom_client, const char* date_naiss_client, const char* sexe);
         ~Base();
         char modif_client(); // methode permettant la modification d'un client
         char recherche_client(); // methode de recherche d'un client

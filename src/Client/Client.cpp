@@ -5,7 +5,7 @@
 namespace Client{
 using namespace std;
 
-    Base::Base(int num_client, char nom_client, char prenom_client, char date_naiss_client, char sexe)
+    Base::Base(int num_client,const char* nom_client,const char * prenom_client, const char * date_naiss_client,const char *sexe)
     {
         ofstream fichier("BD/CLIENT/dico_client.txt", ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
         

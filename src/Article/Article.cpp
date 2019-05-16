@@ -74,13 +74,13 @@ namespace Article{
         return os << ' ' <<b.prix  << ' ' << b.quantite << ' ' << b.reference << ' ' << b.seuil;
     }
     std::istream& operator>>(std::istream &is, Base &b){
-        char * v;
-    std::string nom;    
-    if (!is) return is;
-    if (!deserialiser(is, nom)) return is;
-    b.libelle = nom;
-    if (is >> b.prix >> b.quantite >> b.reference >> b.seuil)
+
+        std::string nom;    
+        if (!is) return is;
+        if (!deserialiser(is, nom)) return is;
+        b.libelle = nom;
+        if (is >> b.prix >> b.quantite >> b.reference >> b.seuil)
         
-    return is;
+        return is;
     }
 };
