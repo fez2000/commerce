@@ -2,6 +2,12 @@
 #define CLIENTS_H_INCLUDE
 #include "Client.h"
 #include "../Cellule/Cellule.h"
+#include "../Liste/Liste.h"
+#define FLECTURE  "./BD/dico_client.txt"
+#define FSTOCKAGE_T  "./BD/dico_client.temporaire.txt"
+#define FSTOCKAGE_D  "./BD/dico_client.txt" 
+#include <iostream>
+#include <map>
 namespace Client{
     /* 
         @brief classe de base d'un client permettant d'effectuer des operation elementaire sur un client
@@ -12,21 +18,40 @@ namespace Client{
             -load: qui permet de charger un client un client a partir d'un fichier par defaut client client.txt
             -store: qui permet de specifier ou serons sauvegerder les cleints par defaut sur le fichier de load si pas specifier
     */
-    class Client
+    class Client:public Liste <Base> //client herite des propriete de la classe Base
+
     {
     private:
-        Cellule<Base> * tete;
-        Cellule<Base> * sentinelle;
-        unsigned long length;
+        std::map<unsigned long, Cellule<Base> * > tableClient;// Cree un tableau associatif de clients
+        unsigned long maxNumeroGenerer;
+        int sauvegarder();
+
     public:
         Client(/* args */);
         ~Client();
-        int create();
-        int remove();
-        int update();
+        int creer_client(const char * nom_client, const char * prenom_client, const char * sexs);
+        int supprimer_client();
+        int mettre_a_jour_client();
         Base find();
-        int load();
-        int store();
+        int charger_client();
+        int sauvegarder_client();
+
+        static Client deserialiser(std::istream&);
+
+        friend std::ostream& operator<<(std::ostream &os, const Client &gestClient) {
+            os << gestClient.taille << ' ' <<gestClient.maxNumeroGenerer ;
+            Cellule<Base> * pointeurClient = gestClient.tete;
+            while (pointeurClient != gestClient.sentinelle){
+                std::cout << (*pointeurClient) << std::endl;
+                os << ' ' << (*pointeurClient);
+                pointeurClient = pointeurClient->get_next();
+            }
+            return os;
+        };
+
+        friend std::istream& operator>>(std::istream &is, Client &b){
+        
+        };
     };
     
 }

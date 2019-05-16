@@ -11,18 +11,18 @@ namespace Client
     class Base
     {
     private:
-        int numero_client;
-        char nom_client;
-        char prenom_client;
-        char date_nais_client;
+        int numeroClient;
+        char nomClient;
+        char prenomClient;
         char sexe;
     public:
 
         // constructeur
         Base(/* args */);
         Base(int numero_client, char nom_client);
-        Base(int numero_client, char nom_client, char prenom_client, char date_naiss_client, char sexe);
+        Base(int numero_client, char nom_client, char prenom_client, char sexe);
         ~Base();
+        
         char modif_client(); // methode permettant la modification d'un client
         char recherche_client(); // methode de recherche d'un client
         bool supp_client(); // methode de suppression d'un client
