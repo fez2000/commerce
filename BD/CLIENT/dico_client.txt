@@ -1,6 +1,0 @@
-Client numero: 1
-Noms: tchuente
-Prenom: patrice
-Date de naissance: 15/01/1998
-Sexe: Mas
-

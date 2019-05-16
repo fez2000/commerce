@@ -1,33 +1,43 @@
 #ifndef CLIENTS_H_INCLUDE
 #define CLIENTS_H_INCLUDE
+
 #include "Client.h"
 #include "../Cellule/Cellule.h"
+#include "../Liste/Liste.h"
+#define FLECTURE  "./BD/dico_client.txt"
+#define FSTOCKAGE_T  "./BD/dico_client.temporaire.txt"
+#define FSTOCKAGE_D  "./BD/dico_client.txt" 
+#include <iostream>
+#include <map>
+
 namespace Client{
-    /* 
-        @brief classe de base d'un client permettant d'effectuer des operation elementaire sur un client
-        @methodes:
-            -update: qui permet de chercher un client un client et de le mettre a jour
-            -remove: qui permet de supprimer un client 
-            -create: qui permet de creer un nouveau client
-            -load: qui permet de charger un client un client a partir d'un fichier par defaut client client.txt
-            -store: qui permet de specifier ou serons sauvegerder les cleints par defaut sur le fichier de load si pas specifier
-    */
-    class Client
+
+    class Client:public Liste <Base> //client herite des propriete de la classe Base
+
     {
     private:
-        Cellule<Base> * tete;
-        Cellule<Base> * sentinelle;
-        unsigned long length;
+        std::map<unsigned long, Cellule<Base> * > tableClient;// Cree un tableau associatif de clients
+        unsigned long maxNumeroGenerer;
+        int sauvegarder_client();
+        int charger_client();
+
     public:
-        Client(/* args */);
+        Client();
+        
         ~Client();
-        int create();
-        int remove();
-        int update();
-        Base find();
-        int load();
-        int store();
+        int creer_client(const char *, const char *, const char * , const char *);
+        int supprimer_client(unsigned long);
+        int mettre_a_jour_client(unsigned long, const char *, const char * , const char *, const char * );
+        Cellule<Base>* chercher_client(const char *);
+        Cellule<Base>* chercher_client(unsigned long);
+        int charger_client();
+        int sauvegarder_client(const char *);
+
+        friend std::ostream& operator<<(std::ostream &, const Client &); // serialisation de données
+
+        friend std::istream& operator>>(std::istream &, Client &); //déserialisation de données
+        
     };
     
-}
+};
 #endif
