@@ -11,12 +11,12 @@ namespace Client{
         charger_client();
     }
     
-    int Client::creer_client(const char * nomClient, const char * prenomClient, const char * date, const char * sexe){
+    int Client::creer_client(const char * nomClient, const char * prenomClient, const char * dateN, const char * sexeC){
 
         std::string nom(nomClient);
         std::string prenom(prenomClient);
-        std::string date(date);
-        std::string sexe(sexe);
+        std::string date(dateN);
+        std::string sexe(sexeC);
 
         Base client(maxNumeroGenerer, nom, prenom, date, sexe);
          
@@ -49,14 +49,20 @@ namespace Client{
 
     int Client::supprimer_client(unsigned long val){
         Cellule<Base> * b = tete;
-        while (!b->get().tester_reference(val) || b != sentinelle)
+        std::cout <<"debut while\n";
+        while (!b->get().tester_reference(val) && b != sentinelle)
         {
+        std::cout << b->get();
+        std::cout <<"\n";
+
             b = b->get_next();
         }
+        std::cout <<"fin while\n";
         if(b != sentinelle){
             enlever(*b);
             tableClient.erase(val);
         }
+        std::cout <<"if\n";
         sauvegarder_client();
         return 1;
     };

@@ -30,7 +30,7 @@ namespace Client{
         int mettre_a_jour_client(unsigned long, const char *, const char * , const char *, const char * );
         Cellule<Base>* chercher_client(const char *);
         Cellule<Base>* chercher_client(unsigned long);
-        int charger_client();
+        int charger_client(const char *);
         int sauvegarder_client(const char *);
 
         friend std::ostream& operator<<(std::ostream &, const Client &); // serialisation de données

@@ -79,8 +79,8 @@ namespace Article{
         if (!is) return is;
         if (!deserialiser(is, nom)) return is;
         b.libelle = nom;
-        if (is >> b.prix >> b.quantite >> b.reference >> b.seuil)
+        is >> b.prix >> b.quantite >> b.reference >> b.seuil;
         
         return is;
-    };
+    }
 };
