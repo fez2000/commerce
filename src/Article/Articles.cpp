@@ -115,7 +115,7 @@ namespace Article{
                 Cellule<Base> * c = b.tete;
                 while (c!=b.sentinelle)
                 {
-                    os << ' ' << (*c);
+                    os << '\n' << (*c);
                     c=c->get_next();
                 }
                 return os;

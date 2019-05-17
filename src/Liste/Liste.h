@@ -20,6 +20,8 @@ public:
     int ajouter_avant(Cellule<T>* , Cellule<T> *);
     int enlever(Cellule<T> v);
     Cellule<T> * recup_tete();
+    Cellule<T> * recup_sentinelle();
+    unsigned long recup_taille();
 };
 
 template <class T> Liste<T>::Liste(){
@@ -37,6 +39,12 @@ template <class T> Liste<T>::~Liste(){
 };
 template <class T> Cellule<T> * Liste<T>::recup_tete(){
     return tete;
+};
+template <class T> Cellule<T> * Liste<T>::recup_sentinelle(){
+    return sentinelle;
+};
+template <class T> unsigned long Liste<T>::recup_taille(){
+    return taille;
 };
 template <class T> unsigned long Liste<T>::nombre_element(){
     return taille;

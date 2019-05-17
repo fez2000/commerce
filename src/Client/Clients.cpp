@@ -119,7 +119,7 @@ namespace Client{
                 Cellule<Base> * pointeurVersCelClient = client.tete;
                 while (pointeurVersCelClient!=client.sentinelle)
                 {
-                    fichierSortie << ' ' << (*pointeurVersCelClient);
+                    fichierSortie << '\n' << (*pointeurVersCelClient);
                     pointeurVersCelClient=pointeurVersCelClient->get_next();
                 }
                 return fichierSortie;

@@ -25,7 +25,7 @@ $(OBJ)/Livraison.o: $(SRC)/Livraison/Livraison.h
 	$(CCPP) $(CFLAGS) $(SRC)/Livraison/Livraison.cpp -o $(OBJ)/Livraison.o
 $(OBJ)/Livraisons.o:  $(SRC)/Livraison/Livraisons.h
 	$(CCPP) $(CFLAGS) $(SRC)/Livraison/Livraisons.cpp -o $(OBJ)/Livraisons.o
-$(OBJ)/fonctions.o: $(SRC)/fonctions/fonctions.h 
+$(OBJ)/fonctions.o: $(SRC)/fonctions/fonctions.h $(SRC)/Client/Client.h $(SRC)/Article/Article.h $(SRC)/Commande/Commande.h
 	$(CCPP) $(CFLAGS) $(SRC)/fonctions/fonctions.cpp  -o $(OBJ)/fonctions.o -lm
 $(OBJ)/Cellule.o: $(SRC)/Cellule/Cellule.h 
 	$(CCPP) $(CFLAGS) $(SRC)/Cellule/Cellule.cpp -o $(OBJ)/Cellule.o

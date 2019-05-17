@@ -1,5 +1,5 @@
-#ifndef COMMANDES_H_INCLUDE
-#define COMMANDES_H_INCLUDE
+#ifndef COMMANDES_H_INCLUDES
+#define COMMANDES_H_INCLUDES
 #include "Commande.h"
 #include "../Cellule/Cellule.h"
 #include "../Liste/Liste.h"
@@ -24,7 +24,7 @@
                 -commandes_de: permet de recuperer les commandes d'un client
                 -commandes_pour: permet de recuperer les commandes effectues sur un article donner
         */
-        class Commande:Liste<Base>
+        class Commande:public Liste<Base>
         {
         private:
             std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
