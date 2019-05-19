@@ -24,22 +24,24 @@
     class Base
     {
     private:
-        unsigned long reference; 
+        typeId reference; 
         std::string libelle; 
         double prix; 
         unsigned long quantite;  
         unsigned long seuil; 
     public:
         Base();
-        Base(unsigned long,std::string,unsigned long,unsigned long,unsigned long);
+        Base(typeId,std::string,unsigned long,unsigned long,unsigned long);
         ~Base();
         Base* fixer_prix(unsigned long);
         Base* fixer_quantite(unsigned long);
         Base* ajouter_quantite(long);
         bool a_ravitailler(void);
-        bool tester_reference(unsigned long);
+        bool tester_reference(typeId);
         int tester_libelle(const char *);
-        unsigned long get_reference(void);
+        typeId get_reference(void);
+        double get_prix(void);
+        unsigned long get_quantite(void);
         long tester_quantite(unsigned long);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

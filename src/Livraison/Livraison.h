@@ -1,6 +1,6 @@
 #ifndef LIVRAISON_H_INCLUDE
 #define LIVRAISON_H_INCLUDE
-#include <fstream>
+#include "../fonctions/fonctions.h"
     namespace Livraison{
         
         /* 
@@ -20,19 +20,19 @@
         class Base
         {
         private:
-            unsigned long numero;
-            unsigned long client;
-            unsigned long article;
+            typeId numero;
+            typeId commande;
+            typeId client;
             unsigned long quantite;
         public:
-            Base(unsigned long,unsigned long,unsigned long, unsigned long);
+            Base(typeId,typeId,unsigned long, unsigned long);
             ~Base();
             Base();
-            void modifier(unsigned long,unsigned long, unsigned long,int);
-            unsigned long ref_client(void);
-            unsigned long ref_article(void);
+            void modifier(typeId,typeId, unsigned long);
+            typeId ref(void);
+            typeId ref_commande(void);
+            typeId ref_client(void); 
             unsigned long nombre(void);
-            unsigned long ref(void);
             friend int operator== (Base,Base);
             friend int operator< (Base,Base);
             friend int operator<= (Base,Base);

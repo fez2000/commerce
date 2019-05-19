@@ -9,7 +9,7 @@ namespace Client{
 
     };
 
-    Base::Base(unsigned long numero, std::string nom, std::string prenom, std::string date, std::string sexe){
+    Base::Base(typeId numero, std::string nom, std::string prenom, std::string date, std::string sexe){
         
         this->numeroClient = numero;
         this->nomClient = nom;
@@ -22,7 +22,7 @@ namespace Client{
         Cette methode teste si le numero du client
         existe deja 
     */
-    bool Base::tester_reference(unsigned long ref){
+    bool Base::tester_reference(typeId ref){
         return numeroClient == ref;
     };
     /*
@@ -30,7 +30,7 @@ namespace Client{
         numero d'un client
     */
 
-    unsigned long Base::get_numero(void){
+    typeId Base::get_numero(void){
         return numeroClient;
     };
 
@@ -145,9 +145,8 @@ namespace Client{
         client.dateNaissance = date;
         if (!deserialiser(fichier, sexe)) return fichier;
         client.sexe = sexe;
-        if (fichier >> client.numeroClient){
-            return fichier;
-        }
+        fichier >> client.numeroClient;
+        return fichier;
     };
     /*
         destructeur

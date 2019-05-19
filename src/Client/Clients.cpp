@@ -11,7 +11,7 @@ namespace Client{
         charger_client();
     }
     
-    int Client::creer_client(const char * nomClient, const char * prenomClient, const char * dateN, const char * sexeC){
+    typeId Client::creer_client(const char * nomClient, const char * prenomClient, const char * dateN, const char * sexeC){
 
         std::string nom(nomClient);
         std::string prenom(prenomClient);
@@ -26,28 +26,34 @@ namespace Client{
         ajouter_trie(celluleClient);// fonction provenant du fichier liste
         std::cout << *this->tete;
          
-        tableClient.insert(std::pair<unsigned long,Cellule<Base> * >(maxNumeroGenerer,celluleClient));
+        tableClient.insert(std::pair<typeId,Cellule<Base> * >(maxNumeroGenerer,celluleClient));
         maxNumeroGenerer ++;
         
-        sauvegarder_client();
-        return 1;
+        if(sauvegarder_client() == ERROR_CODE){
+            return ERROR_CODE;
+        };
+        return maxNumeroGenerer - 1;
     }
 
     int Client::sauvegarder_client(){
         
-        std::ofstream fichier(FSTOCKAGE_T);
-        if(fichier){
-            fichier << *this;
-            fichier.close();
-            std::cout << "sauvegarder\n";
-        }else{
-            std::cout << "erreur d'ouverture\n";
+        std::ofstream fichier;
+        fichier.exceptions ( std::ofstream::failbit | std::ofstream::badbit );
+        try{
+            fichier.open(FSTOCKAGE_T);
+            if(fichier){
+                fichier << *this;
+                fichier.close();
+                std::cout << "sauvegarder\n";
+            }
         }
-     
-        return 1;
+        catch(std::ofstream::failure& ex){
+            return ERROR_CODE;
+        } 
+        return SUCCESS_CODE;
     };
 
-    int Client::supprimer_client(unsigned long val){
+    int Client::supprimer_client(typeId val){
         Cellule<Base> * b = tete;
         std::cout <<"debut while\n";
         while (!b->get().tester_reference(val) && b != sentinelle)
@@ -63,19 +69,17 @@ namespace Client{
             tableClient.erase(val);
         }
         std::cout <<"if\n";
-        sauvegarder_client();
-        return 1;
+        return sauvegarder_client();
     };
 
-    int Client::mettre_a_jour_client(unsigned long num, const char * nomClient, const char * prenomClient, const char * date, const char * sexe){
+    int Client::mettre_a_jour_client(typeId num, const char * nomClient, const char * prenomClient, const char * date, const char * sexe){
         Base client (num,nomClient,prenomClient,date,sexe);
         Cellule<Base> cellule(client);
         Cellule<Base>* pointeurVersCel = chercher_client(num);
         if(pointeurVersCel){
             (*pointeurVersCel) = cellule;
         }
-        sauvegarder_client(); 
-        return 1;
+        return sauvegarder_client(); 
     };
     /*
         methode de recherche d'un client 
@@ -92,24 +96,29 @@ namespace Client{
         }
         return NULL;
     };
-    Cellule<Base> * Client::chercher_client(unsigned long num){
+    Cellule<Base> * Client::chercher_client(typeId num){
         return tableClient[num];
     };  
 
     int Client::charger_client(){
-        std::ifstream fichier(FSTOCKAGE_T);
-        if(fichier){
-            if(fichier.eof())return 0;
-            if(fichier>>*this){
-            fichier.close();    
-            return 1;
+        std::ifstream fichier;
+        fichier.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+        try{
+            fichier.open((FSTOCKAGE_T));
+            if(fichier){
+                if(fichier.eof())return 0;
+                if(fichier>>*this){
+                fichier.close();    
+                return SUCCESS_CODE;
+                }
+                fichier.close();
             }
-            fichier.close();
-        }else{
-            std::cout << "erreur d'ouverture\n";
         }
-
-        return 0;
+        catch(std::ifstream::failure& ex){
+            //std::cout << strerror( errno ) << std::endl;
+            return ERROR_CODE;
+        }
+        return SUCCESS_CODE;
     }
     /*
         methode de serialisation des données
@@ -130,27 +139,28 @@ namespace Client{
     */
 
     std::istream& operator>>(std::istream &fichierALire, Client &client){
-            if (!fichierALire) return fichierALire;
-        
-            unsigned int taille,maxNumeroGenerer;
-            if (fichierALire >> taille >> maxNumeroGenerer){
-                
-                client.tete = client.sentinelle = new Cellule<Base>;
-                Cellule<Base> * pointeurVersCelCient;
-                Base  nouveauClient ;
-                
-                client.maxNumeroGenerer = maxNumeroGenerer;
-                while (taille >0 )
-                {
-                    fichierALire >> nouveauClient;
-                    pointeurVersCelCient = new Cellule<Base>(nouveauClient);
-                    client.ajouter_trie(pointeurVersCelCient);
-                    client.tableClient.insert(std::pair<unsigned long,Cellule<Base> * >(nouveauClient.get_numero(),pointeurVersCelCient));
-                    taille--;
-                }   
-            }    
-            return fichierALire;
-        };
+        if (!fichierALire) return fichierALire;
+    
+        unsigned int taille;
+        typeId maxNumeroGenerer;
+        if (fichierALire >> taille >> maxNumeroGenerer){
+            
+            client.tete = client.sentinelle = new Cellule<Base>;
+            Cellule<Base> * pointeurVersCelCient;
+            Base  nouveauClient ;
+            
+            client.maxNumeroGenerer = maxNumeroGenerer;
+            while (taille >0 )
+            {
+                fichierALire >> nouveauClient;
+                pointeurVersCelCient = new Cellule<Base>(nouveauClient);
+                client.ajouter_trie(pointeurVersCelCient);
+                client.tableClient.insert(std::pair<typeId,Cellule<Base> * >(nouveauClient.get_numero(),pointeurVersCelCient));
+                taille--;
+            }   
+        }    
+        return fichierALire;
+    };
 
     Client::~Client()
     {

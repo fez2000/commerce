@@ -5,7 +5,7 @@ namespace Commande{
     {
         this->quantite = 0;
     };
-    Base::Base(  unsigned long numero,unsigned long client,unsigned long article,unsigned long quantite, int etat = ENCOUR)
+    Base::Base(  typeId numero,typeId client,typeId article,unsigned long quantite, int etat = ENCOUR)
     {
         this->numero = numero;
         this->client = client;
@@ -13,7 +13,7 @@ namespace Commande{
         this->quantite = quantite;
         this->etat = etat;
     }
-    void Base::modifier(unsigned long client,unsigned long article,unsigned long quantite,int etat){
+    void Base::modifier(typeId client,typeId article,unsigned long quantite,int etat){
        
         this->client = client;
         this->article = article;

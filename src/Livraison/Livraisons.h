@@ -6,7 +6,6 @@
 #define FICHIERSTOCKL  "./BD/livraison.txt"
 #define FICHIERSTOCKTEMPL  "./BD/livraison.temporaire.txt"
 #define FICHIERSTOCKL  "./BD/livraison.txt" 
-#include <iostream>
 #include <map>
     namespace Livraison{
         /* 
@@ -24,18 +23,18 @@
         class Livraison:Liste<Base>
         {
         private:
-            std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
-            unsigned long maxNumeroGenerer;//plus grand id generer
+            std::map<typeId, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
+            typeId maxNumeroGenerer;//plus grand id generer
             int sauvegarder();
             int charger();
         public:
             Livraison(/* args */);
-            int creer(unsigned long,unsigned long,unsigned long);
-            int supprimer(unsigned long);
-            int modifier(unsigned long,unsigned long,unsigned long,unsigned long,int);
-            Cellule<Base>* chercher(unsigned long);
-            Liste<Base> livraisons_de(unsigned long);
-            Liste<Base> livraisons_pour(unsigned long);
+            typeId creer(typeId,typeId,unsigned long);
+            int supprimer(typeId);
+            int modifier(typeId,typeId,typeId,unsigned long);
+            Cellule<Base>* chercher(typeId);
+            Liste<Base> livraisons_de(typeId);
+            Liste<Base> livraisons_apropos(typeId);
             int charger(const char *);
             int sauvegarder(const char *);
             friend std::ostream& operator<<(std::ostream &, const Livraison &);

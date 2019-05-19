@@ -1,8 +1,9 @@
 #include "Article.h"
+#include "../fonctions/fonctions.h"
 #include <iostream>
 namespace Article{
 
-    Base::Base(unsigned long reference,std::string libelle,unsigned long prix,unsigned long quantite,unsigned long seuil)
+    Base::Base(typeId reference,std::string libelle,unsigned long prix,unsigned long quantite,unsigned long seuil)
     {
         this->reference = reference;
         this->libelle = libelle;
@@ -20,8 +21,14 @@ namespace Article{
     Base::~Base()
     {
     };
-    unsigned long Base::get_reference(void){
+    typeId Base::get_reference(void){
         return reference;
+    };
+    double Base::get_prix(){
+        return prix;
+    };
+    unsigned long Base::get_quantite(){
+        return quantite;
     };
     Base* Base::fixer_prix(unsigned long prix){
         this->prix = prix;
@@ -38,7 +45,7 @@ namespace Article{
     bool Base::a_ravitailler(){
         return quantite <= seuil;
     };
-    bool Base::tester_reference(unsigned long ref){
+    bool Base::tester_reference(typeId ref){
         return reference == ref;
     };
     int Base::tester_libelle(const char * lib){

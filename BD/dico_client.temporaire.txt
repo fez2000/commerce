@@ -1,5 +1,0 @@
-4 4
-"tchuente" "patrice" "15/01/1998" "M"  3
-"tchuente" "patrice" "15/01/1998" "M"  1
-"tchuente" "patrice" "15/01/1998" "M"  0
-"tchuente" "patrice" "15/01/1998" "M"  2

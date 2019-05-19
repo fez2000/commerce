@@ -9,23 +9,34 @@ namespace Commande{
         taille = 0;
         charger();
     };
-    int Commande::creer(unsigned long client,unsigned long article,unsigned long quantite){
+    /*
+    @name: creer
+    @brief: methode de la classe article qui permet de creer une nouvelle commande
+    @params: 
+        -client id du client qui passe la commande de type typeId
+        -article id de l'article commander de type typeId
+        -quantite quantite de l'article commander de type unsigned long 
+    @return: l'id de la commande creer ou ERROR_CODE en cas d'erreur
+    */
+    typeId Commande::creer(typeId client,typeId article,unsigned long quantite){
         Base commande(maxNumeroGenerer,client,article,quantite,ENCOUR);  
         ajouter(new Cellule<Base>(commande));
-        table.insert(std::pair<unsigned long,Cellule<Base> * >(maxNumeroGenerer,tete));
+        table.insert(std::pair<typeId,Cellule<Base> * >(maxNumeroGenerer,tete));
         maxNumeroGenerer++;
-        sauvegarder();
-        return 1;
+        if(sauvegarder() == ERROR_CODE){
+            return ERROR_CODE;
+        }
+        return maxNumeroGenerer - 1;
     };
-    int Commande::supprimer(unsigned long numero){
+    int Commande::supprimer(typeId numero){
         Cellule<Base> * b = table[numero];
         if(!b)return 0;
         enlever(*b);
         table.erase(numero);
-        sauvegarder();
-        return 1;
+        return sauvegarder();
+        
     };
-    int Commande::modifier(unsigned long numero, unsigned long client,unsigned long article,unsigned long quantite,int etat){
+    int Commande::modifier(typeId numero, typeId client,typeId article,unsigned long quantite,int etat){
         Base a(numero,client,article,quantite,etat);
         Cellule<Base> b(a);
         Cellule<Base>* e = chercher(numero);
@@ -33,10 +44,9 @@ namespace Commande{
         if(e){
             (*e) = b;
         }
-        sauvegarder(); 
-        return 1;
+        return sauvegarder(); 
     };
-    Liste<Base> Commande::commandes_de(unsigned long id){
+    Liste<Base> Commande::commandes_de(typeId id){
         Liste<Base> t;
         Cellule<Base> * i;
 
@@ -48,7 +58,20 @@ namespace Commande{
         }
         return t;
     };
-    Liste<Base> Commande::commandes_pour(unsigned long id){
+    Liste<Base> Commande::commandes_encour_de(typeId id){
+        Liste<Base> t;
+        Cellule<Base> * i;
+
+        i=tete;
+        while(i!=sentinelle){
+            if(i->get().ref_client()==id){
+                if(!i->get().est_livrer())
+               t.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return t;
+    };
+    Liste<Base> Commande::commandes_pour(typeId id){
         Liste<Base> t;
         Cellule<Base> * i;
 
@@ -60,27 +83,29 @@ namespace Commande{
         }
         return t;
     };
-    Cellule<Base> * Commande::chercher(unsigned long ref){
-        Cellule<Base> * b = tete;
-        
+    Cellule<Base> * Commande::chercher(typeId ref){
         return table[ref];
     };
     int Commande::sauvegarder(){
-        std::ofstream fichier(FICHIERSTOCKTEMPC);
-        if(fichier){
-            fichier << *this;
-            fichier.close();
-            std::cout << "sauvegarder\n";
-        }else{
-            std::cout << "erreur d'ouverture\n";
-            return -1;
-        }    
-        return 1;
+        std::ofstream fichier;
+        fichier.exceptions ( std::ofstream::failbit | std::ofstream::badbit );
+        try{
+            fichier.open((FICHIERSTOCKTEMPC));
+            if(fichier){
+                fichier << *this;
+                fichier.close();
+            }
+        }
+        catch(std::ofstream::failure& ex){
+            return ERROR_CODE;
+        }   
+        return SUCCESS_CODE;
     }
     std::istream& operator>>(std::istream &is, Commande &b){
         if (!is) return is;
 
-        unsigned int taille,maxNumeroGenerer;
+        unsigned long taille;
+        typeId maxNumeroGenerer;
         if (is >> taille >> maxNumeroGenerer){
             
             b.tete = b.sentinelle = new Cellule<Base>;
@@ -93,7 +118,7 @@ namespace Commande{
                 is >> a;
                 c = new Cellule<Base>(a);
                 b.ajouter_trie(c);
-                b.table.insert(std::pair<unsigned long,Cellule<Base> * >(a.ref(),c));
+                b.table.insert(std::pair<typeId,Cellule<Base> * >(a.ref(),c));
                 taille--;
             }
             
@@ -102,28 +127,33 @@ namespace Commande{
         return is;
     };
     int Commande::charger(){
-        std::ifstream fichier(FICHIERSTOCKTEMPC);
-        if(fichier){
-            if(fichier.eof())return 0;
-            if(fichier>>*this){
-            fichier.close();    
-            return 1;
+        std::ifstream fichier;
+        fichier.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+        try{
+            fichier.open(FICHIERSTOCKTEMPC);
+            if(fichier){
+                if(fichier.eof())return ERROR_CODE;
+                if(fichier>>*this){
+                fichier.close();    
+                    return SUCCESS_CODE;
+                }
+                fichier.close();
             }
-            fichier.close();
-        }else{
-            std::cout << "erreur d'ouverture\n";
         }
-
-        return 0;
+        catch(std::ifstream::failure& ex){
+            //std::cout <<ex.what()<< std::endl;
+            return ERROR_CODE;
+        }
+        return SUCCESS_CODE;
     }
     std::ostream& operator<<(std::ostream &os, const Commande &b) {
-                os << b.taille << ' ' <<b.maxNumeroGenerer ;
-                Cellule<Base> * c = b.tete;
-                while (c!=b.sentinelle)
-                {
-                    os << '\n' << (*c);
-                    c=c->get_next();
-                }
-                return os;
-            };
+        os << b.taille << ' ' <<b.maxNumeroGenerer ;
+        Cellule<Base> * c = b.tete;
+        while (c!=b.sentinelle)
+        {
+            os << '\n' << (*c);
+            c=c->get_next();
+        }
+        return os;
+    };
 }

@@ -1,6 +1,6 @@
 #ifndef COMMANDE_H_INCLUDE
 #define COMMANDE_H_INCLUDE
-#include <fstream>
+#include "../fonctions/fonctions.h"
     namespace Commande{
         enum Etat {ENCOUR,LIVRER};
         /* 
@@ -25,23 +25,23 @@
         class Base
         {
         private:
-            unsigned long numero;
-            unsigned long client;
+            typeId numero;
+            typeId client;
+            typeId article;
             int etat;
-            unsigned long article;
             unsigned long quantite;
         public:
-            Base(unsigned long,unsigned long,unsigned long, unsigned long, int);
+            Base(typeId,typeId,typeId, unsigned long, int);
             ~Base();
             Base();
-            void modifier(unsigned long,unsigned long, unsigned long,int);
+            void modifier(typeId,typeId, unsigned long,int);
             bool est_livrer();
             void livrer();
             void plus_livrer();
-            unsigned long ref_client(void);
-            unsigned long ref_article(void);
-            unsigned long nombre(void);
-            unsigned long ref(void);
+            typeId ref(void);
+            typeId ref_client(void);
+            typeId ref_article(void);
+            unsigned long nombre(void);    
             friend int operator== (Base,Base);
             friend int operator< (Base,Base);
             friend int operator<= (Base,Base);

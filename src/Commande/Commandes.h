@@ -6,8 +6,8 @@
 #define FICHIERSTOCKC  "./BD/commande.txt"
 #define FICHIERSTOCKTEMPC  "./BD/commande.temporaire.txt"
 #define FICHIERSTOCKC  "./BD/commande.txt" 
-#include <iostream>
 #include <map>
+
     namespace Commande{
         /* 
             @brief classe de base d'un commande permettant d'effectuer des operation elementaire sur une commande
@@ -27,18 +27,19 @@
         class Commande:public Liste<Base>
         {
         private:
-            std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
-            unsigned long maxNumeroGenerer;//plus grand id generer
+            std::map<typeId, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
+            typeId maxNumeroGenerer;//plus grand id generer
             int sauvegarder();
             int charger();
         public:
             Commande(/* args */);
-            int creer(unsigned long,unsigned long,unsigned long);
-            int supprimer(unsigned long);
-            int modifier(unsigned long,unsigned long,unsigned long,unsigned long,int);
-            Cellule<Base>* chercher(unsigned long);
-            Liste<Base> commandes_de(unsigned long);
-            Liste<Base> commandes_pour(unsigned long);
+            typeId creer(unsigned long,unsigned long,unsigned long);
+            int supprimer(typeId);
+            int modifier(typeId,unsigned long,unsigned long,unsigned long,int);
+            Cellule<Base>* chercher(typeId);
+            Liste<Base> commandes_de(typeId);
+            Liste<Base> commandes_encour_de(typeId);
+            Liste<Base> commandes_pour(typeId);
             int charger(const char *);
             int sauvegarder(const char *);
             friend std::ostream& operator<<(std::ostream &, const Commande &);

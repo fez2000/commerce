@@ -5,32 +5,31 @@ namespace Livraison{
     {
         this->quantite = 0;
     };
-    Base::Base(  unsigned long numero,unsigned long client,unsigned long article,unsigned long quantite)
+    Base::Base(  typeId numero,typeId commande,typeId client,unsigned long quantite)
     {
         this->numero = numero;
+        this->commande = commande;
         this->client = client;
-        this->article = article;
         this->quantite = quantite;
        
     }
-    void Base::modifier(unsigned long client,unsigned long article,unsigned long quantite,int etat){
-       
+    void Base::modifier(typeId commande,typeId client,unsigned long quantite){
+        this->commande = commande;
         this->client = client;
-        this->article = article;
         this->quantite = quantite;
     };
  
      
-    unsigned long Base::ref_client(){
+    typeId Base::ref_client(){
         return client;
     };
-    unsigned long Base::ref_article(){
-        return article;
+    typeId Base::ref_commande(){
+        return commande;
     };
     unsigned long Base::nombre(){
         return quantite;
     };
-    unsigned long Base::ref(void){
+    typeId Base::ref(void){
         return numero;
     };
     Base::~Base()
@@ -39,8 +38,8 @@ namespace Livraison{
     Base& Base::operator=(const Base& is){
         if(&is != this){
             numero = is.numero;
+            commande = is.commande;
             client = is.client;
-            article = is.article;
             quantite = is.quantite;
         }
         return * this;
@@ -59,13 +58,13 @@ namespace Livraison{
     }
     std::ostream& operator<<(std::ostream &os, const Base &b) {
         
-        return os << ' ' <<b.numero  << ' ' << b.client<< ' ' << b.article << ' ' << b.quantite;
+        return os << ' ' <<b.numero<< ' ' <<  b.commande  << ' ' << b.client << ' ' << b.quantite;
     }
     std::istream& operator>>(std::istream &is, Base &b){
        
     std::string nom;    
     if (!is) return is;
-    is >> b.numero >> b.client >> b.article >> b.quantite;
+    is >> b.numero >> b.commande >> b.client  >> b.quantite;
         
     return is;
     }

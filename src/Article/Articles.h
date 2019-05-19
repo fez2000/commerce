@@ -6,7 +6,7 @@
 #define FICAL  "./BD/atricle.txt"
 #define FICAST  "./BD/atricle.temporaire.txt"
 #define FICAS  "./BD/atricle.txt" 
-#include <iostream>
+
 #include <map>
     namespace Article{
         /* 
@@ -24,18 +24,19 @@
         class   Article: public Liste< Base >
         {
         private:
-            std::map<unsigned long, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
-            unsigned long maxNumeroGenerer;//plus grand id generer
+            std::map<typeId, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
+            typeId maxNumeroGenerer;//plus grand id generer
             int sauvegarder();
             int charger();
         public:
             Article();
-            int creer(const char *, double, unsigned long,unsigned long);
-            int supprimer(unsigned long);
-            int mettre_a_jour(unsigned long,const char *, double, unsigned long,unsigned long );
+            typeId creer(const char *, double, unsigned long,unsigned long);
+            int supprimer(typeId);
+            int mettre_a_jour(typeId,const char *, double, unsigned long,unsigned long );
             Cellule<Base>* chercher(const char *);
-            Cellule<Base>* chercher(unsigned long);
+            Cellule<Base>* chercher(typeId);
             Liste<Base> critiques();
+            long double capital(void);
             int charger(const char *);
             int sauvegarder(const char *);
             static Article deserialiser(std::istream&);

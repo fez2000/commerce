@@ -24,7 +24,11 @@
             os << b.valeur;
             return os;
         };
-        friend std::istream& operator>>(std::istream &,Cellule<T> &);
+        friend std::istream& operator>>(std::istream &os,Cellule<T> &b){
+            if(!os)return os;
+            os >> b.valeur;
+            return os;
+        };
         friend  int operator<(Cellule<T> b1,Cellule<T> b2){
             return b1.get() < b2.get();
         };
@@ -70,7 +74,10 @@
     {
     };
     template <class T> Cellule<T> & Cellule<T>::operator= (const Cellule<T> & c){
-        valeur = c.valeur;
+        if(&c != this){
+            valeur = c.valeur;
+        }
+        return * this;
     };
 
 #endif

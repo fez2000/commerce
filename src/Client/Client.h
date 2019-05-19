@@ -16,7 +16,7 @@ namespace Client{
     class Base
     {
     private:
-        unsigned long numeroClient;
+        typeId numeroClient;
         std::string nomClient;
         std::string prenomClient;
         std::string dateNaissance;
@@ -25,13 +25,13 @@ namespace Client{
 
         // constructeur
         Base(/* args */);
-        Base(unsigned long, std::string, std::string, std::string, std::string);
+        Base(typeId, std::string, std::string, std::string, std::string);
 
         ~Base();
         
-        bool tester_reference(unsigned long);
+        bool tester_reference(typeId);
         int tester_nom(const char *);
-        unsigned long get_numero(void);
+        typeId get_numero(void);
 
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

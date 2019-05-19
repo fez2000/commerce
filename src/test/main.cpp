@@ -4,20 +4,47 @@
 using namespace std;
 int main(){
      
-     Client::Client mon_client;
-     
-     mon_client.creer_client("tchuente", "patrice", "15/01/1998", "M");
+      bool recommencer=true;
+          int i(5),a=0;/* Declaration des variables*/
+                cout << "MENU ARTICLES" << endl;
+      do{
+          cout <<"1)Ajout d'un article)"<< endl;
+        cout <<"2)Articles (liste des articles enregistré)"<< endl;
+        cout <<"3)Modifie un article"<< endl;
+        cout <<"4)suppresion d'un article"<< endl;
+          cout <<"5)Retour au menu principal"<< endl;
+        cout<<"Entre le numero choisie dans le menu  : ";
+          cin >> i;
+      switch (i){
+        case 1:
+              cout << "Ajout d'un article"<< endl;
+        break;
+        case 2:
+              cout << "Articles (liste des articles enregistré)"<< endl;
+        break;
+        case 3:
+              cout << "Modifie un article"<< endl;
+        break;
+        case 4:
+              cout << "suppresion d'un article"<< endl;
+        break;
+        case 5:
+              cout << "Retour au menu principal:"<< endl;
+        break;
+        default:
+                cout << "Mauvais choix Voulez vous recommencer le programme ? \n 1-pour oui\n 2-pour non\n" ;
+                cin >> a;
+                if(a==1){
+                    recommencer=true;
+                      }
+                else{
+                    recommencer=false;
+                    
+                }      
+        break;
+      }
 
-     //mon_client.supprimer_client(3);
-   /* 
-     Article::Article bg;
-     Commande::Commande a;
-     a.creer(1,1,56);
-     //a.supprimer(1);
-     bg.creer("tomate",100,44,20);
-     bg.supprimer(1);
-     cout <<  *bg.chercher("tomate") << "\n";
-     bg.mettre_a_jour(bg.chercher("tomate")->get().get_reference(),"tomates",1245.3,345,200);
-     */
+      }while (recommencer==true);
+
      return 0;
 }
