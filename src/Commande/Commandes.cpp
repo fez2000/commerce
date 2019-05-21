@@ -126,6 +126,11 @@ namespace Commande{
         }    
         return is;
     };
+    int Commande::annuler(typeId id){
+        Cellule<Base> * p = table[id];
+        p->get().annuler();
+        return sauvegarder();
+    };
     int Commande::charger(){
         std::ifstream fichier;
         fichier.exceptions ( std::ifstream::failbit | std::ifstream::badbit );

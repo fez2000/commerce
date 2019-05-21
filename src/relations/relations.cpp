@@ -71,3 +71,24 @@ int commander_article(const char * nomClient ,const char * libelle, unsigned lon
     }
     return PAS_DERREUR;
 };
+int annuler_commande(typeId id){
+     Cellule <Commande::Base> * c = gestionCommande.chercher(id);
+     if(!c){
+         return CMD_PAS_TROUVER;
+     }
+     if(c->get().status() == Commande::ANNULER){
+         return CMD_DEJA_ANNULER;
+     }
+     if(c->get().status() == Commande::LIVRER){
+         return CMD_DEJA_LIVRER;
+     }
+     int code = gestionCommande.annuler(id);
+    if( code  != SUCCESS_CODE){
+        return code;
+    };
+    Cellule<Livraison::Base> * l = gestionLivraison.livraisons_apropos(c->get().ref());
+    if(!l){
+        return LIVRAISON_PAS_TROUVER;
+    }
+    return gestionLivraison.supprimer(l->get().ref());
+}

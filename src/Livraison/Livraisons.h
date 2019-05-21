@@ -34,7 +34,7 @@
             int modifier(typeId,typeId,typeId,unsigned long);
             Cellule<Base>* chercher(typeId);
             Liste<Base> livraisons_de(typeId);
-            Liste<Base> livraisons_apropos(typeId);
+            Cellule<Base> * livraisons_apropos(typeId);
             int charger(const char *);
             int sauvegarder(const char *);
             friend std::ostream& operator<<(std::ostream &, const Livraison &);

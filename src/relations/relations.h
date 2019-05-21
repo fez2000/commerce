@@ -12,4 +12,5 @@ int commander_article(const char *,const char *, unsigned long);
 int commander_article(typeId,typeId, unsigned long);
 int commander_article(const char *,typeId, unsigned long); 
 int commander_article(typeId,const char *, unsigned long);
+int annuler_commande(typeId id);
 #endif

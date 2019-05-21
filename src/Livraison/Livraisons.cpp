@@ -1,6 +1,6 @@
 #include "Livraisons.h"
 #include <fstream>
-
+#include <stdlib.h>
 namespace Livraison{
     Livraison::Livraison()
     {
@@ -57,17 +57,22 @@ namespace Livraison{
         }
         return t;
     };
-    Liste<Base> Livraison::livraisons_apropos(typeId id){
-        Liste<Base> t;
+    /*
+    @name: livraisons_apropos
+    @brief methode de la classe livraison qui donne la livraison correspondant a une commande en cour
+    @parmas: id qui est l'id de la commande
+    @return: l'id de la livraison
+    */
+    Cellule<Base> *Livraison::livraisons_apropos(typeId id){
         Cellule<Base> * i;
 
         i=tete;
         while(i!=sentinelle){
             if(i->get().ref_commande()==id){
-               t.ajouter(new Cellule<Base>(i->get())); 
+               return (new Cellule<Base>(i->get())); 
             }
         }
-        return t;
+        return NULL;
     };
     Cellule<Base> * Livraison::chercher(typeId ref){        
         return table[ref];

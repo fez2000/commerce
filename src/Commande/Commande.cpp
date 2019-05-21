@@ -21,8 +21,14 @@ namespace Commande{
         this->etat = etat;
     };
     bool Base::est_livrer(){
-        return etat!=ENCOUR;
+        return etat == LIVRER;
     };
+    void Base::annuler(){
+        etat = ANNULER;
+    }
+    int Base::status(){
+        return etat;
+    }
     void Base::livrer(){
         etat = LIVRER;
     }; 
