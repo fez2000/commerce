@@ -5,8 +5,10 @@
 #include <vector>
 
 #include "../Client/Clients.h"
+#include "../Article/Articles.h"
 
 Client::Client gestionnaireClient;
+Article::Article gestionnaireArticle;
 
 /*
     Acceuil
@@ -36,7 +38,7 @@ void acceuil(){
           std::cout << "\t##  Tapez:                                                                              ##\n";
           std::cout << "\t##       1- Pour GESTIONS CLIENTS               2- Pour GESTIONS ARTICLES               ##\n";
           std::cout << "\t##       3- Pour GESTIONS COMMANDES             4- Pour GESTIONS LIVRAISONS             ##\n";
-          std::cout << "\t##       5- Pour A PROPOS                       0- QUITTER                              ##\n";
+          std::cout << "\t##       5- Pour AUTRES FONCTIONS               0- QUITTER                              ##\n";
           std::cout << "\t##                                                                                      ##\n";
           std::cout << "\t##                                                                                      ##\n";
           std::cout << "\t##                    -------------------------------------------                       ##\n";
@@ -69,8 +71,91 @@ void acceuil(){
                // gestion livraison
                menu_general_livraison();
                break;
-          case '5':
-               // a propos
+          case '5': // a propos
+               autre_fonction();
+               break;
+
+          default:
+               std::cout << " choix non disponible \n";
+          break;
+     };
+}
+
+void autre_fonction(){
+    // differentes variables a utiliser dans notre fonction
+    std::string choixUtilisateur;
+     do{
+
+          // petit menu de presentation
+          std::cout << "\t##########################################################################################\n";
+          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+          std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
+          std::cout << "\t##                                                                                      ##\n";
+          std::cout << "\t##                               %%%     %%%     %%%                                    ##\n";
+          std::cout << "\t##                                %%%   %%%      %%%                                    ##\n";
+          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
+          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
+          std::cout << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
+          std::cout << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
+          std::cout << "\t##                                                                                      ##\n";
+          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
+          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
+          std::cout << "\t##                                                                                      ##\n";
+          std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
+          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
+          std::cout << "\t##  Tapez:                                                                              ##\n";
+          std::cout << "\t##       1 - Pour Liste des articles achetes par un client                              ##\n";
+          std::cout << "\t##       2 - Pour Liste des Clients d'un Article                                        ##\n";
+          std::cout << "\t##       3 - Pour Liste des Commandes en Cours d'un Client                              ##\n";
+          std::cout << "\t##       4 - Pour les Statistiques sur les Ventes d'un Article                          ##\n";
+          std::cout << "\t##       5 - Pour Liste des articles avec Prix Unitaire                                 ##\n";
+          std::cout << "\t##       6 - Pour Liste des Articles a Ravitailler                                      ##\n";
+          std::cout << "\t##       7 - Pour Capital du SuperMarche XL                                             ##\n";
+          std::cout << "\t##       8 - Pour Meilleur Client de XL                                                 ##\n";
+          std::cout << "\t##                                                                                      ##\n";
+          std::cout << "\t##       9 - Pour RETOUR                          0 - QUITTER LE PROGRAMME              ##\n";
+          std::cout << "\t##                                                                                      ##\n";
+          std::cout << "\t##                    -------------------------------------------                       ##\n";
+          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+          std::cout << "\t##                                                                                      ##\n";
+
+          std::cout << "\t## Entrer votre choix: \t";
+          std::cin >> choixUtilisateur;
+          system("clear");
+
+     } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2' && choixUtilisateur.c_str()[0] != '3' && choixUtilisateur.c_str()[0] != '4' && choixUtilisateur.c_str()[0] != '5' && choixUtilisateur.c_str()[0] != '6' && choixUtilisateur.c_str()[0] != '7' && choixUtilisateur.c_str()[0] != '8' && choixUtilisateur.c_str()[0] != '9');
+
+
+     switch (choixUtilisateur.c_str()[0]){
+          case '0':
+               system("exit");
+               break;
+          case '1': // Liste des articles achetes par un client
+               
+               break;
+          case '2': // Liste des Clients d'un Article
+                interface_liste_client_article();
+               
+               break;
+          case '3': // Liste des Commandes en Cours d'un Client
+               
+               break;
+          case '4': // les Statistiques sur les Ventes d'un Article
+               
+               break;
+          case '5': // Liste des articles avec Prix Unitaire
+               break;
+          case '6': // Liste des Articles a Ravitailler 
+
+               break;
+          case '7': // Capital du SuperMarche XL
+                interface_capital();
+               break;
+          case '8': // Meilleur Client de XL
+                interface_meilleur_client();
+               break;
+          case '9': // retour
+                acceuil();
                break;
 
           default:
@@ -124,17 +209,20 @@ void menu_general_client(){
             interface_creation_client();
             break;
         case '2': // fonction menu de modification d'un client;
+            interface_modif_client();
             break;
         case '3': // fonction menu de recherche d'un client;
+            interface_recherche_client();
             break;
         case '4': //fonction de supression d'un client;
+            interface_suppression_client();
             break;
-        case '5':
-            // affichage client
+        case '5': // affichage client
+            interface_liste_client();
             break;
 
     }
-}
+} // termine
 
 // acceuil Article
 void menu_general_article(){
@@ -175,15 +263,19 @@ void menu_general_article(){
             acceuil();
             break;
         case '1': // creation d'un ARTICLE;
-            
+            interface_creation_article();
             break;
         case '2': // fonction menu de modification d'un ARTICLE;
+            interface_modif_article();
             break;
         case '3': // fonction menu de recherche d'un ARTICLE;
+            interface_recherche_article();
             break;
         case '4': //fonction de supression d'un ARTICLE;
+            interface_suppression_article();
             break;
         case '5': // Affichages des differents articles
+            interface_liste_article();
             break;
 
     }
@@ -305,6 +397,7 @@ void interface_creation_client(){
     std::string prenom;
     std::string date;
     std::string sexe;
+    std::string choixUtilisateur;
 
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
@@ -331,8 +424,9 @@ void interface_creation_client(){
         std::cin >> sexe;
     // Enregistrement de notre client
     gestionnaireClient.creer_client(nom.c_str(), prenom.c_str(), date.c_str(), sexe.c_str());
+    std::cout <<"\n";
 
-    std::string choixUtilisateur;
+
     do{
         std::cout <<"\t Voulez-vous refaire un enregistrement? \n";
         std::cout <<"\t 1 - pour OUI \n";
@@ -352,14 +446,72 @@ void interface_creation_client(){
     }
 
 }; // fin de notre fonction d'enregistrement de nouveau client
+   // fonction terminé
 
-void interface_recherche_client(){
+// modification client
+void interface_modif_client(){
     // differentes variables a utiliser dans notre fonction
     std::string nom;
     std::string prenom;
     std::string date;
     std::string sexe;
+    std::string choixUtilisateur;
 
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##                ----------------------------------------------------                  ##\n";
+    std::cout << "\t##                        ---------------------------------                             ##\n";
+    std::cout << "\t##                       | MODIFICATION D'UN NOUVEAU CLIENT |                           ##\n";
+    std::cout << "\t##                        ---------------------------------                             ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                    Veuillez suivre à la lettre les consigne !                        ##\n";
+    std::cout << "\t##                      -------------------------------------                           ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+      /*  // recuperation des informations du nouveau client
+        std::cout << "\t Entrer NOM Client :\t";
+        std::cin >>nom;
+        std::cout << "\t Entrer PRENOM Client :\t";
+        std::cin >> prenom;
+        std::cout << "\t Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :\t";
+        std::cin >> date;
+        std::cout << "\t Entrer SEXE Client(M/F) :\t";
+        std::cin >> sexe;
+    // Enregistrement de notre client
+    gestionnaireClient.creer_client(nom.c_str(), prenom.c_str(), date.c_str(), sexe.c_str());
+    std::cout <<"\n";
+
+        */
+    do{
+        std::cout <<"\t Voulez-vous faire une nouvelle modification? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour NOM \n";
+        std::cin >> choixUtilisateur;
+    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1');
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_client();
+            break;
+        case '1': 
+            system("clear");
+            interface_modif_client();
+            break;
+    }
+
+};
+
+// recherche client
+void interface_recherche_client(){
+    // differentes variables a utiliser dans notre fonction
+    std::string choixUtilisateur;
+    int id;
+    std::string nomR;
+    std::string ch;
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";    
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
@@ -375,14 +527,13 @@ void interface_recherche_client(){
     std::cout << "\t##                                                                                      ##\n";
     std::cout << "\t##         ----------------------------------------------------------------             ##\n";
     
-        std::string choixUtilisateur;
     do{
         std::cout <<"\t Voulez-vous faire la recherche via ID ou via NOM? \n";
         std::cout <<"\t 1 - pour ID \n";
         std::cout <<"\t 2 - pour NON \n";
+        std::cin >> choixUtilisateur;
     } while (choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2');
-    int id;
-    std::string nomR;
+
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
         std::cout <<"\t Entrer l'ID \t";
@@ -396,24 +547,530 @@ void interface_recherche_client(){
             break;
     };
 
-        std::string ch;
     do{
         std::cout <<"\t Voulez-vous refaire une recherche? \n";
         std::cout <<"\t 1 - pour OUI \n";
         std::cout <<"\t 0 - pour Nom \n";
-    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1');
-    int choixF;
-    choixF = int(choixUtilisateur.c_str()[0]);
+        std::cin >> ch;
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
 
-    switch (choixF){
-        case 0:
+    switch (ch.c_str()[0]){
+        case '0':
+            menu_general_client();
+            break;
+        case '1': 
             interface_recherche_client();
             break;
-        case 1: 
-            interface_creation_client();
-            break;
-    }    
+    }   
+    system("clear"); 
 };
+
+// suppression client
+void interface_suppression_client(){
+    // differentes variables a utiliser dans notre fonction
+    int id;
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |    SUPPRESSION D'UN CLIENT      |                         ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
+    std::cout << "\t##                               -----------------------                                ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+    
+        std::cout <<"\t Entrer l'ID du client a supprimer: \t";
+        std::cin >> id;
+        
+        gestionnaireClient.supprimer_client(id);
+        std::cout << "\n";    
+
+
+    do{
+        std::cout <<"\t Voulez-vous refaire une suppresion? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour Nom \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            menu_general_client();
+            break;
+        case '1': 
+            interface_suppression_client();
+            break;
+    }   
+    system("clear"); 
+};// fonction terminé
+
+void interface_liste_client(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |        LISTE DES CLIENTS        |                         ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    
+        
+        // Fonction qui affiche la liste des client
+        std::cout << "\n";    
+
+
+    do{
+        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU CLIENT \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_client();
+            break;
+        case '1':
+            system("clear");
+            acceuil();
+            break;
+    }   
+};
+
+// fin des fontions associer au menu client
+
+// debut des fonctions associer au menu Article
+
+void interface_creation_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string nomArticle;
+    double prixArticle;
+    unsigned long quantite;
+    unsigned long seuil;
+    std::string choixUtilisateur;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##                ----------------------------------------------------                  ##\n";
+    std::cout << "\t##                          ------------------------------                              ##\n";
+    std::cout << "\t##                         |    CREATION DES ARTICLES     |                             ##\n";
+    std::cout << "\t##                          ------------------------------                              ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                    Veuillez suivre à la lettre les consigne !                        ##\n";
+    std::cout << "\t##                      -------------------------------------                           ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+        // recuperation des informations du nouveau client
+        std::cout << "\t Entrer le libelle de l'Article :\t";
+        std::cin >>nomArticle;
+        std::cout << "\t Entrer le Prix Unitaire de l'Article :\t";
+        std::cin >> prixArticle;
+        std::cout << "\t Entrer la Quantite en Stock :\t";
+        std::cin >> quantite;
+        std::cout << "\t Entrer le Seuil Critique de l'Article :\t";
+        std::cin >> seuil;
+    // Enregistrement de notre client
+    gestionnaireArticle.creer(nomArticle.c_str(), prixArticle, quantite, seuil);
+    std::cout <<"\n";
+
+
+    do{
+        std::cout <<"\t Voulez-vous refaire un enregistrement? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour NOM \n";
+        std::cout <<"\t Votre choix: \t";
+        std::cin >> choixUtilisateur;
+    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1');
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_article();
+            break;
+        case '1': 
+            system("clear");
+            interface_creation_article();
+            break;
+    }
+
+};// termine
+
+void interface_suppression_article(){
+    // differentes variables a utiliser dans notre fonction
+    int id;
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |    SUPPRESSION D'UN ARTICLE     |                         ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
+    std::cout << "\t##                               -----------------------                                ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+    
+        std::cout <<"\t Entrer l'ID de l'Article a supprimer: \t";
+        std::cin >> id;
+        
+        gestionnaireArticle.supprimer(id);
+        std::cout << "\n";    
+
+
+    do{
+        std::cout <<"\t Voulez-vous refaire une suppresion? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour Nom \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            menu_general_article();
+            break;
+        case '1': 
+            interface_suppression_article();
+            break;
+    }   
+    system("clear"); 
+};// fonction terminé
+
+void interface_liste_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |        LISTE DES ARTICLES       |                         ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    
+        
+        // Fonction qui affiche la liste des client
+        std::cout << "\n";    
+
+
+    do{
+        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU DES ARTICLES \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_article();
+            break;
+        case '1':
+            system("clear");
+            acceuil();
+            break;
+    }   
+};
+
+void interface_recherche_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string choixUtilisateur;
+    int id;
+    std::string nomR;
+    std::string ch;
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |      RECHERCHE D'UN ARTICLE      |                        ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
+    std::cout << "\t##                               -----------------------                                ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+    
+    do{
+        std::cout <<"\t Voulez-vous faire la recherche via ID ou via LIBELLE? \n";
+        std::cout <<"\t 1 - pour ID \n";
+        std::cout <<"\t 2 - pour LIBELLE \n";
+        std::cin >> choixUtilisateur;
+    } while (choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2');
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '1': // recherche via id
+            std::cout <<"\t Entrer l'ID \t";
+            std::cin >> id;
+            gestionnaireArticle.chercher(id);
+            break;
+        case '2': // recherche via nom
+            std::cout <<"\t Entrer le LIBELLE \t";
+            std::cin >> nomR;
+            gestionnaireArticle.chercher(nomR.c_str());
+            break;
+    };
+
+    do{
+        std::cout <<"\t Voulez-vous refaire une recherche? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour Nom \n";
+        std::cout <<"\t Entrer votre choix \t";
+
+        std::cin >> ch;
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_article();
+            break;
+        case '1': 
+            system("clear");
+            interface_recherche_article();
+            break;
+    }   
+    system("clear"); 
+};
+
+void interface_modif_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string nom;
+    std::string prenom;
+    std::string date;
+    std::string sexe;
+    std::string choixUtilisateur;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##                ----------------------------------------------------                  ##\n";
+    std::cout << "\t##                        ---------------------------------                             ##\n";
+    std::cout << "\t##                       |    MODIFICATION D'UN ARTICLE    |                            ##\n";
+    std::cout << "\t##                        ---------------------------------                             ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##                    Veuillez suivre à la lettre les consigne !                        ##\n";
+    std::cout << "\t##                      -------------------------------------                           ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##         ----------------------------------------------------------------             ##\n";
+      /*  // recuperation des informations du nouveau client
+        std::cout << "\t Entrer NOM Client :\t";
+        std::cin >>nom;
+        std::cout << "\t Entrer PRENOM Client :\t";
+        std::cin >> prenom;
+        std::cout << "\t Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :\t";
+        std::cin >> date;
+        std::cout << "\t Entrer SEXE Client(M/F) :\t";
+        std::cin >> sexe;
+    // Enregistrement de notre client
+    gestionnaireClient.creer_client(nom.c_str(), prenom.c_str(), date.c_str(), sexe.c_str());
+    std::cout <<"\n";
+
+        */
+    do{
+        std::cout <<"\t Voulez-vous faire une nouvelle modification? \n";
+        std::cout <<"\t 1 - pour OUI \n";
+        std::cout <<"\t 0 - pour NOM \n";
+        std::cin >> choixUtilisateur;
+    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1');
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '0':
+            system("clear");
+            menu_general_client();
+            break;
+        case '1': 
+            system("clear");
+            interface_modif_client();
+            break;
+    }
+
+};
+
+// fin des fonction associer au menu article
+
+// debut des fonctions associer au second menu
+void interface_meilleur_client(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |        MEILLEUR CLIENTS          |                        ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    
+        
+        // Fonction qui affiche la liste des client
+        std::cout << "\n"; 
+        std::cout << "\t Le meilleur client du SUPERMARCHE XL \n";
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##########################################################################################\n";    
+
+    do{
+        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            autre_fonction();
+            break;
+        case '1':
+            system("clear");
+            acceuil();
+            break;
+    }   
+};
+
+void interface_capital(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+    long double capital;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |              CAPITAL            |                         ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    
+        
+        
+        capital = gestionnaireArticle.capital();
+        std::cout << "\n"; 
+        std::cout << "\t Le CAPITAL du SUPERMARCHE XL \n";
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t\t" << capital <<"\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##########################################################################################\n";    
+
+    do{
+        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            autre_fonction();
+            break;
+        case '1':
+            system("clear");
+            acceuil();
+            break;
+    }   
+};// terminer
+
+void interface_liste_client_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+
+    // petit menu de presentation
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
+    std::cout << "\t##                   ---------------------------------------------------                ##\n";
+    std::cout << "\t##                           ---------------------------------                          ##\n";
+    std::cout << "\t##                          |   LISTE CLIENTS D'UN ARTICLE     |                        ##\n";
+    std::cout << "\t##                            --------------------------------                          ##\n";
+    std::cout << "\t##                                                                                      ##\n";
+    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    
+        
+        // Fonction qui affiche la liste des client
+        std::cout << "\n"; 
+        std::cout << "\t Le meilleur client du SUPERMARCHE XL \n";
+    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##                                                                                      ##\n";    
+    std::cout << "\t##########################################################################################\n";    
+
+    do{
+        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix: \t";
+        std::cin >> ch;
+        system("clear");
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            autre_fonction();
+            break;
+        case '1':
+            system("clear");
+            acceuil();
+            break;
+    }   
+};
+
+
 
 bool est_premier(long p){
     if(p <= 1){

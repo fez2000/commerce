@@ -78,6 +78,7 @@ namespace Article{
     Cellule<Base> * Article::chercher(typeId ref){
         return table[ref];
     };
+
     int Article::sauvegarder(){
         std::ofstream fichier;
         fichier.exceptions ( std::ofstream::failbit | std::ofstream::badbit );
@@ -86,6 +87,11 @@ namespace Article{
             if(fichier){
                 fichier << *this;
                 fichier.close();
+                std::cout << "\t##########################################################################################\n";
+                std::cout << "\t##                                                                                      ##\n"; 
+                std::cout << "\t##                          Operation effectuer avec SUCCES !                           ##\n";
+                std::cout << "\t##                                                                                      ##\n";
+                std::cout << "\t##########################################################################################\n";
                 
             }   
         }
@@ -94,6 +100,7 @@ namespace Article{
         } 
         return SUCCESS_CODE;
     }
+    
     Liste<Base> Article::critiques(){
         Liste<Base> t;
         Cellule<Base> * i;
