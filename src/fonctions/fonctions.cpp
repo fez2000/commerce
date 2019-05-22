@@ -3,7 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include <vector>
-
+#include <fstream>
 #include "../Client/Clients.h"
 
 Client::Client gestionnaireClient;
@@ -12,38 +12,44 @@ Client::Client gestionnaireClient;
     Acceuil
 */
 void acceuil(){
+    int i = charger("fr");
     // differentes variables a utiliser dans notre fonction
     std::string choixUtilisateur;
      do{
-
+          std::cout << get("menu") <<"\n";
+          //std::ofstream fichier("./BD/lang/fr/fr.txt");
           // petit menu de presentation
-          std::cout << "\t##########################################################################################\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##  Tapez:                                                                              ##\n";
-          std::cout << "\t##       1- Pour GESTIONS CLIENTS               2- Pour GESTIONS ARTICLES               ##\n";
-          std::cout << "\t##       3- Pour GESTIONS COMMANDES             4- Pour GESTIONS LIVRAISONS             ##\n";
-          std::cout << "\t##       5- Pour A PROPOS                       0- QUITTER                              ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                    -------------------------------------------                       ##\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                                                                                      ##\n";
+          /*fichier << "<menu>\n"; 
+          fichier << "\t##########################################################################################\n";
+          fichier << "\t##-_-_-                                                                            -_-_-##\n";
+          fichier << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
+          fichier << "\t##                                                                                      ##\n";
+          fichier << "\t##                               %%%     %%%     %%%                                    ##\n";
+          fichier << "\t##                                %%%   %%%      %%%                                    ##\n";
+          fichier << "\t##                                  %%%%%        %%%                                    ##\n";
+          fichier << "\t##                                  %%%%%        %%%                                    ##\n";
+          fichier << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
+          fichier << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
+          fichier << "\t##                                                                                      ##\n";
+          fichier << "\t##                  ---------------------------------------------------                 ##\n";
+          fichier << "\t##                  ---------------------------------------------------                 ##\n";
+          fichier << "\t##                                                                                      ##\n";
+          fichier << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
+          fichier << "\t##                  ---------------------------------------------------                 ##\n";
+          fichier << "\t##  Tapez:                                                                              ##\n";
+          fichier << "\t##       1- Pour GESTIONS CLIENTS               2- Pour GESTIONS ARTICLES               ##\n";
+          fichier << "\t##       3- Pour GESTIONS COMMANDES             4- Pour GESTIONS LIVRAISONS             ##\n";
+          fichier << "\t##       5- Pour A PROPOS                       0- QUITTER                              ##\n";
+          fichier << "\t##                                                                                      ##\n";
+          fichier << "\t##                                                                                      ##\n";
+          fichier << "\t##                    -------------------------------------------                       ##\n";
+          fichier << "\t##-_-_-                                                                            -_-_-##\n";
+          fichier << "\t##                                                                                      ##\n";
 
-          std::cout << "\t## Entrer votre choix: \t";
+          fichier << "\t## Entrer votre choix: \t";
+          fichier << "<menu>\n";
+          fichier.close();
+          */
           std::cin >> choixUtilisateur;
           system("clear");
 
