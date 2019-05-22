@@ -32,7 +32,7 @@ namespace Client{
         bool tester_reference(typeId);
         int tester_nom(const char *);
         typeId get_numero(void);
-
+        friend void affiche(Base);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);
         friend int operator<= (Base,Base);

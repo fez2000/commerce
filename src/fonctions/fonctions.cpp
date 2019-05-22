@@ -61,4 +61,24 @@ std::istream& deserialiser(std::istream &is, std::string &s) {
       s = temp;
    return is;
 };
+    /*
+    @brief cat_many cat str argument in to one string 
+    @params nbCh number of char * passed 
+    @return a string resulting of concatanation off all char * parsed
+    */
+std::string cat_many(int nbCh, ...){
+    va_list liste ;
+    va_start (liste , nbCh) ;
+    int i;
+    std::string reslut;
+    for (i=1 ; i<=nbCh ; i++)
+    { 
+        std::string tampon = va_arg (liste, char *) ;
+        reslut += tampon;
+        
+    }
+    va_end(liste);
+    
+    return reslut;
+}
 
