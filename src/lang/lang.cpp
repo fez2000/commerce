@@ -10,7 +10,7 @@ const char * get(const char * a){
 }
 int charger(const char * fichier_lang="fr"){
     
-    bool chercherBalise = true,chevronsOuvrant = false,ligneBalise = false;
+    bool chercherBalise = true, lineEndBalise = false,chevronsOuvrant = false,ligneBalise = false;
     char c,*line = (char *)malloc(sizeof(char)*512);
     int i = 0;
     std::string balise,baliseF,continu;
@@ -45,6 +45,7 @@ int charger(const char * fichier_lang="fr"){
                                         chevronsOuvrant = false;
                                     
                                         chercherBalise = false;
+                                        ligneBalise = true;
                                     }else{
                                     return ERREUR_FIC_LANG; 
                                     }
@@ -67,7 +68,7 @@ int charger(const char * fichier_lang="fr"){
                                     if(chevronsOuvrant){
                                         
                                         if( 0 == balise.compare(baliseF.c_str()) ){
-                                            continu.push_back('\n');
+                                            lineEndBalise = true;
                                             
                                             lang.insert(std::pair<long long,char * >(atoll(balise.c_str()),strdup(continu.c_str())));
                                             
@@ -101,8 +102,11 @@ int charger(const char * fichier_lang="fr"){
                         }
                     
                     }
-                  if(!ligneBalise){
+                  if(!ligneBalise&&!lineEndBalise){
                       continu.push_back('\n');
+                  }else{
+                      ligneBalise = false;
+                      lineEndBalise = false;
                   }  
                        
                      

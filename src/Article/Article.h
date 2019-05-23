@@ -43,7 +43,6 @@
         double get_prix(void);
         unsigned long get_quantite(void);
         long tester_quantite(unsigned long);
-        friend void affiche(Base);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);
         friend int operator<= (Base,Base);

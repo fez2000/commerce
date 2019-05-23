@@ -5,6 +5,7 @@
 #include "../Article/Article.h"
 #include "../Livraison/Livraison.h"
 
+void affiche_client_console(Client::Base& );
 
 
 #endif

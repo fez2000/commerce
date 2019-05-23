@@ -11,45 +11,13 @@ Client::Client gestionnaireClient;
 /*
     Acceuil
 */
+std::string choixUtilisateur;
 void acceuil(){
     int i = charger("fr");
     // differentes variables a utiliser dans notre fonction
-    std::string choixUtilisateur;
+    
      do{
-          std::cout << get("menu") <<"\n";
-          //std::ofstream fichier("./BD/lang/fr/fr.txt");
-          // petit menu de presentation
-          /*fichier << "<menu>\n"; 
-          fichier << "\t##########################################################################################\n";
-          fichier << "\t##-_-_-                                                                            -_-_-##\n";
-          fichier << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
-          fichier << "\t##                                                                                      ##\n";
-          fichier << "\t##                               %%%     %%%     %%%                                    ##\n";
-          fichier << "\t##                                %%%   %%%      %%%                                    ##\n";
-          fichier << "\t##                                  %%%%%        %%%                                    ##\n";
-          fichier << "\t##                                  %%%%%        %%%                                    ##\n";
-          fichier << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
-          fichier << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
-          fichier << "\t##                                                                                      ##\n";
-          fichier << "\t##                  ---------------------------------------------------                 ##\n";
-          fichier << "\t##                  ---------------------------------------------------                 ##\n";
-          fichier << "\t##                                                                                      ##\n";
-          fichier << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
-          fichier << "\t##                  ---------------------------------------------------                 ##\n";
-          fichier << "\t##  Tapez:                                                                              ##\n";
-          fichier << "\t##       1- Pour GESTIONS CLIENTS               2- Pour GESTIONS ARTICLES               ##\n";
-          fichier << "\t##       3- Pour GESTIONS COMMANDES             4- Pour GESTIONS LIVRAISONS             ##\n";
-          fichier << "\t##       5- Pour A PROPOS                       0- QUITTER                              ##\n";
-          fichier << "\t##                                                                                      ##\n";
-          fichier << "\t##                                                                                      ##\n";
-          fichier << "\t##                    -------------------------------------------                       ##\n";
-          fichier << "\t##-_-_-                                                                            -_-_-##\n";
-          fichier << "\t##                                                                                      ##\n";
-
-          fichier << "\t## Entrer votre choix: \t";
-          fichier << "<menu>\n";
-          fichier.close();
-          */
+          std::cout << get("menu");
           std::cin >> choixUtilisateur;
           system("clear");
 
@@ -90,7 +58,7 @@ void acceuil(){
 */
 
 void menu_general_client(){
-    std::string choixUtilisateur;
+    
     do
     {
     
