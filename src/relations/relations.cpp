@@ -1,5 +1,5 @@
 #include "relations.h"
-
+#include <map>
 Client::Client  gestionClient;
 Article::Article  gestionArticle;
 Livraison::Livraison gestionLivraison;
@@ -92,4 +92,33 @@ int annuler_commande(typeId id){
     }
     return gestionLivraison.supprimer(l->get().ref());
 }
+typeId  meilleur_client_de(typeId idArticle){
+    Liste<Commande::Base> c = gestionCommande.commandes_pour(idArticle);
+    if(c.est_vide()){
+        return 0;
+    }
+    Cellule<Commande::Base> * p = c.recup_tete();
+    std::map<typeId, int> lp;
+    while (p!= c.recup_sentinelle())
+    {
+        if(lp[p->get().ref_client()]){
+            lp.insert(std::pair<typeId,int>(p->get().ref_client(),lp[p->get().ref_client()]++));
 
+        }else{
+            lp.insert(std::pair<typeId,int>(p->get().ref_client(),1));
+        }
+        p = p->get_next();
+    }
+    std::map<typeId,int>::iterator i, max;
+    i = lp.begin();
+    long taille = lp.size() - 1;
+    max = i;
+    i++;
+    while (taille >= 0){
+        if(i->second > max->second){
+            max = i;
+        }
+        taille--;
+    }
+    return max->first;
+}
