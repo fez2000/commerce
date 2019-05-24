@@ -45,7 +45,7 @@ template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
         }
         
         p->get_prev()->next(a);
-        a->previous(p->get_prev())
+        a->previous(p->get_prev());
         p->previous(a);
         a->next(p);
         
@@ -66,7 +66,8 @@ template <class T> Liste<T>::~Liste(){
 };
 template <class T> void Liste<T>::trier(){
     
-    Cellule<T> * p  = tete,Cellule<T> * cur, * min;
+    Cellule<T> * p  = tete;
+    Cellule<T> * cur, * max;
     cur  = p;
     while ( cur != sentinelle)
     {   max = p;
@@ -78,7 +79,7 @@ template <class T> void Liste<T>::trier(){
             }
             p = p->get_next();
         }
-        deplacer_avant(min,cur);
+        deplacer_avant(max,cur);
         cur = cur->get_next(); 
         p = cur;
     }
@@ -152,7 +153,7 @@ template <class T> int Liste<T>::enlever(Cellule<T> v){
     }else{
        v.get_prev()->next(v.get_next());     
     }
-    delete v;
+    
     taille--;
     return 1;
 };
