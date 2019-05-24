@@ -1,12 +1,13 @@
 #include "lang.h"
 #include "string.h"
 #include "stdlib.h"
-#define MENU "menu"
+
 std::string bdlangpath = "./BD/lang/";
 std::map<long long, char *> lang;
 
 const char * get(const char * a){
-    return lang[atoll(a)];
+    std::string g(a);
+    return lang[de_string_pour_long_long(g)];
 }
 int charger(const char * fichier_lang="fr"){
     
@@ -14,7 +15,6 @@ int charger(const char * fichier_lang="fr"){
     char c,*line = (char *)malloc(sizeof(char)*512);
     int i = 0;
     std::string balise,baliseF,continu;
-
     std::ifstream fichier;
         try{
             fichier.open( cat_many(5,bdlangpath.c_str(),fichier_lang,"/",fichier_lang,".txt").c_str()  );
@@ -22,13 +22,16 @@ int charger(const char * fichier_lang="fr"){
             {
                 while (!fichier.eof())
                 {
+                    
                     fichier.getline(line,512,'\n');
                     /* code */
                 
                     i = 0;
+                    
                     while (line[i]!='\0')
                     {
-                        c=line[i++];
+                        
+                        c = line[i++];
                         
                         if(chercherBalise){
                             if(c=='<'){
@@ -70,13 +73,15 @@ int charger(const char * fichier_lang="fr"){
                                         if( 0 == balise.compare(baliseF.c_str()) ){
                                             lineEndBalise = true;
                                             
-                                            lang.insert(std::pair<long long,char * >(atoll(balise.c_str()),strdup(continu.c_str())));
-                                            
+                                            lang.insert(std::pair<long long,char * >(de_string_pour_long_long(balise),strdup(continu.c_str())));
+                                           // std::cout <<lang[ de_string_pour_long_long(balise)] << " "<<lang.size() << "\n";
                                             continu.clear();
                                             balise.clear();
                                             baliseF.clear();
                                             chercherBalise = true;
                                             ligneBalise = true;
+                                            chevronsOuvrant = false;    
+
                                         }else{
                                             continu.push_back('<');
                                             continu.append(baliseF.c_str());

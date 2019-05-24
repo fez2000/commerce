@@ -6,16 +6,17 @@ extern Client::Client  gestionClient;
 extern Article::Article  gestionArticle;
 extern Livraison::Livraison gestionLivraison;
 extern Commande::Commande gestionCommande;
-void affiche_client_console(Client::Base client){
-};
-void affiche_article_console(Article::Base);
+std::string choixUtilisateur;
+
 
 /*
     Acceuil
 */
-std::string choixUtilisateur;
+
 void acceuil(){
+    
     int i = charger("fr");
+    
     std::string choixValide("012345");
     // differentes variables a utiliser dans notre fonction
     
@@ -61,11 +62,12 @@ void acceuil(){
 */
 
 void menu_general_client(){
+    
     std::string choixValide("012345");
     do
     {
     
-        std::cout << get("menugeneralclient");
+        std::cout << get("menugeneralcleint");
         std::cin >> choixUtilisateur;
         system("clear");
     
@@ -94,6 +96,7 @@ void menu_general_client(){
 
 // acceuil Article
 void menu_general_article(){
+    
     std::string choixValide("012345");
     do
     {
@@ -125,6 +128,7 @@ void menu_general_article(){
 
 // acceuil commande
 void menu_general_commande(){
+    
     std::string choixValide("012345");
     do
     {
@@ -155,6 +159,7 @@ void menu_general_commande(){
 }
 
 void menu_general_livraison(){
+    //supprimer_choix();
     std::string choixValide("012345");
     do
     {
@@ -190,6 +195,7 @@ void menu_general_livraison(){
     propre pour l'enregistrement de nos nouveau client
 */
 void interface_creation_client(){
+    std::string choixValide("01");    
     // differentes variables a utiliser dans notre fonction
     std::string nom;
     std::string prenom;
@@ -211,11 +217,10 @@ void interface_creation_client(){
     gestionClient.creer_client(nom.c_str(), prenom.c_str(), date.c_str(), sexe.c_str());
     //gestion des erreurs
     do{
-        std::cout <<"\t Voulez-vous refaire un enregistrement? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour Nom \n";
+
+        std::cout << get("continuerSauvegarde");
         std::cin >> choixUtilisateur;
-    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1');
+    } while (choix_non_valide(choixUtilisateur,choixValide ));
 
     switch (choixUtilisateur.c_str()[0]){
         case '0':
@@ -231,6 +236,7 @@ void interface_creation_client(){
 }; // fin de notre fonction d'enregistrement de nouveau client
 
 void interface_recherche_client(){
+    //supprimer_choix();
     // differentes variables a utiliser dans notre fonction
     std::string nom;
     std::string prenom;

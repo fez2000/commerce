@@ -16,4 +16,5 @@ std::string cat_many(int , ...);
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
     bool is_affirmatif(const char *);
+    long long de_string_pour_long_long(std::string s);
 #endif

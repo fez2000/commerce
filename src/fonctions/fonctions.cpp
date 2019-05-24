@@ -8,7 +8,7 @@
 
 
 bool choix_non_valide(std::string choix, std::string listeValide ){
-    size_t i = listeValide.size();
+    long i = listeValide.size();
     while (--i>=0)
     {
         if(choix[0] == listeValide[i]){
@@ -17,6 +17,17 @@ bool choix_non_valide(std::string choix, std::string listeValide ){
     }
     return true;
 };
+long long de_string_pour_long_long(std::string s){
+ long long num = 0;
+ long long i = 0, N= s.size();
+
+ while (i < N)
+ {
+     num = s[i]*i+num;
+     i++;
+ }
+  return num;   
+}
 bool est_premier(long p){
     if(p <= 1){
         return false;

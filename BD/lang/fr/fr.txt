@@ -49,7 +49,7 @@
 	##     - 5 pour afficher les CLIENTS                - 0 pour Menu principal             ##
 	##                                                                                      ##
 	##         ----------------------------------------------------------------             ##
-	## Entrer votre choix:	<menugeneralclient>
+	## Entrer votre choix:	<menugeneralcleint>
 <menugeneralarticle>
 	##########################################################################################
 	##-_-_-                                                                            -_-_-##
@@ -71,7 +71,8 @@
 	##     - 5 pour la liste des ARTICLES                - 0 pour Menu principal            ##
 	##                                                                                      ##
 	##         ----------------------------------------------------------------             ##
-	## Entrer votre choix: 	<menugeneralarticle>
+
+	 Entrer votre choix: 	<menugeneralarticle>
 <menugeneralcommande>
 	##########################################################################################
 	##-_-_-                                                                            -_-_-##
@@ -93,7 +94,8 @@
 	##     - 5 pour la liste des COMMANDES             - 0 pour Menu principal              ##
 	##                                                                                      ##
 	##         ----------------------------------------------------------------             ##
-	## Entrer votre choix: 	<menugeneralcommande>
+
+	## Entrer votre choix:    <menugeneralcommande>
 <menugenerallivraison>
 	##########################################################################################
 	##-_-_-                                                                            -_-_-##
@@ -115,7 +117,8 @@
 	##     - 5 pour la liste des LIVRAISONS            - 0 pour Menu principal              ##
 	##                                                                                      ##
 	##         ----------------------------------------------------------------             ##
-	## Entrer votre choix: 	<menugenerallivraison>
+
+	## Entrer votre choix:    <menugenerallivraison>
 <creationclient>
 	##########################################################################################
 	##-_-_-                                                                            -_-_-##
@@ -130,16 +133,21 @@
 	##-_-_-                                                                            -_-_-##
 	##                                                                                      ##
 	##         ----------------------------------------------------------------             ##
+
 <creationclient>
 <nomclient>
-	 Entrer NOM Client :	
-<nomclient>
+	 Entrer NOM Client :	<nomclient>
 <prenomclient>
-	 Entrer PRENOM Client :	
-<prenomclient>
+	 Entrer PRENOM Client :	   <prenomclient>
 <dateNaisClient>
-	 Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :	
-<dateNaisClient>
+	 Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :    <dateNaisClient>
 <sexeClient>
-	 Entrer SEXE Client(M/F) :	
-<sexeClient>
+	 Entrer SEXE Client(M/F) :    <sexeClient>
+<continuerSauvegarde>
+	 Voulez-vous refaire un enregistrement? 
+	 
+	 1 - pour OUI 
+
+	 0 - pour Nom 
+
+<continuerSauvegarde>

@@ -5,6 +5,7 @@
 #include "../Article/Article.h"
 #include "../Livraison/Livraison.h"
 #include "../relations/relations.h"
+#include "../fonctions/fonctions.h"
 
 void acceuil();// fonction qui affiche le menu d'acceuil
 void menu_general_client(); // acceuil client
