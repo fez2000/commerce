@@ -39,6 +39,7 @@ std::string cat_many(int , ...);
     void interface_liste_client_article();
 
     void interface_creation_commande();
+    void interface_liste_commande();
 
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);

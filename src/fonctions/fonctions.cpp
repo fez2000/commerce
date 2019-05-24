@@ -1249,15 +1249,11 @@ void interface_liste_commande(){
     // differentes variables a utiliser dans notre fonction
     typeId idClient;
     typeId idArticle;
-    unsigned long quantite;
     std::string choixUtilisateur;
-    int id;
     std::string nomR;
     Cellule<Client::Base> * personne ;
-    Cellule<Commande::Base> * com ;
-    //variable pour choix d'article         
+    Cellule<Commande::Base> * com ;       
     std::string ch;
-    int idA;
     std::string nomA;
     Cellule<Article::Base> * produit;
     const char * message = "Effacer";
