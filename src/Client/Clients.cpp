@@ -44,7 +44,11 @@ namespace Client{
             if(fichier){
                 fichier << *this;
                 fichier.close();
-                std::cout << "sauvegarder\n";
+                std::cout << "\t##########################################################################################\n";
+                std::cout << "\t##                                                                                      ##\n"; 
+                std::cout << "\t##                          Operation effectuer avec SUCCES !                           ##\n";
+                std::cout << "\t##                                                                                      ##\n";
+                std::cout << "\t##########################################################################################\n";    
             }
         }
         catch(std::ofstream::failure& ex){
@@ -52,23 +56,23 @@ namespace Client{
         } 
         return SUCCESS_CODE;
     };
-
+/*
+    fonction de suppression d'un client dans notre
+    liste de client
+*/
     int Client::supprimer_client(typeId val){
         Cellule<Base> * b = tete;
-        std::cout <<"debut while\n";
         while (!b->get().tester_reference(val) && b != sentinelle)
         {
-        std::cout << b->get();
+        //std::cout << b->get();
         std::cout <<"\n";
 
             b = b->get_next();
         }
-        std::cout <<"fin while\n";
         if(b != sentinelle){
             enlever(*b);
             tableClient.erase(val);
         }
-        std::cout <<"if\n";
         return sauvegarder_client();
     };
 
