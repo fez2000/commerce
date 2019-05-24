@@ -23,13 +23,10 @@ public:
     Cellule<T> * recup_sentinelle();
     unsigned long recup_taille();
     void trier();
-    void deplacer_apres(Cellule<T> *,Cellule<T> *);
     void deplacer_avant(Cellule<T> *,Cellule<T> *);
 };
 
-template <class T> void Liste<T>::deplacer_apres(Cellule<T> * a,Cellule<T> * p){
 
-};
 template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
     if(p == a)return;
     
@@ -50,8 +47,7 @@ template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
         p->get_prev()->next(a);
         a->previous(p->get_prev())
         p->previous(a);
-        p->get_next()->previous(a);
-        a->next(p->get_next())
+        a->next(p);
         
     }        
 };
@@ -72,18 +68,19 @@ template <class T> void Liste<T>::trier(){
     
     Cellule<T> * p  = tete,Cellule<T> * cur, * min;
     cur  = p;
-    while ( p != sentinelle)
-    {   min = p;
-        
-        p = p->get_suivant();
-        while ( p < )
+    while ( cur != sentinelle)
+    {   max = p;
+        p = p->get_next();
+        while ( p != sentinelle )
         {
-            /* code */
+            if(max < *p){
+                max = p;
+            }
+            p = p->get_next();
         }
-        enlever(*min);
-        ajouter_trie(min);
-        nouvelList.ajouter_trie(new Cellule<T>(p->get()));
-        
+        deplacer_avant(min,cur);
+        cur = cur->get_next(); 
+        p = cur;
     }
     
 
