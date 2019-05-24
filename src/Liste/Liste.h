@@ -26,7 +26,7 @@ public:
     void deplacer_avant(Cellule<T> *,Cellule<T> *);
 };
 
-/*
+
 template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
     if(p == a)return;
     
@@ -50,7 +50,7 @@ template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
         a->next(p);
         
     }        
-};*/
+};
 template <class T> Liste<T>::Liste(){
     
     tete =  new Cellule<T> ;
@@ -64,7 +64,6 @@ template <class T> Liste<T>::~Liste(){
    }
    delete sentinelle;
 };
-/*
 template <class T> void Liste<T>::trier(){
     
     Cellule<T> * p  = tete,Cellule<T> * cur, * min;
@@ -86,7 +85,6 @@ template <class T> void Liste<T>::trier(){
     
 
 }; 
-*/
 template <class T> Cellule<T> * Liste<T>::recup_tete(){
     return tete;
 };
