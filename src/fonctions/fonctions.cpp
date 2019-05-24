@@ -7,7 +7,6 @@
 #include "../Client/Clients.h"
 #include "../Article/Articles.h"
 
-<<<<<<< HEAD
 
 bool choix_non_valide(std::string choix, std::string listeValide ){
     long i = listeValide.size();
@@ -30,7 +29,6 @@ long long de_string_pour_long_long(std::string s){
  }
   return num;   
 }
-=======
 Client::Client gestionnaireClient;
 Article::Article gestionnaireArticle;
 
@@ -1096,7 +1094,6 @@ void interface_liste_client_article(){
 
 
 
->>>>>>> 326f4f0a3cfb7d94823323273c5a50c5387c13cf
 bool est_premier(long p){
     if(p <= 1){
         return false;

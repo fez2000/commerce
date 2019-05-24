@@ -12,9 +12,7 @@ typedef unsigned long typeId;
 std::string cat_many(int , ...);
     bool est_premier(long );
     long prochain_nb_premier(long);
-<<<<<<< HEAD
     bool choix_non_valide(std::string choix, std::string listeValide );
-=======
     void acceuil();// fonction qui affiche le menu d'acceuil
     void autre_fonction(); // second menu d'acceuil
     void menu_general_client(); // acceuil client
@@ -40,7 +38,6 @@ std::string cat_many(int , ...);
     void interface_capital();
     void interface_liste_client_article();
 
->>>>>>> 326f4f0a3cfb7d94823323273c5a50c5387c13cf
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
     bool is_affirmatif(const char *);
