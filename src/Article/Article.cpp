@@ -24,11 +24,17 @@ namespace Article{
     typeId Base::get_reference(void){
         return reference;
     };
+    std::string Base::get_libelle(){
+        return libelle;
+    }
     double Base::get_prix(){
         return prix;
     };
     unsigned long Base::get_quantite(){
         return quantite;
+    };
+        unsigned long Base::get_seuil(){
+        return seuil;
     };
     Base* Base::fixer_prix(unsigned long prix){
         this->prix = prix;

@@ -33,6 +33,7 @@
         Base();
         Base(typeId,std::string,unsigned long,unsigned long,unsigned long);
         ~Base();
+        std::string get_libelle();
         Base* fixer_prix(unsigned long);
         Base* fixer_quantite(unsigned long);
         Base* ajouter_quantite(long);
@@ -42,6 +43,7 @@
         typeId get_reference(void);
         double get_prix(void);
         unsigned long get_quantite(void);
+        unsigned long get_seuil(void);
         long tester_quantite(unsigned long);
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

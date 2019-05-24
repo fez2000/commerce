@@ -24,7 +24,9 @@ namespace Client{
         Cellule<Base>* celluleClient; // definition d'un pointeur vers une cellule client
         celluleClient = new Cellule<Base>(client);
         ajouter_trie(celluleClient);// fonction provenant du fichier liste
-        std::cout << *this->tete;
+        std::cout <<"\n";
+        std::cout <<"\n";
+        std::cout <<"\n";
          
         tableClient.insert(std::pair<typeId,Cellule<Base> * >(maxNumeroGenerer,celluleClient));
         maxNumeroGenerer ++;
@@ -44,6 +46,7 @@ namespace Client{
             if(fichier){
                 fichier << *this;
                 fichier.close();
+                std::cout <<"\n";
                 std::cout << "\t##########################################################################################\n";
                 std::cout << "\t##                                                                                      ##\n"; 
                 std::cout << "\t##                          Operation effectuer avec SUCCES !                           ##\n";

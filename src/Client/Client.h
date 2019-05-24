@@ -32,6 +32,10 @@ namespace Client{
         bool tester_reference(typeId);
         int tester_nom(const char *);
         typeId get_numero(void);
+        const char * get_nom();
+        const char * get_prenom();
+        const char * get_date();
+        const char * get_sexe();
 
         friend int operator== (Base,Base);
         friend int operator< (Base,Base);

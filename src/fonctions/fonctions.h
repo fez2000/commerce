@@ -35,6 +35,8 @@ enum {PAS_DERREUR,PAS_TROUVER,PAS_UN_NOMBRE,ID_INVALID,PAS_SUFFISANT,ARTICLE_PAS
     void interface_capital();
     void interface_liste_client_article();
 
+    void interface_creation_commande();
+
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
     bool is_affirmatif(const char *);

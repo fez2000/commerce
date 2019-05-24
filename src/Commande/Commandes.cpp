@@ -94,6 +94,12 @@ namespace Commande{
             if(fichier){
                 fichier << *this;
                 fichier.close();
+                std::cout <<"\n";
+                std::cout << "\t##########################################################################################\n";
+                std::cout << "\t##                                                                                      ##\n"; 
+                std::cout << "\t##                          Operation effectuer avec SUCCES !                           ##\n";
+                std::cout << "\t##                                                                                      ##\n";
+                std::cout << "\t##########################################################################################\n"; 
             }
         }
         catch(std::ofstream::failure& ex){

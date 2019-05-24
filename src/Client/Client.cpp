@@ -34,6 +34,23 @@ namespace Client{
         return numeroClient;
     };
 
+    const char * Base::get_nom(){
+        return nomClient.c_str();
+    }
+
+    const char * Base::get_prenom(){
+        return prenomClient.c_str();
+    }
+
+    const char * Base::get_date(){
+        return dateNaissance.c_str();
+    }
+
+    const char * Base::get_sexe(){
+        return sexe.c_str();
+    }
+
+    
     /*
         cette methode permet de comparer
         un nom donné par l'utilisateur à
