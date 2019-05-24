@@ -42,7 +42,7 @@
             typeId ref(void);
             typeId ref_client(void);
             typeId ref_article(void);
-            unsigned long nombre(void);    
+            unsigned long nombre(void);   
             friend int operator== (Base,Base);
             friend int operator< (Base,Base);
             friend int operator<= (Base,Base);

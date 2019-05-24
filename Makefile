@@ -5,10 +5,10 @@ SRC = ./src
 LIB = ./lib
 OBJ = ./obj
 BIN = ./bin
-OBJECTS= $(OBJ)/relations.o  $(OBJ)/Article.o $(OBJ)/Articles.o $(OBJ)/Commande.o $(OBJ)/Commandes.o $(OBJ)/Client.o $(OBJ)/Clients.o $(OBJ)/fonctions.o $(OBJ)/Livraison.o $(OBJ)/Livraisons.o 
+OBJECTS= $(OBJ)/affichage.o $(OBJ)/lang.o $(OBJ)/relations.o  $(OBJ)/Article.o $(OBJ)/Articles.o $(OBJ)/Commande.o $(OBJ)/Commandes.o $(OBJ)/Client.o $(OBJ)/Clients.o $(OBJ)/fonctions.o $(OBJ)/Livraison.o $(OBJ)/Livraisons.o 
 MAINOBJECTS= $(OBJ)/main.o
 TESTOBJECTS= $(OBJ)/test.o
-HEADER= $(SRC)/Cellule/Cellule.h $(SRC)/relations/relations.h $(SRC)/Client/Client.h $(SRC)/Client/Clients.h  $(SRC)/Article/Article.h $(SRC)/Article/Articles.h $(SRC)/Commande/Commande.h $(SRC)/Commande/Commandes.h $(SRC)/fonctions/fonctions.h $(SRC)/Livraison/Livraison.h $(SRC)/Livraison/Livraisons.h
+HEADER= $(SRC)/affichage/affichage.h $(SRC)/lang/lang.h $(SRC)/Cellule/Cellule.h $(SRC)/relations/relations.h $(SRC)/Client/Client.h $(SRC)/Client/Clients.h  $(SRC)/Article/Article.h $(SRC)/Article/Articles.h $(SRC)/Commande/Commande.h $(SRC)/Commande/Commandes.h $(SRC)/fonctions/fonctions.h $(SRC)/Livraison/Livraison.h $(SRC)/Livraison/Livraisons.h
 do : commerce
 $(OBJ)/Client.o: $(HEADER)
 	$(CCPP) $(CFLAGS) $(SRC)/Client/Client.cpp -o $(OBJ)/Client.o
@@ -36,6 +36,10 @@ $(OBJ)/main.o: $(HEADER)
 	$(CCPP) $(CFLAGS) $(SRC)/main/main.cpp -o $(OBJ)/main.o
 $(OBJ)/test.o: $(HEADER)
 	$(CCPP) $(CFLAGS) $(SRC)/test/main.cpp  -o $(OBJ)/test.o
+$(OBJ)/lang.o: $(HEADER)
+	$(CCPP) $(CFLAGS) $(SRC)/lang/lang.cpp  -o $(OBJ)/lang.o
+$(OBJ)/affichage.o: $(HEADER)
+	$(CCPP) $(CFLAGS) $(SRC)/affichage/affichage.cpp  -o $(OBJ)/affichage.o	
 commerce: ${OBJECTS} ${MAINOBJECTS}
 	g++ -o $(BIN)/commerce ${OBJECTS} ${MAINOBJECTS}
 clean: 

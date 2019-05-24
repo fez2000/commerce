@@ -3,11 +3,33 @@
 #include <math.h>
 #include <string.h>
 #include <vector>
-
+#include <fstream>
 #include "../Client/Clients.h"
 #include "../Article/Articles.h"
 #include "../Commande/Commandes.h"
 
+
+bool choix_non_valide(std::string choix, std::string listeValide ){
+    long i = listeValide.size();
+    while (--i>=0)
+    {
+        if(choix[0] == listeValide[i]){
+            return false;
+        }
+    }
+    return true;
+};
+long long de_string_pour_long_long(std::string s){
+ long long num = 0;
+ long long i = 0, N= s.size();
+
+ while (i < N)
+ {
+     num = s[i]*i+num;
+     i++;
+ }
+  return num;   
+}
 Client::Client gestionnaireClient;
 Article::Article gestionnaireArticle;
 Commande::Commande gestionnaireCommande;
@@ -334,6 +356,7 @@ void menu_general_commande(){
         case '4': //fonction de supression d'une commande;
             break;
         case '5': // Affichages des differentes commandes
+            interface_liste_commande();
             break;
 
     }
@@ -1237,6 +1260,14 @@ void interface_liste_commande(){
     int idA;
     std::string nomA;
     Cellule<Article::Base> * produit;
+    const char * message = "Effacer";
+    const char * reponce1;
+    const char * reponce2;
+    const char * reponce3;
+
+    const char * etat1 = "Livree";
+    const char * etat2 = "En Cour...";
+    bool s;
 
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
@@ -1255,13 +1286,21 @@ void interface_liste_commande(){
 
         std::cout << "\n";    
         com = gestionnaireCommande.recup_tete();
-        std::cout << "\t\t     ID  |       CLIENT           |       LIBELLE          |     QUANTITE\n";
+        std::cout << "\t\t     ID  |       CLIENT       |   ETAT   |      LIBELLE          |     QUANTITE\n";
         std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
         std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";
         while (com != gestionnaireCommande.recup_sentinelle())
         {   
-            idClient = personne->get().get_nom();
-            std::cout << "\t##\t     "<< com->get().get <<"     \t"<< /* NOM CLIENT*/ <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\t##\n";    
+            idClient = com->get().ref_client();
+            idArticle = com->get().ref_article();
+            personne = gestionnaireClient.chercher_client(idClient);
+            reponce1 = (personne)? personne->get().get_nom():message;
+            produit = gestionnaireArticle.chercher(idArticle);
+            reponce2 = (produit)? produit->get().get_libelle().c_str():message;
+            s = com->get().est_livrer();
+            reponce3 = (s)? etat1:etat2;
+
+            std::cout << "\t##\t     "<< com->get().ref() <<"     \t"<< reponce1 <<"     \t"<< reponce3 <<"     \t\t"<< reponce2<<"     \t\t"<<com->get().nombre() <<"\t##\n";    
             std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
             personne = personne->get_next();
         }
@@ -1852,4 +1891,24 @@ std::istream& deserialiser(std::istream &is, std::string &s) {
       s = temp;
    return is;
 };
+    /*
+    @brief cat_many cat str argument in to one string 
+    @params nbCh number of char * passed 
+    @return a string resulting of concatanation off all char * parsed
+    */
+std::string cat_many(int nbCh, ...){
+    va_list liste ;
+    va_start (liste , nbCh) ;
+    int i;
+    std::string reslut;
+    for (i=1 ; i<=nbCh ; i++)
+    { 
+        std::string tampon = va_arg (liste, char *) ;
+        reslut += tampon;
+        
+    }
+    va_end(liste);
+    
+    return reslut;
+}
 

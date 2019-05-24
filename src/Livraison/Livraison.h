@@ -33,6 +33,7 @@
             typeId ref_commande(void);
             typeId ref_client(void); 
             unsigned long nombre(void);
+            friend void affiche(Base);
             friend int operator== (Base,Base);
             friend int operator< (Base,Base);
             friend int operator<= (Base,Base);

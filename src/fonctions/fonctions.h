@@ -3,13 +3,16 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdarg>
+#include "../lang/lang.h"
 #define ERROR_CODE 0
 #define SUCCESS_CODE 1
-
+enum  { PAS_DERREUR,PAS_TROUVER,PAS_UN_NOMBRE,ID_INVALID,PAS_SUFFISANT,ARTICLE_PAS_TROUVER,CLIENT_PAS_TROUVER, CMD_PAS_TROUVER, LIVRAISON_PAS_TROUVER, ERREUR_SYSTEME, CMD_DEJA_ANNULER,CMD_DEJA_LIVRER,ERREUR_FIC_LANG };
 typedef unsigned long typeId;
-enum {PAS_DERREUR,PAS_TROUVER,PAS_UN_NOMBRE,ID_INVALID,PAS_SUFFISANT,ARTICLE_PAS_TROUVER,CLIENT_PAS_TROUVER, CMD_PAS_TROUVER, LIVRAISON_PAS_TROUVER, ERREUR_SYSTEME, CMD_DEJA_ANNULER,CMD_DEJA_LIVRER};
+std::string cat_many(int , ...);
     bool est_premier(long );
     long prochain_nb_premier(long);
+    bool choix_non_valide(std::string choix, std::string listeValide );
     void acceuil();// fonction qui affiche le menu d'acceuil
     void autre_fonction(); // second menu d'acceuil
     void menu_general_client(); // acceuil client
@@ -40,4 +43,5 @@ enum {PAS_DERREUR,PAS_TROUVER,PAS_UN_NOMBRE,ID_INVALID,PAS_SUFFISANT,ARTICLE_PAS
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
     bool is_affirmatif(const char *);
+    long long de_string_pour_long_long(std::string s);
 #endif

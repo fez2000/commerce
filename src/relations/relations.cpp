@@ -92,3 +92,6 @@ int annuler_commande(typeId id){
     }
     return gestionLivraison.supprimer(l->get().ref());
 }
+int supprimer_client(typeId idClient){
+
+}
