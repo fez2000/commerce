@@ -1172,3 +1172,20 @@ std::string cat_many(int nbCh, ...){
     return reslut;
 }
 
+typeId convertion(char * chaine)
+{
+    unsigned i = 0;
+    typeId nombre = 0;
+   
+    while(chaine[i] != '\0'){
+        if( chaine[i] > 47 && chaine[i] <  59){
+            
+            nombre =  nombre * 10*i +  chaine[i] - 48;
+            
+        }else{
+            return ERROR_CODE;
+        }
+        i++;
+    }
+    return nombre ;
+}
