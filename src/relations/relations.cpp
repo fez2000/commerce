@@ -45,6 +45,29 @@ Liste<Article::Base> article_client(unsigned long idClient){
     return article;
 }
 
+int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsigned long quantite, int etat){
+    Cellule<Commande::Base> * p = gestionCommande.chercher(idCommande);
+    if( p == NULL)return CMD_PAS_TROUVER;
+    if(p->get().ref_article() != idArticle){
+        Cellule<Article::Base> * pa = gestionArticle.chercher(p->get().ref_article());
+        if(pa == NULL){
+            return ARTICLE_PAS_TROUVER;
+        }else{
+            pa->get().ajouter_quantite(p->get().nombre());
+            Cellule<Article::Base> * pa = gestionArticle.chercher(idArticle);
+                pa->get().ajouter_quantite( - quantite);
+            
+        }
+    }else{
+        Cellule<Article::Base> * pa = gestionArticle.chercher(idArticle);
+        pa->get().ajouter_quantite(p->get().nombre() - quantite);
+    }
+    
+    Cellule<Client::Base> * pa = gestionClient.chercher_client(p->get().ref_client());
+    if(pa == NULL){
+        return ARTICLE_PAS_TROUVER;
+    }
+}
 /*
 
 */
