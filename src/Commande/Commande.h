@@ -2,7 +2,7 @@
 #define COMMANDE_H_INCLUDE
 #include "../fonctions/fonctions.h"
     namespace Commande{
-        enum Etat {ENCOUR,LIVRER,ANNULER};
+        enum Etat {ENCOUR,ENCOURLIVRAISON,TERMINER,ANNULER};
         /* 
             @brief classe de base des commandes permettant d'effectuer des operations elementaire sur une commande
             @proprites: 
@@ -37,6 +37,7 @@
             void modifier(typeId,typeId, unsigned long,int);
             bool est_livrer();
             void livrer();
+            void en_cour();
             void annuler();
             int status(void);
             typeId ref(void);

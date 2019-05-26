@@ -18,7 +18,7 @@ namespace Livraison{
         -quantite quantite de l'article commander
     @return: l'id de la livraison ou ERROR_CODE en cas d'erreur
     */
-    typeId Livraison::creer(typeId client,typeId article,unsigned long quantite){
+    int Livraison::creer(typeId client,typeId article,unsigned long quantite){
         Base commande(maxNumeroGenerer,client,article,quantite);  
         ajouter(new Cellule<Base>(commande));
         table.insert(std::pair<typeId,Cellule<Base> * >(maxNumeroGenerer,tete));

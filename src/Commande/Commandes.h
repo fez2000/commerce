@@ -36,6 +36,7 @@
             typeId creer(unsigned long,unsigned long,unsigned long);
             int supprimer(typeId);
             int annuler(typeId);
+            int lancer_livraison(typeId);
             int modifier(typeId,typeId,typeId,unsigned long,int);
             Cellule<Base>* chercher(typeId);
             Liste<Base> commandes_de(typeId);

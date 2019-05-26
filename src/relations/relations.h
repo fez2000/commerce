@@ -8,6 +8,7 @@
 
 Liste<Client::Base> client_article(typeId);
 Liste<Article::Base> article_client(typeId);
+int livrer_commande(typeId,typeId);
 int commander_article(const char *,const char *, unsigned long);
 int commander_article(typeId,typeId, unsigned long);
 int commander_article(const char *,typeId, unsigned long); 

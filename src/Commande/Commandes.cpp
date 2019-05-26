@@ -132,9 +132,14 @@ namespace Commande{
         }    
         return is;
     };
+    int Commande::lancer_livraison(typeId idCommade){
+        Cellule<Base> * p = table[idCommade];
+        if(p)p->get().en_cour();
+        return sauvegarder();
+    };
     int Commande::annuler(typeId id){
         Cellule<Base> * p = table[id];
-        p->get().annuler();
+        if(p)p->get().annuler();
         return sauvegarder();
     };
     int Commande::charger(){
