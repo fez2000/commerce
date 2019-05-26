@@ -78,8 +78,10 @@ namespace Commande{
         i=tete;
         while(i!=sentinelle){
             if(i->get().ref_article()==id){
+                if(!i->get().est_annuler())
                t.ajouter(new Cellule<Base>(i->get())); 
             }
+            i = i->get_next();
         }
         return t;
     };

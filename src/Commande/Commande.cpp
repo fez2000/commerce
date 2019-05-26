@@ -23,6 +23,9 @@ namespace Commande{
     bool Base::est_livrer(){
         return etat == TERMINER;
     };
+    bool Base::est_annuler(){
+        return etat == ANNULER;
+    };
     void Base::annuler(){
         etat = ANNULER;
     }
