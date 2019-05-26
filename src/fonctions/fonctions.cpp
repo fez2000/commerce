@@ -49,16 +49,16 @@ void acceuil(){
         // petit menu de presentation
         std::cout << "\t##############################################################################################################\n";              
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                           BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                           ##\n";
+        std::cout << "\t##                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                           ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                                         %%%     %%%     %%%                                              ##\n";
-        std::cout << "\t##                                          %%%   %%%      %%%                                              ##\n";
-        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
-        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
-        std::cout << "\t##                                          %%%   %%%      %%%%%%%%%%                                       ##\n";
-        std::cout << "\t##                                         %%%     %%%     %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       ##\n";
+        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
@@ -108,16 +108,16 @@ void autre_fonction(){
         // petit menu de presentation
         std::cout << "\t##############################################################################################################\n";    
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                          BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                            ##\n";
+        std::cout << "\t##                          \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                            ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                                         %%%     %%%     %%%                                              ##\n";
-        std::cout << "\t##                                          %%%   %%%      %%%                                              ##\n";
-        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
-        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
-        std::cout << "\t##                                          %%%   %%%      %%%%%%%%%%                                       ##\n";
-        std::cout << "\t##                                         %%%     %%%     %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
+        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       ##\n";
+        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
@@ -197,7 +197,7 @@ void menu_general_client(){
     {
         std::cout << "\t##############################################################################################################\n";                      
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                           BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                        ##\n";
+        std::cout << "\t##                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                        ##\n";
         std::cout << "\t##                             --------------------------------------------------                           ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                             --------------------------------------------------                           ##\n";
@@ -251,9 +251,9 @@ void menu_general_article(){
     std::string choixUtilisateur;
     do
     {
-        std::cout << "\033[34;1m\t##############################################################################################################\033[47;0m\n";                      
+        std::cout << "\033[34;1m\t##############################################################################################################\n";                      
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                         BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                          ##\n";
+        std::cout << "\t##                         \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                          ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                          --------------------------------------------------                              ##\n";
@@ -264,7 +264,7 @@ void menu_general_article(){
         std::cout << "\t##                              --------------------------------------                                      ##\n";
         std::cout << "\t##-_-_-  Appuyez sur:                                                                                  -_-_-##\n";
         std::cout << "\t##                                                                                                          ##\n";
-        std::cout << "\t##     - 1 pour Enregistrer un nouveau ARTICLE             - 3 pour Rechercher un ARTICLE                   ##\n";
+        std::cout << "\t##     - \033[33;1m 1 pour Enregistrer un nouveau ARTICLE             - 3 pour Rechercher un ARTICLE                  ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##     - 2 pour la Modification d'un ARTICLE               - 4 pour Supprimer un ARTICLE                    ##\n";
         std::cout << "\t##                                                                                                          ##\n";
@@ -272,7 +272,7 @@ void menu_general_article(){
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";
 
-        std::cout << "\t## Entrer votre choix: \t";
+        std::cout << "\t## Entrer votre choix: \033[47;0m\t";
         std::cin >> choixUtilisateur;
         system("clear");
     }
@@ -310,7 +310,7 @@ void menu_general_commande(){
     
         std::cout << "\t##########################################################################################\n";
         std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-        std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+        std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
         std::cout << "\t##                -----------------------------------------------------                 ##\n";
         std::cout << "\t##                                                                                      ##\n";
         std::cout << "\t##                          ------------------------------                              ##\n";
@@ -372,7 +372,7 @@ void menu_general_livraison(){
     
         std::cout << "\t##########################################################################################\n";
         std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-        std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+        std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
         std::cout << "\t##                -----------------------------------------------------                 ##\n";
         std::cout << "\t##                                                                                      ##\n";
         std::cout << "\t##                          ------------------------------                              ##\n";
@@ -438,7 +438,7 @@ void interface_creation_client(){
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
     std::cout << "\t##                ----------------------------------------------------                  ##\n";
     std::cout << "\t##                          ------------------------------                              ##\n";
     std::cout << "\t##                         | CREATION D'UN NOUVEAU CLIENT |                             ##\n";
@@ -500,7 +500,7 @@ void interface_creation_article(){
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
     std::cout << "\t##                ----------------------------------------------------                  ##\n";
     std::cout << "\t##                          ------------------------------                              ##\n";
     std::cout << "\t##                         |    CREATION DES ARTICLES     |                             ##\n";
@@ -568,7 +568,7 @@ void interface_creation_commande(){
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
     std::cout << "\t##                ----------------------------------------------------                  ##\n";
     std::cout << "\t##                          ------------------------------                              ##\n";
     std::cout << "\t##                         |    CREATION DES COMMANDES    |                             ##\n";
@@ -902,7 +902,7 @@ void interface_creation_livraison(){
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##               BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                ##\n";
+    std::cout << "\t##               \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                ##\n";
     std::cout << "\t##                ----------------------------------------------------                  ##\n";
     std::cout << "\t##                          ------------------------------                              ##\n";
     std::cout << "\t##                         |    CREATION DES LIVRAISONS   |                             ##\n";
@@ -1102,26 +1102,26 @@ void interface_liste_article(){
     Cellule<Article::Base> * produit;
 
     // petit menu de presentation
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
-    std::cout << "\t##                   ---------------------------------------------------                ##\n";
-    std::cout << "\t##                           ---------------------------------                          ##\n";
-    std::cout << "\t##                          |        LISTE DES ARTICLES       |                         ##\n";
-    std::cout << "\t##                            --------------------------------                          ##\n";
-    std::cout << "\t##                                                                                      ##\n";
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    std::cout << "\t\033[36;1m##############################################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                                               -_-_-##\n";
+    std::cout << "\t##\033[36;0m                 \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m              \033[36;1m##\n";
+    std::cout << "\t##                   ---------------------------------------------------                                    ##\n";
+    std::cout << "\t##                           ---------------------------------                                              ##\n";
+    std::cout << "\t##                               |\033[36;0m        LISTE DES ARTICLES       \033[36;1m|                    ##\n";
+    std::cout << "\t##                            --------------------------------                                              ##\n";
+    std::cout << "\t##                                                                                                          ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------                                ##\033[36;0m\n";
     std::cout << "\n";  
   
         produit = gestionnaireArticle.recup_tete();
-        std::cout << "\t\t     ID  |       LIBELLE       |         PRIX U          |   QUANTITE \t |   SEUIL \n";
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";
+        std::cout << "\t\t     ID  \033[36;1m|\033[36;0m       LIBELLE       \033[36;1m|\033[36;0m         PRIX U          \033[36;1m|\033[36;0m   QUANTITE \t \033[36;1m|\033[36;0m   SEUIL \n";
+        std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\n";            
+        std::cout << "\t##------------------------------------------------------------------------------------------------------##\033[36;0m\n";
         while (produit != gestionnaireArticle.recup_sentinelle())
         {   
             std::cout << "\t##\t     "<< produit->get().get_reference() <<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< produit->get().get_prix() <<"      \t\t"<< produit->get().get_quantite() <<"    \t\t"<< produit->get().get_seuil() <<"\n";    
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
+        std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
             produit = produit->get_next();
         }  
 
@@ -2144,42 +2144,41 @@ void interface_meilleur_client(){
     const char * message2 = "PAS DE MEILLEUR CLIENT";
 
     // petit menu de presentation
-    std::cout << "\t##############################################################################################################\n";    
+    std::cout << "\t\033[36;1m##############################################################################################################\n";    
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-    std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                           \033[36;1m##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
-    std::cout << "\t##                          |                MEILLEURS CLIENTS               |                              ##\n";
+    std::cout << "\t##                          |\033[36;0m                MEILLEURS CLIENTS               \033[36;1m|                              ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                                                                                                          ##\n";
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-    std::cout << "\t##         ---------------------------------------------------------------------------------------          ##\n";
+    std::cout << "\t##         ---------------------------------------------------------------------------------------          ##\n\n\n";
 
 
     produit = gestionnaireArticle.recup_tete();
-    std::cout << "\t##                Nom de l'Article                      |            Nom du meilleur Client                 ##\n";
+    std::cout << "\t##\033[36;0m                Nom de l'Article                    \033[36;1m|\033[36;0m            Nom du meilleur Client                   \033[36;1m##\n";
     std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";            
-    std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";
+    std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
         while (produit != gestionnaireArticle.recup_sentinelle())
         {   idArticle = produit->get().get_reference() ;
-            std::cout <<"while\n";
             idClient = meilleur_client_de(idArticle);
-            std::cout << idClient<< "\n";
             if (idClient){
                 client = gestionnaireClient.chercher_client(idClient);
                 if (client){ // Meilleur client existant et dans liste de client
-                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< client->get().get_nom() <<"\n";                        
+                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< client->get().get_nom() <<"\n";                        
                 }else{ // Meilleur client existant mais supprimer de la liste des client
-                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message1 <<"\n";
+                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< message1 <<"\n";
                 }     
             }else{ // pas de meilleur client
-                std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message2 <<"\n";                
+                std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< message2 <<"\n";                
             }
-    std::cout << "\t##---------------------------------------------------------------------------------------------------------##\n";            
+    std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
         produit = produit->get_next();
         }  
 
-    do{
+    do{ 
+        std::cout <<"\n";
         std::cout <<"\t Tapez: \n";
         std::cout <<"\t      1 - pour RETOUR AU MENU \n";
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
@@ -2208,7 +2207,7 @@ void interface_capital(){
     // petit menu de presentation
     std::cout << "\t##############################################################################################################\n";       
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-    std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
+    std::cout << "\t##                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                           ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                          |                     CAPITAL                    |                              ##\n";

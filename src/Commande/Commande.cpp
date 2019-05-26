@@ -21,7 +21,10 @@ namespace Commande{
         this->etat = etat;
     };
     bool Base::est_livrer(){
-        return etat == LIVRER;
+        return etat == TERMINER;
+    };
+    bool Base::est_annuler(){
+        return etat == ANNULER;
     };
     void Base::annuler(){
         etat = ANNULER;
@@ -30,8 +33,11 @@ namespace Commande{
         return etat;
     }
     void Base::livrer(){
-        etat = LIVRER;
+        etat = TERMINER;
     }; 
+    void Base::en_cour(){
+        etat = ENCOURLIVRAISON;
+    };
     unsigned long Base::ref_client(){
         return client;
     };

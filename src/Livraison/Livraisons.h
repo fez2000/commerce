@@ -29,7 +29,7 @@
             int charger();
         public:
             Livraison(/* args */);
-            typeId creer(typeId,typeId,unsigned long);
+            int creer(typeId,typeId,unsigned long);
             int supprimer(typeId);
             int modifier(typeId,typeId,typeId,unsigned long);
             Cellule<Base>* chercher(typeId);

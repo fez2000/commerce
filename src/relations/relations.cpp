@@ -45,6 +45,30 @@ Liste<Article::Base> article_client(unsigned long idClient){
     return article;
 }
 
+int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsigned long quantite, int etat){
+    Cellule<Commande::Base> * p = gestionCommande.chercher(idCommande);
+    if( p == NULL)return CMD_PAS_TROUVER;
+    if(p->get().ref_article() != idArticle){
+        Cellule<Article::Base> * pa = gestionArticle.chercher(p->get().ref_article());
+        if(pa == NULL){
+            return ARTICLE_PAS_TROUVER;
+        }else{
+            pa->get().ajouter_quantite(p->get().nombre());
+            Cellule<Article::Base> * pa = gestionArticle.chercher(idArticle);
+                pa->get().ajouter_quantite( - quantite);
+            
+        }
+    }else{
+        Cellule<Article::Base> * pa = gestionArticle.chercher(idArticle);
+        pa->get().ajouter_quantite(p->get().nombre() - quantite);
+    }
+    
+    Cellule<Client::Base> * pa = gestionClient.chercher_client(p->get().ref_client());
+    if(pa == NULL){
+        return ARTICLE_PAS_TROUVER;
+    }
+}
+
 /*
 
 */
@@ -65,11 +89,34 @@ int commander_article(const char * nomClient ,const char * libelle, unsigned lon
     if(code == ERROR_CODE){
         return ERREUR_SYSTEME;
     }
-    code = gestionLivraison.creer(code,pc->get().get_numero(),quantite);
-    if(code == ERROR_CODE){
-        return ERREUR_SYSTEME;
-    }
     return PAS_DERREUR;
+};
+int supprimer_livraison(typeId idLivraison){
+Cellule<Livraison::Base > * l = gestionLivraison.chercher(idLivraison);
+    if(!l){
+        return PAS_TROUVER;
+    }   
+    return annuler_commande( l->get().ref_commande());
+}
+/*
+
+*/
+int livrer_commande(typeId idCommande,typeId idClient){
+     Cellule <Commande::Base> * c = gestionCommande.chercher(idCommande);
+     if(!c){
+         return CMD_PAS_TROUVER;
+     }
+     if(c->get().status() == Commande::ANNULER){
+         return CMD_DEJA_ANNULER;
+     }
+     if(c->get().status() == Commande::TERMINER){
+         return CMD_DEJA_LIVRER;
+     }
+    int code = gestionCommande.lancer_livraison(idCommande);
+    if( code  != SUCCESS_CODE){
+        return code;
+    };
+    return gestionLivraison.creer(idCommande,idClient,c->get().nombre());
 };
 int annuler_commande(typeId id){
      Cellule <Commande::Base> * c = gestionCommande.chercher(id);
@@ -79,7 +126,7 @@ int annuler_commande(typeId id){
      if(c->get().status() == Commande::ANNULER){
          return CMD_DEJA_ANNULER;
      }
-     if(c->get().status() == Commande::LIVRER){
+     if(c->get().status() == Commande::TERMINER){
          return CMD_DEJA_LIVRER;
      }
      int code = gestionCommande.annuler(id);

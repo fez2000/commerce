@@ -78,8 +78,10 @@ namespace Commande{
         i=tete;
         while(i!=sentinelle){
             if(i->get().ref_article()==id){
+                if(!i->get().est_annuler())
                t.ajouter(new Cellule<Base>(i->get())); 
             }
+            i = i->get_next();
         }
         return t;
     };
@@ -132,9 +134,14 @@ namespace Commande{
         }    
         return is;
     };
+    int Commande::lancer_livraison(typeId idCommade){
+        Cellule<Base> * p = table[idCommade];
+        if(p)p->get().en_cour();
+        return sauvegarder();
+    };
     int Commande::annuler(typeId id){
         Cellule<Base> * p = table[id];
-        p->get().annuler();
+        if(p)p->get().annuler();
         return sauvegarder();
     };
     int Commande::charger(){
