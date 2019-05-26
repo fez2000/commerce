@@ -8,6 +8,7 @@
 #include "../Article/Articles.h"
 #include "../Commande/Commandes.h"
 #include "../Livraison/Livraisons.h"
+#include "../relations/relations.h"
 
 
 bool choix_non_valide(std::string choix, std::string listeValide ){
@@ -31,6 +32,7 @@ long long de_string_pour_long_long(std::string s){
  }
   return num;   
 }
+
 Client::Client gestionnaireClient;
 Article::Article gestionnaireArticle;
 Commande::Commande gestionnaireCommande;
@@ -46,31 +48,29 @@ void acceuil(){
      do{
 
           // petit menu de presentation
-          std::cout << "\t##########################################################################################\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##  Tapez:                                                                              ##\n";
-          std::cout << "\t##       1- Pour GESTIONS CLIENTS               2- Pour GESTIONS ARTICLES               ##\n";
-          std::cout << "\t##       3- Pour GESTIONS COMMANDES             4- Pour GESTIONS LIVRAISONS             ##\n";
-          std::cout << "\t##       5- Pour AUTRES FONCTIONS               0- QUITTER                              ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                    -------------------------------------------                       ##\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                                                                                      ##\n";
+        std::cout << "\t##############################################################################################################\n";              
+        std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+        std::cout << "\t##                           BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                           ##\n";
+        std::cout << "\t##                                                                                                          ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                                         %%%     %%%     %%%                                              ##\n";
+        std::cout << "\t##                                          %%%   %%%      %%%                                              ##\n";
+        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
+        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
+        std::cout << "\t##                                          %%%   %%%      %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                                         %%%     %%%     %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##      Tapez:                                                                                              ##\n";
+        std::cout << "\t##          1- Pour GESTIONS CLIENTS                         2- Pour GESTIONS ARTICLES                      ##\n";
+        std::cout << "\t##          3- Pour GESTIONS COMMANDES                       4- Pour GESTIONS LIVRAISONS                    ##\n";
+        std::cout << "\t##          5- Pour AUTRES FONCTIONS                         0- QUITTER                                     ##\n";
+        std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+        std::cout << "\t##     -----------------------------------------------------------------------------------------------      ##\n";
+        std::cout << "\t##                                                                                                          ##\n";
 
           std::cout << "\t## Entrer votre choix: \t";
           std::cin >> choixUtilisateur;
@@ -111,56 +111,57 @@ void acceuil(){
 void autre_fonction(){
     // differentes variables a utiliser dans notre fonction
     std::string choixUtilisateur;
-     do{
+    do{
 
-          // petit menu de presentation
-          std::cout << "\t##########################################################################################\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                  %%%%%        %%%                                    ##\n";
-          std::cout << "\t##                                %%%   %%%      %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                               %%%     %%%     %%%%%%%%%%                             ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                      Veuillez suivre à la lettre les consigne !                      ##\n";
-          std::cout << "\t##                  ---------------------------------------------------                 ##\n";
-          std::cout << "\t##  Tapez:                                                                              ##\n";
-          std::cout << "\t##       1 - Pour Liste des articles achetes par un client                              ##\n";
-          std::cout << "\t##       2 - Pour Liste des Clients d'un Article                                        ##\n";
-          std::cout << "\t##       3 - Pour Liste des Commandes en Cours d'un Client                              ##\n";
-          std::cout << "\t##       4 - Pour les Statistiques sur les Ventes d'un Article                          ##\n";
-          std::cout << "\t##       5 - Pour Liste des articles avec Prix Unitaire                                 ##\n";
-          std::cout << "\t##       6 - Pour Liste des Articles a Ravitailler                                      ##\n";
-          std::cout << "\t##       7 - Pour Capital du SuperMarche XL                                             ##\n";
-          std::cout << "\t##       8 - Pour Meilleur Client de XL                                                 ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##       9 - Pour RETOUR                          0 - QUITTER LE PROGRAMME              ##\n";
-          std::cout << "\t##                                                                                      ##\n";
-          std::cout << "\t##                    -------------------------------------------                       ##\n";
-          std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-          std::cout << "\t##                                                                                      ##\n";
+        // petit menu de presentation
+        std::cout << "\t##############################################################################################################\n";    
+        std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+        std::cout << "\t##                          BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE                            ##\n";
+        std::cout << "\t##                                                                                                          ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                                         %%%     %%%     %%%                                              ##\n";
+        std::cout << "\t##                                          %%%   %%%      %%%                                              ##\n";
+        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
+        std::cout << "\t##                                            %%%%%        %%%                                              ##\n";
+        std::cout << "\t##                                          %%%   %%%      %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                                         %%%     %%%     %%%%%%%%%%                                       ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
+        std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+        std::cout << "\t##      Tapez:                                                                                              ##\n";
+        std::cout << "\t##              1 - Pour Liste des articles achetes par un client                                           ##\n";
+        std::cout << "\t##              2 - Pour Liste des Clients d'un Article                                                     ##\n";
+        std::cout << "\t##              3 - Pour Liste des Commandes en Cours d'un Client                                           ##\n";
+        std::cout << "\t##              4 - Pour les Statistiques sur les Ventes d'un Article                                       ##\n";
+        std::cout << "\t##              5 - Pour Liste des articles avec Prix Unitaire                                              ##\n";
+        std::cout << "\t##              6 - Pour Liste des Articles a Ravitailler                                                   ##\n";
+        std::cout << "\t##              7 - Pour Capital du SuperMarche XL                                                          ##\n";
+        std::cout << "\t##              8 - Pour Meilleur Client de XL                                                              ##\n";
+        std::cout << "\t##                                                                                                          ##\n";
+        std::cout << "\t##              9 - Pour RETOUR                          0 - QUITTER LE PROGRAMME                           ##\n";
+        std::cout << "\t##                                                                                                          ##\n";
+        std::cout << "\t##     ---------------------------------------------------------------------------------------------        ##\n";
+        std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+        std::cout << "\t##                                                                                                          ##\n";
 
-          std::cout << "\t## Entrer votre choix: \t";
-          std::cin >> choixUtilisateur;
-          system("clear");
+        std::cout << "\t## Entrer votre choix: \t";
+        std::cin >> choixUtilisateur;
+        system("clear");
 
-     } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2' && choixUtilisateur.c_str()[0] != '3' && choixUtilisateur.c_str()[0] != '4' && choixUtilisateur.c_str()[0] != '5' && choixUtilisateur.c_str()[0] != '6' && choixUtilisateur.c_str()[0] != '7' && choixUtilisateur.c_str()[0] != '8' && choixUtilisateur.c_str()[0] != '9');
+    } while (choixUtilisateur.c_str()[0] != '0' && choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2' && choixUtilisateur.c_str()[0] != '3' && choixUtilisateur.c_str()[0] != '4' && choixUtilisateur.c_str()[0] != '5' && choixUtilisateur.c_str()[0] != '6' && choixUtilisateur.c_str()[0] != '7' && choixUtilisateur.c_str()[0] != '8' && choixUtilisateur.c_str()[0] != '9');
 
 
-     switch (choixUtilisateur.c_str()[0]){
-          case '0':
-               system("exit");
-               break;
-          case '1': // Liste des articles achetes par un client
+    switch (choixUtilisateur.c_str()[0]){
+        case '0':
+            system("exit");
+            break;
+        case '1': // Liste des articles achetes par un client
                
-               break;
-          case '2': // Liste des Clients d'un Article
+            break;
+        case '2': // Liste des Clients d'un Article
+                system("clear");
                 interface_liste_client_article();
                
                break;
@@ -176,12 +177,15 @@ void autre_fonction(){
 
                break;
           case '7': // Capital du SuperMarche XL
+                system("clear");
                 interface_capital();
                break;
           case '8': // Meilleur Client de XL
+                system("clear");
                 interface_meilleur_client();
                break;
           case '9': // retour
+                system("clear");
                 acceuil();
                break;
 
@@ -2142,28 +2146,48 @@ void interface_modif_commande(){
 void interface_meilleur_client(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
+    Cellule<Article::Base> * produit;
+    Cellule<Client::Base> * client;
+    typeId idArticle;
+    typeId idClient;
+    const char * message1 = "CLIENT SUPPRIMER";
+    const char * message2 = "PAS DE MEILLEUR CLIENT";
 
     // petit menu de presentation
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
-    std::cout << "\t##                   ---------------------------------------------------                ##\n";
-    std::cout << "\t##                           ---------------------------------                          ##\n";
-    std::cout << "\t##                          |        MEILLEUR CLIENTS          |                        ##\n";
-    std::cout << "\t##                            --------------------------------                          ##\n";
-    std::cout << "\t##                                                                                      ##\n";
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
-    
-        
-        // Fonction qui affiche la liste des client
-        std::cout << "\n"; 
-        std::cout << "\t Le meilleur client du SUPERMARCHE XL \n";
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##                                                                                      ##\n";    
-    std::cout << "\t##                                                                                      ##\n";    
-    std::cout << "\t##                                                                                      ##\n";    
-    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##############################################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |                MEILLEURS CLIENTS               |                              ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                                                                                                          ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##         ---------------------------------------------------------------------------------------          ##\n";
+
+
+    produit = gestionnaireArticle.recup_tete();
+    std::cout << "\t##                Nom de l'Article                      |            Nom du meilleur Client                 ##\n";
+    std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";            
+    std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";
+        while (produit != gestionnaireArticle.recup_sentinelle())
+        {   idArticle = produit->get().get_reference() ;
+            std::cout <<"while\n";
+            idClient = meilleur_client_de(idArticle);
+            std::cout << idClient<< "\n";
+            if (idClient){
+                client = gestionnaireClient.chercher_client(idClient);
+                if (client){ // Meilleur client existant et dans liste de client
+                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< client->get().get_nom() <<"\n";                        
+                }else{ // Meilleur client existant mais supprimer de la liste des client
+                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message1 <<"\n";
+                }     
+            }else{ // pas de meilleur client
+                std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message2 <<"\n";                
+            }
+    std::cout << "\t##---------------------------------------------------------------------------------------------------------##\n";            
+        produit = produit->get_next();
+        }  
 
     do{
         std::cout <<"\t Tapez: \n";
@@ -2171,7 +2195,6 @@ void interface_meilleur_client(){
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix: \t";
         std::cin >> ch;
-        system("clear");
     } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
 
     switch (ch.c_str()[0]){
@@ -2191,28 +2214,21 @@ void interface_capital(){
     std::string ch;
     long double capital;
 
+    capital = gestionnaireArticle.capital();
     // petit menu de presentation
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
-    std::cout << "\t##                   ---------------------------------------------------                ##\n";
-    std::cout << "\t##                           ---------------------------------                          ##\n";
-    std::cout << "\t##                          |              CAPITAL            |                         ##\n";
-    std::cout << "\t##                            --------------------------------                          ##\n";
-    std::cout << "\t##                                                                                      ##\n";
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
-    
-        
-        
-        capital = gestionnaireArticle.capital();
-        std::cout << "\n"; 
-        std::cout << "\t                        LE CAPITAL du SUPERMARCHE XL \n";
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##                                                                                      ##\n";    
-    std::cout << "\t                         " << capital <<" Frs CFA\n";    
-    std::cout << "\t##                                                                                      ##\n";    
-    std::cout << "\t##########################################################################################\n";    
+    std::cout << "\t##############################################################################################################\n";       
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |                     CAPITAL                    |                              ##\n";
+    std::cout << "\t##                            -----------------------------------------------                               ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";  
+    std::cout << "\t                           " << capital <<" Frs CFA\n";    
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";
+    std::cout << "\t##                                                                                                          ##\n";    
+    std::cout << "\t##############################################################################################################\n";    
 
     do{
         std::cout <<"\t Tapez: \n";
@@ -2220,7 +2236,6 @@ void interface_capital(){
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix: \t";
         std::cin >> ch;
-        system("clear");
     } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
 
     switch (ch.c_str()[0]){
@@ -2234,6 +2249,8 @@ void interface_capital(){
             break;
     }   
 };// terminer
+
+
 
 void interface_liste_client_article(){
     // differentes variables a utiliser dans notre fonction
