@@ -25,7 +25,6 @@ namespace Article{
          Cellule<Base>* c;
         c = new Cellule<Base>(article);
         ajouter_trie(c);
-        //std::cout << *this->tete;
          
         table.insert(std::pair<typeId,Cellule<Base> * >(maxNumeroGenerer,c));
         maxNumeroGenerer ++;

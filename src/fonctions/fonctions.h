@@ -17,7 +17,6 @@ std::string cat_many(int , ...);
     void autre_fonction(); // second menu d'acceuil
     void menu_general_client(); // acceuil client
     
-    void menu_general_commande(); // acceuil commande
     void menu_general_livraison(); // acceuil livraison
     void interface_recherche_client(); // recherche client
     void interface_suppression_client(); // suppression client
@@ -37,6 +36,16 @@ std::string cat_many(int , ...);
     void interface_meilleur_client();
     void interface_capital();
     void interface_liste_client_article();
+
+    void menu_general_commande(); // acceuil commande
+    void interface_creation_commande();
+    void interface_liste_commande();
+    void interface_suppression_commande();
+    void interface_recherche_commande();
+    void interface_modif_commande();
+
+    void interface_creation_livraison();
+    void interface_liste_livaison();
 
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);

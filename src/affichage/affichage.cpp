@@ -1,7 +1,7 @@
 #include "affichage.h"
 
 
-
+/*
 extern Client::Client  gestionClient;
 extern Article::Article  gestionArticle;
 extern Livraison::Livraison gestionLivraison;
@@ -9,9 +9,8 @@ extern Commande::Commande gestionCommande;
 std::string choixUtilisateur;
 
 
-/*
-    Acceuil
-*/
+
+
 
 void acceuil(){
     
@@ -57,9 +56,7 @@ void acceuil(){
      };
 }
 
-/*
-    Fonction de gestion du menu client
-*/
+
 
 void menu_general_client(){
     
@@ -190,10 +187,7 @@ void menu_general_livraison(){
     }
 }
 
-/*
-    Cette fonction nous permet d'avoir une interface
-    propre pour l'enregistrement de nos nouveau client
-*/
+
 void interface_creation_client(){
     std::string choixValide("01");    
     // differentes variables a utiliser dans notre fonction
@@ -298,3 +292,4 @@ void interface_recherche_client(){
             break;
     }    
 };
+*/

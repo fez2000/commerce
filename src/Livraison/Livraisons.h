@@ -20,7 +20,7 @@
                 -load: qui permet de charger une commande a partir d'un fichier par defaut commande commande.txt
                 -store: qui permet de specifier ou serons sauvegerder les cleints par defaut sur le fichier de load si pas specifier
         */
-        class Livraison:Liste<Base>
+        class Livraison:public Liste<Base>
         {
         private:
             std::map<typeId, Cellule<Base> * > table;//map fonction de la lib map qui permet de creer les tableaux associatifs
