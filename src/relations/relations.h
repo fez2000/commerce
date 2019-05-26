@@ -15,4 +15,6 @@ int commander_article(const char *,typeId, unsigned long);
 int commander_article(typeId,const char *, unsigned long);
 int annuler_commande(typeId id);
 int supprimer_client(typeId);
+typeId  meilleur_client_de(typeId);
+int commander_article(const char * ,const char * , unsigned long);
 #endif
