@@ -35,6 +35,7 @@
             int mettre_a_jour(typeId,const char *, double, unsigned long,unsigned long );
             Cellule<Base>* chercher(const char *);
             Cellule<Base>* chercher(typeId);
+            Liste<Base> liste_ayant_nom(const char *);
             Liste<Base> critiques();
             long double capital(void);
             int charger(const char *);

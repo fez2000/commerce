@@ -26,22 +26,6 @@
         {
         }
         
-        class Stat
-        {
-        private:
-            
-        public:
-            Stat();
-            ~Stat();
-        };
-        
-        Stat::Stat(/* args */)
-        {
-        }
-        
-        Stat::~Stat()
-        {
-        }
         
     }
 

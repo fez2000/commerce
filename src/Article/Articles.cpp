@@ -112,6 +112,18 @@ namespace Article{
         }
         return t;
     };
+    Liste<Base> Article::liste_ayant_nom(const char * nomArticle){
+        Liste<Base> l;
+        Cellule<Base> * i;
+        i=tete;
+        while(i!=sentinelle){
+            
+            if( i->get().get_libelle().find(nomArticle) <i->get().get_libelle().length() ){
+               l.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return l;
+    };
     int Article::charger(){
         std::ifstream fichier;
         fichier.exceptions ( std::ifstream::failbit | std::ifstream::badbit );

@@ -36,7 +36,19 @@ namespace Client{
         };
         return maxNumeroGenerer - 1;
     }
-
+    Liste<Base> Client::liste_ayant_nom(const char * nomArticle){
+        Liste<Base> l;
+        Cellule<Base> * i;
+        
+        i=tete;
+        while(i!=sentinelle){
+            std::string nom(i->get().get_nom);
+            if( nom.find(nomArticle) <nom.length() ){
+               l.ajouter(new Cellule<Base>(i->get())); 
+            }
+        }
+        return l;
+    };
     int Client::sauvegarder_client(){
         
         std::ofstream fichier;

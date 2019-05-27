@@ -31,7 +31,7 @@ namespace Client{
         Cellule<Base>* chercher_client(typeId);
         int charger_client(const char *);
         int sauvegarder_client(const char *);
-
+        Liste<Base> liste_ayant_nom(const char *);
         friend std::ostream& operator<<(std::ostream &, const Client &); // serialisation de données
 
         friend std::istream& operator>>(std::istream &, Client &); //déserialisation de données

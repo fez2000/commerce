@@ -60,6 +60,7 @@ namespace Article{
     long Base::tester_quantite(unsigned long q){
         return quantite - q;
     };
+ 
     Base& Base::operator=(const Base& is){
         if(&is != this){
             prix = is.prix;
