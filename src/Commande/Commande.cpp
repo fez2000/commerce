@@ -61,6 +61,7 @@ namespace Commande{
             etat = is.etat;
             article = is.article;
             quantite = is.quantite;
+            
         }
         return * this;
     }

@@ -42,10 +42,11 @@ namespace Client{
         
         i=tete;
         while(i!=sentinelle){
-            std::string nom(i->get().get_nom);
+            std::string nom(i->get().get_nom());
             if( nom.find(nomArticle) <nom.length() ){
                l.ajouter(new Cellule<Base>(i->get())); 
             }
+            i = i->get_next();
         }
         return l;
     };

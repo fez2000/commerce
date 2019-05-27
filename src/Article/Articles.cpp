@@ -109,6 +109,7 @@ namespace Article{
             if(i->get().a_ravitailler()){
                t.ajouter(new Cellule<Base>(i->get())); 
             }
+            i = i->get_next();
         }
         return t;
     };
@@ -121,6 +122,7 @@ namespace Article{
             if( i->get().get_libelle().find(nomArticle) <i->get().get_libelle().length() ){
                l.ajouter(new Cellule<Base>(i->get())); 
             }
+           i = i->get_next(); 
         }
         return l;
     };

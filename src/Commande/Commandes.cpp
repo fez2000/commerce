@@ -55,19 +55,27 @@ namespace Commande{
             if(i->get().ref_client()==id){
                t.ajouter(new Cellule<Base>(i->get())); 
             }
+        i = i->get_next();
         }
         return t;
     };
     Liste<Base> Commande::commandes_encour_de(typeId id){
         Liste<Base> t;
-        Cellule<Base> * i;
+        Cellule<Base> * i,*j;
 
         i=tete;
         while(i!=sentinelle){
             if(i->get().ref_client()==id){
-                if(!i->get().est_livrer())
-               t.ajouter(new Cellule<Base>(i->get())); 
+
+                if(ENCOUR == i->get().status()){
+                    Base p = i->get();
+                    j = new Cellule<Base>(p);
+                    std::cout<< j->get().ref()<<std::endl;
+                     t.ajouter(j);
+                }
+               
             }
+        i = i->get_next();
         }
         return t;
     };

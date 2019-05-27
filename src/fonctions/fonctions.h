@@ -48,6 +48,8 @@ std::string cat_many(int , ...);
     void interface_liste_livaison();
 
     void interface_quantite_a_ravitailler();
+    void interface_article_prix_unitaire();
+    void interface_commande_client();
 
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
