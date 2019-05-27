@@ -173,7 +173,9 @@ void autre_fonction(){
                break;
           case '5': // Liste des articles avec Prix Unitaire
                break;
-          case '6': // Liste des Articles a Ravitailler 
+          case '6': // Liste des Articles a Ravitailler
+            system("clear");
+            interface_quantite_a_ravitailler(); 
 
                break;
           case '7': // Capital du SuperMarche XL
@@ -1112,34 +1114,34 @@ void interface_liste_article(){
     Cellule<Article::Base> * produit;
 
     // petit menu de presentation
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
-    std::cout << "\t##                   ---------------------------------------------------                ##\n";
-    std::cout << "\t##                           ---------------------------------                          ##\n";
-    std::cout << "\t##                          |        LISTE DES ARTICLES       |                         ##\n";
-    std::cout << "\t##                            --------------------------------                          ##\n";
-    std::cout << "\t##                                                                                      ##\n";
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
+    std::cout << "\t\033[36;1m##############################################################################################################\n";    
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##\033[36;0m                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                        \033[36;1m##\n";
+    std::cout << "\t##                          ---------------------------------------------------                             ##\n";
+    std::cout << "\t##                                      ---------------------------------                                   ##\n";
+    std::cout << "\t##                                     |\033[36;0m        \033[32;1mLISTE DES ARTICLES\033[32;0m       \033[36;1m|                                  ##\n";
+    std::cout << "\t##                                      --------------------------------                                    ##\n";
+    std::cout << "\t##                                                                                                          ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##         -----------------------------------------------------------------                                ##\033[36;0m\n";
     std::cout << "\n";  
   
         produit = gestionnaireArticle.recup_tete();
-        std::cout << "\t\t     ID  |       LIBELLE       |         PRIX U          |   QUANTITE \t |   SEUIL \n";
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";
+        std::cout << "\t\t     \033[37;1mID\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mLIBELLE\033[37;0m       \033[36;1m|\033[36;0m         \033[37;1mPRIX U\033[37;0m          \033[36;1m|\033[36;0m   \033[37;1mQUANTITE\033[37;0m \t \033[36;1m|\033[36;0m   \033[37;1mSEUIL\033[37;0m \n";
+        std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\n";            
+        std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
         while (produit != gestionnaireArticle.recup_sentinelle())
         {   
-            std::cout << "\t##\t     "<< produit->get().get_reference() <<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< produit->get().get_prix() <<"      \t\t"<< produit->get().get_quantite() <<"    \t\t"<< produit->get().get_seuil() <<"\n";    
-        std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
+            std::cout << "\t##\t     \033[33;1m"<< produit->get().get_reference() <<"\033[33;0m      \t\033[32;1m"<< produit->get().get_libelle() <<"   \t\t"<< produit->get().get_prix() <<"      \t\t"<< produit->get().get_quantite() <<"    \t\t"<< produit->get().get_seuil() <<"\033[36;0m\n";    
+        std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
             produit = produit->get_next();
         }  
 
     do{
-        std::cout <<"\t Tapez: \n";
+        std::cout <<"\n\t \033[33;1mTapez: \n";
         std::cout <<"\t      1 - pour RETOUR AU MENU DES ARTICLES \n";
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
-        std::cout <<"\t Entrer votre choix: \t";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
         system("clear");
     } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
@@ -2159,7 +2161,7 @@ void interface_meilleur_client(){
     std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
-    std::cout << "\t##                          |                MEILLEURS CLIENTS               |                              ##\n";
+    std::cout << "\t##                          |\033[36;0m                \033[32;1mMEILLEURS CLIENTS\033[32;0m               \033[36;1m|                              ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                                                                                                          ##\n";
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
@@ -2167,7 +2169,7 @@ void interface_meilleur_client(){
 
 
     produit = gestionnaireArticle.recup_tete();
-    std::cout << "\t##                Nom de l'Article                      |            Nom du meilleur Client                 ##\n";
+    std::cout << "\t##\033[36;0m                \033[37;1mNom de l'Article\033[37;0m                    \033[36;1m|\033[36;0m            \033[37;1mNom du meilleur Client\033[37;0m                   \033[36;1m##\n";
     std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";            
     std::cout << "\t##----------------------------------------------------------------------------------------------------------##\n";
         while (produit != gestionnaireArticle.recup_sentinelle())
@@ -2178,22 +2180,23 @@ void interface_meilleur_client(){
             if (idClient){
                 client = gestionnaireClient.chercher_client(idClient);
                 if (client){ // Meilleur client existant et dans liste de client
-                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< client->get().get_nom() <<"\n";                        
+                    std::cout << "\t##\t\033[32;1m              \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< client->get().get_nom() <<"\033[32;0m\n";                        
                 }else{ // Meilleur client existant mais supprimer de la liste des client
-                    std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message1 <<"\n";
+                    std::cout << "\t##\t\033[32;1m               \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< message1 <<"\033[32;0m\n";
                 }     
             }else{ // pas de meilleur client
-                std::cout << "\t##\t     "<<"      \t"<< produit->get().get_libelle() <<"   \t\t"<< message2 <<"\n";                
+                std::cout << "\t##\t\033[32;1m               \t"<< produit->get().get_libelle() <<"   \t\t\t\t\t"<< message2 <<"\033[32;0m\n";                
             }
     std::cout << "\t##---------------------------------------------------------------------------------------------------------##\n";            
         produit = produit->get_next();
         }  
 
-    do{
+    do{ 
+        std::cout <<"\n\033[33;1m";
         std::cout <<"\t Tapez: \n";
         std::cout <<"\t      1 - pour RETOUR AU MENU \n";
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
-        std::cout <<"\t Entrer votre choix: \t";
+        std::cout <<"\t Entrer votre choix: \t\033[33;0m";
         std::cin >> ch;
     } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
 
@@ -2209,6 +2212,47 @@ void interface_meilleur_client(){
     }   
 };
 
+void interface_quantite_a_ravitailler(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+    long double capital;
+
+    capital = gestionnaireArticle.capital();
+    // petit menu de presentation
+    std::cout << "\t\033[36;1m##############################################################################################################\n";       
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                          \033[36;1m##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |\033[36;0m              \033[32;1mARTICLE A RAVITAILLER\033[32;0m             \033[36;1m|                              ##\n";
+    std::cout << "\t##                            -----------------------------------------------                               ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";  
+    std::cout << "\t\t\t\033[36;0m                                \033[33;1m" << capital <<" Frs CFA\033[33;0m\n\033[36;1m";   
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";
+    std::cout << "\t##                                                                                                          ##\n";    
+    std::cout << "\t##############################################################################################################\033[36;0m\n\n";    
+
+    do{
+        std::cout <<"\t \033[33;1mTapez: \n";
+        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
+        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
+        std::cin >> ch;
+    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            acceuil();
+            break;
+        case '1':
+            system("clear");
+            autre_fonction();
+            break;
+    }   
+};
+    // Question 8 terminé
 void interface_capital(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
@@ -2216,25 +2260,25 @@ void interface_capital(){
 
     capital = gestionnaireArticle.capital();
     // petit menu de presentation
-    std::cout << "\t##############################################################################################################\n";       
+    std::cout << "\t\033[36;1m##############################################################################################################\n";       
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-    std::cout << "\t##                        BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL                           ##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                          \033[36;1m##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
     std::cout << "\t##                           ------------------------------------------------                               ##\n";
-    std::cout << "\t##                          |                     CAPITAL                    |                              ##\n";
+    std::cout << "\t##                          |\033[36;0m                     \033[32;1mCAPITAL\033[32;0m                    \033[36;1m|                              ##\n";
     std::cout << "\t##                            -----------------------------------------------                               ##\n";
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
     std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";  
-    std::cout << "\t                           " << capital <<" Frs CFA\n";    
+    std::cout << "\t\t\t\033[36;0m                                \033[33;1m" << capital <<" Frs CFA\033[33;0m\n\033[36;1m";   
     std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n";
     std::cout << "\t##                                                                                                          ##\n";    
-    std::cout << "\t##############################################################################################################\n";    
+    std::cout << "\t##############################################################################################################\033[36;0m\n\n";    
 
     do{
-        std::cout <<"\t Tapez: \n";
+        std::cout <<"\t \033[33;1mTapez: \n";
         std::cout <<"\t      1 - pour RETOUR AU MENU \n";
         std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
-        std::cout <<"\t Entrer votre choix: \t";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
     } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
 
