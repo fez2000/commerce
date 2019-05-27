@@ -1,12 +1,13 @@
 #ifndef COMMANDES_H_INCLUDE
 #define COMMANDES_H_INCLUDE
 #include "Livraison.h"
+#include <map>
 #include "../Cellule/Cellule.h"
 #include "../Liste/Liste.h"
 #define FICHIERSTOCKL  "./BD/livraison.txt"
 #define FICHIERSTOCKTEMPL  "./BD/livraison.temporaire.txt"
 #define FICHIERSTOCKL  "./BD/livraison.txt" 
-#include <map>
+
     namespace Livraison{
         /* 
             @brief classe de base d'une Livraison permettant d'effectuer des operation elementaire sur une Livraison

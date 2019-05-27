@@ -19,6 +19,7 @@ namespace Commande{
         this->article = article;
         this->quantite = quantite;
         this->etat = etat;
+
     };
     bool Base::est_livrer(){
         return etat == TERMINER;

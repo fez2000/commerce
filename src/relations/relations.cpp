@@ -45,9 +45,15 @@ Liste<Article::Base> article_client(unsigned long idClient){
     return article;
 }
 
-int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsigned long quantite, int etat){
+int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsigned long quantite){
     Cellule<Commande::Base> * p = gestionCommande.chercher(idCommande);
     if( p == NULL)return CMD_PAS_TROUVER;
+    Cellule<Client::Base> * pc = gestionClient.chercher_client(idClient);
+    if(pc == NULL)return CLIENT_PAS_TROUVER;
+    Cellule<Client::Base> * pa = gestionClient.chercher_client(p->get().ref_client());
+    if(pa == NULL){
+        return ARTICLE_PAS_TROUVER;
+    }    
     if(p->get().ref_article() != idArticle){
         Cellule<Article::Base> * pa = gestionArticle.chercher(p->get().ref_article());
         if(pa == NULL){
@@ -62,11 +68,8 @@ int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsi
         Cellule<Article::Base> * pa = gestionArticle.chercher(idArticle);
         pa->get().ajouter_quantite(p->get().nombre() - quantite);
     }
+    return gestionCommande.modifier(idCommande,idClient,idArticle,quantite,p->get().status());    
     
-    Cellule<Client::Base> * pa = gestionClient.chercher_client(p->get().ref_client());
-    if(pa == NULL){
-        return ARTICLE_PAS_TROUVER;
-    }
 }
 
 /*
@@ -162,10 +165,12 @@ typeId  meilleur_client_de(typeId idArticle){
     max = i;
     i++;
     while (taille >= 0){
+        
         if(i->second > max->second){
             max = i;
         }
         taille--;
     }
+    std::cout << max->first <<std::endl; 
     return max->first;
 }
