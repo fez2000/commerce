@@ -47,6 +47,8 @@ std::string cat_many(int , ...);
     void interface_creation_livraison();
     void interface_liste_livaison();
 
+    void interface_quantite_a_ravitailler();
+
     std::ostream& serialiser(std::ostream &os, const std::string &s);
     std::istream& deserialiser(std::istream &is, std::string &s);
     bool is_affirmatif(const char *);
