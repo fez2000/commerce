@@ -77,6 +77,19 @@ int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsi
 /*
 
 */
+int commander_article(typeId idClient,typeId idArticle, unsigned long quantite){
+    Cellule<Client::Base> * pc = gestionnaireClient.chercher_client(idClient);
+    Cellule<Article::Base> * pa = gestionnaireArticle.chercher(idArticle);
+    if(pa->get().tester_quantite(quantite) < 0){
+        return PAS_SUFFISANT;
+    }
+    pa->get().ajouter_quantite(-quantite);
+    int code = gestionnaireCommande.creer(pc->get().get_numero(),pa->get().get_reference(),quantite);
+    if(code == ERROR_CODE){
+        return ERREUR_SYSTEME;
+    }
+    return PAS_DERREUR;
+};
 int commander_article(const char * nomClient ,const char * libelle, unsigned long quantite){
     Cellule<Client::Base> * pc = gestionnaireClient.chercher_client(nomClient);
     if(pc == NULL){

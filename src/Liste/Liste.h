@@ -88,7 +88,7 @@ template <class T> void Liste<T>::trier(){
         p = p->get_next();
         while ( p != sentinelle )
         {
-            if(max < *p){
+            if(*max < *p){
                 max = p;
             }
             p = p->get_next();

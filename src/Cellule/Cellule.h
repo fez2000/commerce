@@ -16,8 +16,17 @@
         Cellule(T);
         ~Cellule();
         Cellule<T>& operator= (const Cellule<T> &);
-        Cellule<T>& operator== (const Cellule<T> & b1){
-            return b1.get() == b1.get();
+        friend int operator== (Cellule<T>  c1,Cellule<T>  c2){
+            return c1.get() == c2.get();
+        };
+        friend int operator< (Cellule<T>  c1,Cellule<T>  c2){
+            return c1.get() < c2.get();
+        };
+        friend int operator<= ( Cellule<T>  c1,Cellule<T>  c2){
+            return c1.get() <= c2.get();
+        };
+        friend int operator> (const Cellule<T> & c1,const Cellule<T> & c2){
+            return c1.get() > c2.get();
         };
         friend std::ostream& operator<<(std::ostream &os, const Cellule<T> &b){
             
@@ -29,9 +38,7 @@
             os >> b.valeur;
             return os;
         };
-        friend  int operator<(Cellule<T> b1,Cellule<T> b2){
-            return b1.get() < b2.get();
-        };
+
     };
     #include "Cellule.h"
 #include "stdlib.h"
