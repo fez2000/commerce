@@ -44,6 +44,7 @@ namespace Commande{
         if(e){
             (*e) = b;
         }
+        trier();
         return sauvegarder(); 
     };
     Liste<Base> Commande::commandes_de(typeId id){

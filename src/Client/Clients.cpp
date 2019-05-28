@@ -99,6 +99,7 @@ namespace Client{
         if(pointeurVersCel){
             (*pointeurVersCel) = cellule;
         }
+        trier();
         return sauvegarder_client(); 
     };
     /*

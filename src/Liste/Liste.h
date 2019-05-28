@@ -23,10 +23,24 @@ public:
     Cellule<T> * recup_sentinelle();
     unsigned long recup_taille();
     void trier();
+    Liste & operator= (const Liste &);
     void deplacer_avant(Cellule<T> *,Cellule<T> *);
 };
 
+template <class T> Liste<T> & Liste<T>::operator= (const Liste<T> & is){
+    if(&is != this){
+        taille = is.taille;
+        Cellule<T> * p = is.tete;
+        while (p!= is.sentinelle)
+        {
 
+            ajouter_trie(new Cellule<T>(p->get()));
+            p = p->get_next();
+        }
+        
+    }
+    return * this;
+};
 template <class T> void Liste<T>::deplacer_avant(Cellule<T> * a,Cellule<T> * p){
     if(p == a)return;
     

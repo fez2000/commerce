@@ -33,7 +33,7 @@ namespace Article{
     unsigned long Base::get_quantite(){
         return quantite;
     };
-        unsigned long Base::get_seuil(){
+    unsigned long Base::get_seuil(){
         return seuil;
     };
     Base* Base::fixer_prix(unsigned long prix){

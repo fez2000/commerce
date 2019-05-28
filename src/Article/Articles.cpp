@@ -51,6 +51,7 @@ namespace Article{
         if(e){
             (*e) = b;
         }
+        trier();
         return sauvegarder(); 
     };
     long double Article::capital(){

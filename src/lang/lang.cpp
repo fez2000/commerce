@@ -32,7 +32,13 @@ int charger(const char * fichier_lang="fr"){
                     {
                         
                         c = line[i++];
-                        
+                        if(c=='\\'){
+                            if(line[i+1] == 't'){
+                                continu.push_back('\t');
+                                i+=2;
+                                continue;
+                            }
+                        }         
                         if(chercherBalise){
                             if(c=='<'){
                                 if(!chevronsOuvrant)
