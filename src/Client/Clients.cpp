@@ -11,11 +11,10 @@ namespace Client{
         charger_client();
     }
     
-    typeId Client::creer_client(const char * nomClient, const char * prenomClient, const char * dateN, const char * sexeC){
+    typeId Client::creer_client(const char * nomClient, const char * prenomClient, Date::Date date, const char * sexeC){
 
         std::string nom(nomClient);
         std::string prenom(prenomClient);
-        std::string date(dateN);
         std::string sexe(sexeC);
 
         Base client(maxNumeroGenerer, nom, prenom, date, sexe);
@@ -92,7 +91,7 @@ namespace Client{
         return sauvegarder_client();
     };
 
-    int Client::mettre_a_jour_client(typeId num, const char * nomClient, const char * prenomClient, const char * date, const char * sexe){
+    int Client::mettre_a_jour_client(typeId num, const char * nomClient, const char * prenomClient, Date::Date date, const char * sexe){
         Base client (num,nomClient,prenomClient,date,sexe);
         Cellule<Base> cellule(client);
         Cellule<Base>* pointeurVersCel = chercher_client(num);

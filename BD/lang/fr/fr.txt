@@ -1,14 +1,13 @@
 <choixIndisponible>
  choix non disponible 
 <choixIndisponible>
-<nomclient>
+<nomClient>
 \t Entrer NOM Client :\t<nomclient>
-<prenomclient>
-\t Entrer PRENOM Client :\t<prenomclient>
+
 <dateNaisClient>
-\t Entrer DATE NAISSANCE Client (JJ/MM/AAAA) :\t<dateNaisClient>
+<dateNaisClient>
 <sexeClient>
-\t Entrer SEXE Client (M/F) :\t<sexeClient>
+<sexeClient>
 <continuerSauvegarde>
 \t Voulez-vous refaire un enregistrement?
 \t     1 - pour OUI

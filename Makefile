@@ -5,11 +5,13 @@ SRC = ./src
 LIB = ./lib
 OBJ = ./obj
 BIN = ./bin
-OBJECTS= $(OBJ)/affichage.o $(OBJ)/lang.o $(OBJ)/relations.o  $(OBJ)/Article.o $(OBJ)/Articles.o $(OBJ)/Commande.o $(OBJ)/Commandes.o $(OBJ)/Client.o $(OBJ)/Clients.o $(OBJ)/fonctions.o $(OBJ)/Livraison.o $(OBJ)/Livraisons.o 
+OBJECTS= $(OBJ)/date.o $(OBJ)/affichage.o $(OBJ)/lang.o $(OBJ)/relations.o  $(OBJ)/Article.o $(OBJ)/Articles.o $(OBJ)/Commande.o $(OBJ)/Commandes.o $(OBJ)/Client.o $(OBJ)/Clients.o $(OBJ)/fonctions.o $(OBJ)/Livraison.o $(OBJ)/Livraisons.o 
 MAINOBJECTS= $(OBJ)/main.o
 TESTOBJECTS= $(OBJ)/test.o
-HEADER= $(SRC)/affichage/affichage.h $(SRC)/lang/lang.h $(SRC)/Cellule/Cellule.h $(SRC)/relations/relations.h $(SRC)/Client/Client.h $(SRC)/Client/Clients.h  $(SRC)/Article/Article.h $(SRC)/Article/Articles.h $(SRC)/Commande/Commande.h $(SRC)/Commande/Commandes.h $(SRC)/fonctions/fonctions.h $(SRC)/Livraison/Livraison.h $(SRC)/Livraison/Livraisons.h
+HEADER= $(SRC)/Date/Date.h $(SRC)/affichage/affichage.h $(SRC)/lang/lang.h $(SRC)/Cellule/Cellule.h $(SRC)/relations/relations.h $(SRC)/Client/Client.h $(SRC)/Client/Clients.h  $(SRC)/Article/Article.h $(SRC)/Article/Articles.h $(SRC)/Commande/Commande.h $(SRC)/Commande/Commandes.h $(SRC)/fonctions/fonctions.h $(SRC)/Livraison/Livraison.h $(SRC)/Livraison/Livraisons.h
 do : commerce
+$(OBJ)/date.o: $(HEADER)
+	$(CCPP) $(CFLAGS) $(SRC)/Date/Date.cpp -o $(OBJ)/date.o
 $(OBJ)/Client.o: $(HEADER)
 	$(CCPP) $(CFLAGS) $(SRC)/Client/Client.cpp -o $(OBJ)/Client.o
 $(OBJ)/Clients.o: $(HEADER)

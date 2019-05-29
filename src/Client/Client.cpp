@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "Client.h"
-
+#include "../Date/Date.h"
 namespace Client{
 
     Base::Base(){
@@ -9,7 +9,7 @@ namespace Client{
 
     };
 
-    Base::Base(typeId numero, std::string nom, std::string prenom, std::string date, std::string sexe){
+    Base::Base(typeId numero, std::string nom, std::string prenom, Date::Date date, std::string sexe){
         
         this->numeroClient = numero;
         this->nomClient = nom;
@@ -43,7 +43,8 @@ namespace Client{
     }
 
     const char * Base::get_date(){
-        return dateNaissance.c_str();
+        std::cout << Date::Date::to_str( dateNaissance).c_str() << std::endl;
+        return Date::Date::to_str( dateNaissance).c_str();
     }
 
     const char * Base::get_sexe(){
@@ -140,7 +141,7 @@ namespace Client{
         fichier << ' ';
         serialiser(fichier,client.prenomClient);
         fichier << ' ';
-        serialiser(fichier,client.dateNaissance);
+        fichier << client.dateNaissance;
         fichier << ' ';
         serialiser(fichier,client.sexe);
         fichier << ' ';
@@ -150,7 +151,7 @@ namespace Client{
 
         std::string nom;    
         std::string prenom;
-        std::string date;
+        Date::Date date;
         std::string sexe;
         if (!fichier) return fichier;
 
@@ -158,7 +159,7 @@ namespace Client{
         client.nomClient = nom;
         if (!deserialiser(fichier, prenom)) return fichier;
         client.prenomClient = prenom;
-        if (!deserialiser(fichier, date)) return fichier;
+        if (!(fichier >> date)) return fichier;
         client.dateNaissance = date;
         if (!deserialiser(fichier, sexe)) return fichier;
         client.sexe = sexe;

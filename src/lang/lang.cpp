@@ -7,7 +7,10 @@ std::map<long long, char *> lang;
 
 const char * get(const char * a){
     std::string g(a);
-    return lang[de_string_pour_long_long(g)];
+    if(lang[de_string_pour_long_long(g)]){
+        return lang[de_string_pour_long_long(g)];
+    }
+    return "";
 }
 int charger(const char * fichier_lang="fr"){
     
