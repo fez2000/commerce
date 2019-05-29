@@ -22,31 +22,31 @@ void acceuil(){
     do{
         
         // petit menu de presentation
-        std::cout << "\t##############################################################################################################\n";              
+        std::cout << "\t\033[36;1m##############################################################################################################\n";            
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                           ##\n";
+        std::cout << "\t##\033[36;0m                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                           \033[36;1m##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       ##\n";
-        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       ##\n";
+        std::cout << "\t##\033[36;0m                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                            \033[33;1m%%%%%        %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                            \033[33;1m%%%%%        %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
+        std::cout << "\t##\033[36;0m                              \033[32;1mVeuillez suivre à la lettre les consigne !\033[32;0m                                  \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##      Tapez:                                                                                              ##\n";
-        std::cout << "\t##          1- Pour GESTIONS CLIENTS                         2- Pour GESTIONS ARTICLES                      ##\n";
-        std::cout << "\t##          3- Pour GESTIONS COMMANDES                       4- Pour GESTIONS LIVRAISONS                    ##\n";
-        std::cout << "\t##          5- Pour AUTRES FONCTIONS                         0- QUITTER                                     ##\n";
+        std::cout << "\t##\033[36;0m      \033[33;1mTapez:\033[33;0m                                                                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m          \033[33;1m1- Pour GESTIONS CLIENTS                         2- Pour GESTIONS ARTICLES\033[33;0m                      \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m          \033[33;1m3- Pour GESTIONS COMMANDES                       4- Pour GESTIONS LIVRAISONS\033[33;0m                    \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m          \033[33;1m5- Pour AUTRES FONCTIONS                         0- QUITTER\033[33;0m                                     \033[36;1m##\n";
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
         std::cout << "\t##     -----------------------------------------------------------------------------------------------      ##\n";
         std::cout << "\t##                                                                                                          ##\n";
 
-        std::cout << "\t## Entrer votre choix: \t";
+        std::cout << "\t##\033[36;0m \033[33;1mEntrer votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
         system("clear");
 
@@ -83,39 +83,39 @@ void autre_fonction(){
 
         // petit menu de presentation
                 // petit menu de presentation
-        std::cout << "\t##############################################################################################################\n";    
+        std::cout << "\t\033[36;1m##############################################################################################################\n";    
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                          \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                            ##\n";
+        std::cout << "\t##\033[36;0m                          \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE\033[33;0m                            \033[36;1m##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                            \033[33;1m%%%%%        %%%\033[33;0m                                              ##\n";
-        std::cout << "\t##                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       ##\n";
-        std::cout << "\t##                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       ##\n";
+        std::cout << "\t##\033[36;0m                                         \033[33;1m%%%     %%%     %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                          \033[33;1m%%%   %%%      %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                            \033[33;1m%%%%%        %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                            \033[33;1m%%%%%        %%%\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                          \033[33;1m%%%   %%%      %%%%%%%%%%\033[33;0m                                       \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##                              Veuillez suivre à la lettre les consigne !                                  ##\n";
+        std::cout << "\t##\033[36;0m                              Veuillez suivre à la lettre les consigne !                                  \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##      Tapez:                                                                                              ##\n";
-        std::cout << "\t##              1 - Pour Liste des articles achetes par un client                                           ##\n";
-        std::cout << "\t##              2 - Pour Liste des Clients d'un Article                                                     ##\n";
-        std::cout << "\t##              3 - Pour Liste des Commandes en Cours d'un Client                                           ##\n";
-        std::cout << "\t##              4 - Pour les Statistiques sur les Ventes d'un Article                                       ##\n";
-        std::cout << "\t##              5 - Pour Liste des articles avec Prix Unitaire                                              ##\n";
-        std::cout << "\t##              6 - Pour Liste des Articles a Ravitailler                                                   ##\n";
-        std::cout << "\t##              7 - Pour Capital du SuperMarche XL                                                          ##\n";
-        std::cout << "\t##              8 - Pour Meilleur Client de XL                                                              ##\n";
+        std::cout << "\t##\033[36;0m      \033[33;1mTapez:\033[33;0m                                                                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m1 - Pour Liste des articles achetes par un client\033[33;0m                                           \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m2 - Pour Liste des Clients d'un Article\033[33;0m                                                     \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m3 - Pour Liste des Commandes en Cours d'un Client\033[33;0m                                           \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m4 - Pour les Statistiques sur les Ventes d'un Article\033[33;0m                                       \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m5 - Pour Liste des articles avec Prix Unitaire\033[33;0m                                              \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m6 - Pour Liste des Articles a Ravitailler\033[33;0m                                                   \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m7 - Pour Capital du SuperMarche XL\033[33;0m                                                          \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m8 - Pour Meilleur Client de XL\033[33;0m                                                              \033[36;1m##\n";
         std::cout << "\t##                                                                                                          ##\n";
-        std::cout << "\t##              9 - Pour RETOUR                          0 - QUITTER LE PROGRAMME                           ##\n";
+        std::cout << "\t##\033[36;0m              \033[33;1m9 - Pour RETOUR                          0 - QUITTER LE PROGRAMME\033[33;0m                           \033[36;1m##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##     ---------------------------------------------------------------------------------------------        ##\n";
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
         std::cout << "\t##                                                                                                          ##\n";
 
-        std::cout << "\t## Entrer votre choix: \t";
+        std::cout << "\t##\033[36;0m \033[33;1mEntrer votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
         system("clear");
 
@@ -2174,17 +2174,17 @@ void interface_commande_client(){
             std::cout << "\t##\033[36;0m                                       \033[33;1mPAS DE COMMANDE POUR CE CLIENT\033[33;0m                                     \033[36;1m##\n";       
             std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
         }else{
-            std::cout << "\t##\033[36;0m              \033[37;1mID\033[37;0m                    \033[36;1m|\033[36;0m         \033[37;1mNOM CLIENT\033[37;0m    \033[36;1m|\033[36;0m         \033[37;1mARTICLE\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mQUANTITE\033[37;0m           \033[36;1m##\n";
+            std::cout << "\t##\033[36;0m                  \033[37;1mID\033[37;0m                \033[36;1m|\033[36;0m         \033[37;1mNOM CLIENT\033[37;0m    \033[36;1m|\033[36;0m      \033[37;1mARTICLE\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mQUANTITE\033[37;0m           \033[36;1m##\n";
             std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\n";
             std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
             com = liste.recup_tete();
             while ( com != liste.recup_sentinelle()){   
                 article = gestionnaireArticle.chercher(com->get().ref_article());
                 if(article){
-                std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"   \t\t\t"<< p->get().get_nom() <<"\t"<< article->get().get_libelle() <<"\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
+                std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"     \t\t\t"<< p->get().get_nom() <<"       \t\t"<< article->get().get_libelle() <<"\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
                 std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
                 }else{
-                    std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"   \t\t\t"<< p->get().get_nom() <<"\t"<< com->get().ref_article() <<"\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
+                    std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"     \t\t\t"<< p->get().get_nom() <<"        \t\t"<< com->get().ref_article() <<"\t\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
                     std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
                 }
                 
