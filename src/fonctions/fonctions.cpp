@@ -126,15 +126,16 @@ long convertion1(char * chaine){
     long nombre = 0;
    
     while(chaine[i] != '\0'){
+        
         if( chaine[i] > 47 && chaine[i] <  59){
-            
-            nombre =  nombre * 10*i +  chaine[i] - 48;
+            nombre =  nombre * 10 +  chaine[i] - 48;
             
         }else{
             return -1;
         }
         i++;
     }
+    
     return nombre ;
 }
 typeId convertion(char * chaine)
@@ -143,8 +144,9 @@ typeId convertion(char * chaine)
     typeId nombre = 0;
    
     while(chaine[i] != '\0'){
+        
         if( chaine[i] > 47 && chaine[i] <  59){
-            
+        
             nombre =  nombre * 10*i +  chaine[i] - 48;
             
         }else{
