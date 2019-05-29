@@ -23,6 +23,11 @@ bool choix_non_valide(std::string choix, std::string listeValide ){
     }
     return true;
 };
+bool is_sexe(const char * s){
+    if(strlen(s) > 1) return false;
+    if(s[0] == 'F' || s[0]=='M') return true;
+    return false;
+};
 long long de_string_pour_long_long(std::string s){
  long long num = 0;
  long long i = 0, N= s.size();
@@ -116,7 +121,22 @@ std::string cat_many(int nbCh, ...){
     
     return reslut;
 }
-
+long convertion1(char * chaine){
+    unsigned i = 0;
+    long nombre = 0;
+   
+    while(chaine[i] != '\0'){
+        if( chaine[i] > 47 && chaine[i] <  59){
+            
+            nombre =  nombre * 10*i +  chaine[i] - 48;
+            
+        }else{
+            return -1;
+        }
+        i++;
+    }
+    return nombre ;
+}
 typeId convertion(char * chaine)
 {
     unsigned i = 0;

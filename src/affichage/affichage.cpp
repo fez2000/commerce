@@ -97,7 +97,7 @@ void autre_fonction(){
         std::cout << "\t##\033[36;0m                                         \033[33;1m%%%     %%%     %%%%%%%%%%\033[33;0m                                       \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
-        std::cout << "\t##\033[36;0m                              Veuillez suivre à la lettre les consigne !                                  \033[36;1m##\n";
+        std::cout << "\t##\033[36;0m                              \033[32;1mVeuillez suivre à la lettre les consigne !\033[32;0m                                  \033[36;1m##\n";
         std::cout << "\t##                          ---------------------------------------------------                             ##\n";
         std::cout << "\t##\033[36;0m      \033[33;1mTapez:\033[33;0m                                                                                              \033[36;1m##\n";
         std::cout << "\t##\033[36;0m              \033[33;1m1 - Pour Liste des articles achetes par un client\033[33;0m                                           \033[36;1m##\n";
@@ -177,13 +177,13 @@ void menu_general_client(){
     std::string choixValide("012345");
     do
     {
-                std::cout << "\t##############################################################################################################\n";                      
+        std::cout << "\t\033[36;1m##############################################################################################################\n";                      
         std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
-        std::cout << "\t##                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                        ##\n";
+        std::cout << "\t##\033[36;0m                           \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0m                        ##\n";
         std::cout << "\t##                             --------------------------------------------------                           ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                             --------------------------------------------------                           ##\n";
-        std::cout << "\t##                            |               GESTION DES CLIENTS                |                          ##\n";
+        std::cout << "\t##                            |               \033[32;1mGESTION DES CLIENTS\033[32;0m                |                          ##\n";
         std::cout << "\t##                             --------------------------------------------------                           ##\n";
         std::cout << "\t##                                                                                                          ##\n";
         std::cout << "\t##                                Veuillez suivre à la lettre les consigne !                                ##\n";
@@ -413,12 +413,9 @@ void menu_general_livraison(){
 */
 void interface_creation_client(){
     // differentes variables a utiliser dans notre fonction
-    std::string nom;
-    std::string prenom;
-    std::string date;
-    std::string sexe;
-    std::string choixUtilisateur;
+    char nom[MAX], prenom[MAX], sexe[MAX];
     std::string choixValide("01");
+    Date::Date date;
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
     std::cout << "\t##-_-_-                                                                            -_-_-##\n";
@@ -434,21 +431,32 @@ void interface_creation_client(){
     std::cout << "\t##                                                                                      ##\n";
     std::cout << "\t##         ----------------------------------------------------------------             ##\n";
     // recuperation des informations du nouveau client
-    std::cout << get("nomClient");
-    std::cin >>nom;
+    std::cout << "\t Entrer le NOM du Client :\t" ;
+    std::cin.ignore();
+    std::cin.getline(nom,MAX);
     std::cout <<"\n";
-    std::cout << get("prenomClient");
-    std::cin >> prenom;
+    std::cout << "\t Entrer le PRENOM du Client :\t";
+    std::cin.getline(prenom,MAX);
     std::cout <<"\n";
-    std::cout << get("dateNaisClient");
-    std::cin >> date;
+    std::cout << "\t Entrer DATE NAISSANCE Client :\n";
+    date = Date::recup_date("\t\t","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide");
     std::cout <<"\n";
-    std::cout << get("sexeClient");
-    std::cin >> sexe;
+    std::cout << "\t Entrer SEXE Client (M/F) :\t";
+    do{
+        std::cin.getline(sexe,MAX);
+        bool sexeValide = is_sexe(sexe);
+        if(!sexeValide){
+            std::cout <<"\t Entrez un SEXE valide F ou M\t";
+        }else{
+            break;
+        }
+    }while (true);
+    
+    
     std::cout <<"\n";
 
     // Enregistrement de notre client
-    gestionnaireClient.creer_client(nom.c_str(), prenom.c_str(), date.c_str(), sexe.c_str());
+    gestionnaireClient.creer_client(nom, prenom, date, sexe);
     std::cout <<"\n";
 
 
@@ -1861,14 +1869,14 @@ void interface_modif_client(){
     // differentes variables a utiliser dans notre fonction
     std::string nom;
     std::string prenom;
-    std::string date;
+    Date::Date date;
     std::string sexe;
-    std::string choixUtilisateur;
     int id;
     typeId identifiant;
     std::string nomR;
     std::string ch;
     Cellule<Client::Base> * personne ;
+    std::string choixValide("12");
 
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
@@ -1893,7 +1901,7 @@ void interface_modif_client(){
         std::cout <<"\t\t 2 - pour NOM \n\n";
         std::cout <<"\t Votre choix: \t";
         std::cin >> choixUtilisateur;
-    } while (choixUtilisateur.c_str()[0] != '1' && choixUtilisateur.c_str()[0] != '2');
+    } while (choix_non_valide(choixUtilisateur,choixValide));
 
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
@@ -1913,12 +1921,12 @@ void interface_modif_client(){
                 std::cin >>nom;
                 std::cout << "\t Entrer PRENOM Client :\t";
                 std::cin >> prenom;
-                std::cout << "\t Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :\t";
-                std::cin >> date;
+                std::cout << "\t Entrer DATE NAISSANCE Client:\t";
+                date = Date::recup_date("\t\t","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide");
                 std::cout << "\t Entrer SEXE Client(M/F) :\t";
                 std::cin >> sexe;
 
-                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date.c_str(),sexe.c_str());
+                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date,sexe.c_str());
             }else{
                 std::cout << "\n";            
                 std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
@@ -1943,12 +1951,12 @@ void interface_modif_client(){
                 std::cin >>nom;
                 std::cout << "\t Entrer PRENOM Client :\t";
                 std::cin >> prenom;
-                std::cout << "\t Entrer DATE NAISSANCE Client(JJ/MM/AAAA) :\t";
-                std::cin >> date;
+                std::cout << "\t Entrer DATE NAISSANCE Client :\n";
+                date = Date::recup_date("\t\t","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide");
                 std::cout << "\t Entrer SEXE Client(M/F) :\t";
                 std::cin >> sexe;
 
-                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date.c_str(),sexe.c_str());               
+                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date,sexe.c_str());               
             }else{
                 std::cout <<"\n";            
                 std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
@@ -1957,17 +1965,18 @@ void interface_modif_client(){
             }
         break;
     };
-
+    choixValide.clear();
+    choixValide.append("01");
     do{
         std::cout <<"\n";            
         std::cout <<"\t Voulez-vous refaire une nouvelle Modification? \n";
         std::cout <<"\t\t     1 - pour OUI \n";
         std::cout <<"\t\t     0 - pour NON \n\n";
         std::cout <<"\t Votre choix: \t";
-        std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+        std::cin >> choixUtilisateur;
+    } while (choix_non_valide(choixUtilisateur,choixValide));
 
-    switch (ch.c_str()[0]){
+    switch (choixUtilisateur.c_str()[0]){
         case '0':
             system("clear");
             menu_general_client();

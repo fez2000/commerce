@@ -1,10 +1,11 @@
 #ifndef CLIENT_H_INCLUDE
 #define CLIENT_H_INCLUDE
 
-#include "../fonctions/fonctions.h" // Differentes fonction generique
-#include <string>
+#include "../Date/Date.h"
+
 #define MASCULIN "M"
 #define FEMININ "F"
+
 
 namespace Client{
     /* 
@@ -19,13 +20,13 @@ namespace Client{
         typeId numeroClient;
         std::string nomClient;
         std::string prenomClient;
-        std::string dateNaissance;
+        Date::Date dateNaissance;
         std::string sexe;
     public:
 
         // constructeur
         Base(/* args */);
-        Base(typeId, std::string, std::string, std::string, std::string);
+        Base(typeId, std::string, std::string, Date::Date, std::string);
 
         ~Base();
         
