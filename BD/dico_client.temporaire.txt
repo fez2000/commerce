@@ -1,4 +1,1 @@
-3 22
-"jeanpierre" "paul" 0 11 0 "M"  19
-"justine" "pierre" 29 2 0 "F"  20
-"tchuente" "patrice" 0 12 0 "M"  21
+

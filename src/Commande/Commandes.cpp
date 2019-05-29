@@ -71,7 +71,6 @@ namespace Commande{
                 if(ENCOUR == i->get().status()){
                     Base p = i->get();
                     j = new Cellule<Base>(p);
-                    std::cout<< j->get().ref()<<std::endl;
                      t.ajouter(j);
                 }
                
@@ -106,11 +105,9 @@ namespace Commande{
                 fichier << *this;
                 fichier.close();
                 std::cout <<"\n";
-                std::cout << "\t##########################################################################################\n";
-                std::cout << "\t##                                                                                      ##\n"; 
-                std::cout << "\t##                          Operation effectuer avec SUCCES !                           ##\n";
-                std::cout << "\t##                                                                                      ##\n";
-                std::cout << "\t##########################################################################################\n"; 
+                std::cout << "\t\033[33;1m##----------------------------------------------------------------------------------------------------------##\n";
+                std::cout << "\t##\033[33;0m                                   \033[36;1mOperation effectuer avec SUCCES !\033[36;0m                                      \033[33;1m##\n";
+                std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[33;0m\n";
             }
         }
         catch(std::ofstream::failure& ex){
