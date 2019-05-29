@@ -502,11 +502,10 @@ nomNonNull:    std::cout << "\t Entrer le NOM du Client :\t" ;
 
 void interface_creation_article(){
     // differentes variables a utiliser dans notre fonction
-    std::string nomArticle;
     double prixArticle;
     unsigned long quantite;
     unsigned long seuil;
-    std::string choixUtilisateur;
+    char nomArticle[MAX];
 
     // petit menu de presentation
     std::cout << "\t##########################################################################################\n";
@@ -523,9 +522,12 @@ void interface_creation_article(){
     std::cout << "\t##                                                                                      ##\n";
     std::cout << "\t##         ----------------------------------------------------------------             ##\n";
         // recuperation des informations du nouveau article
-        std::cout <<"\n";
+articleNotNull:        std::cout <<"\n";
         std::cout << "\t Entrer le libelle de l'Article :\t";
-        std::cin >>nomArticle;
+        std::cin.ignore();
+        std::cin.getline(nomArticle,MAX);
+        if(strlen(nomArticle) == 0) goto articleNotNull; 
+        nomArticle;
         std::cout <<"\n";
         std::cout << "\t Entrer le Prix Unitaire de l'Article :\t";
         std::cin >> prixArticle;
@@ -536,7 +538,7 @@ void interface_creation_article(){
         std::cout << "\t Entrer le Seuil Critique de l'Article :\t";
         std::cin >> seuil;
     // Enregistrement de notre article
-    gestionnaireArticle.creer(nomArticle.c_str(), prixArticle, quantite, seuil);
+    gestionnaireArticle.creer(nomArticle, prixArticle, quantite, seuil);
     std::cout <<"\n";
 
 
