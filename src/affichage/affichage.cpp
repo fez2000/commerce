@@ -431,9 +431,11 @@ void interface_creation_client(){
     std::cout << "\t##                                                                                                          ##\n";
     std::cout << "\t##         ------------------------------------------------------------------------------------             ##\033[36;0m\n";
     // recuperation des informations du nouveau client
-    std::cout << "\t \033[33;1mEntrer le NOM du Client :\033[33;0m\t" ;
+    
+nomNonNull:    std::cout << "\t \033[33;1mEntrer le NOM du Client :\033[33;0m\t" ;
     std::cin.ignore();
     std::cin.getline(nom,MAX);
+    if(strlen(nom)==0)goto nomNonNull;
     std::cout <<"\n";
     std::cout << "\t \033[33;1mEntrer le PRENOM du Client :\033[33;0m\t";
     std::cin.getline(prenom,MAX);

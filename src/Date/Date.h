@@ -1,7 +1,7 @@
 #ifndef DATE_H_INCLUDE
 #define DATE_H_INCLUDE
 #include "../fonctions/fonctions.h"
-#define JOUR_MIN 0
+#define JOUR_MIN 1
 #define JOUR_MAX 31
 #define MOIS_MIN 0
 #define MOIS_MAX 11

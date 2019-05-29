@@ -2,8 +2,7 @@
 namespace Date{
     std::string Date::to_str(Date d){
         std::string delimteur("/");
-        std::cout << (::to_str<int>(d.jour) + delimteur +::to_str<int>(d.mois)+ delimteur+ "/",::to_str<int>(d.annee)).c_str();
-      return   ::to_str<int>(d.jour) + delimteur +::to_str<int>(d.mois)+ delimteur+ "/",::to_str<int>(d.annee);
+      return   ::to_str<int>(d.jour) + delimteur + ::to_str<int>(d.mois) + delimteur + ::to_str<int>(d.annee);
     };
     Date::Date (Date & a){
         jour = a.jour;
@@ -66,12 +65,16 @@ namespace Date{
         if(this->mois < 0 || this->mois >11) return false;
         int t[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
         if(this->mois == FEVRIER){
-            if(this->jour<0 || this->jour > ( t[FEVRIER]+(annee_bissextile(this->annee)?1:0))) return false;
+            int a = t[FEVRIER];
+            if(annee_bissextile(this->annee)) a++;
+            if(this->jour<1 || this->jour > a) return false;
             return true;
+        }else{
+            if(this->jour < 1 || this->jour > t[this->mois]){
+                return false;
+            }
         }
-        if(this->jour < 0 || this->jour > t[this->mois]){
-            return false;
-        }
+        
         return true;
     };
     Date & Date::operator= (const Date & is){
@@ -174,7 +177,7 @@ recommencer:        do{
                 std::cout << decalage << invalideMoisMsg << std::endl;
                 lister_mois(decalage);    
             }else{
-                date.mettre_mois((Mois)m);
+                date.mettre_mois((Mois)(m-1));
                 break;
             }
         }while ( true);
@@ -184,11 +187,12 @@ recommencer:        do{
             if(a < ERROR_CODE){
                 std::cout << decalage << invalideAnneeMsg << std::endl;
             }else{
+                std::cout << a <<"Fdf\n";
                 date.mettre_annee(a);
                 break;
             }
         }while ( true);
-        if(date.est_valide()){
+        if(!date.est_valide()){
             std::cout << decalage << invalideDateMsg << std::endl;
             goto recommencer;
         }

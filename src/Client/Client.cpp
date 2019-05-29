@@ -43,8 +43,7 @@ namespace Client{
     }
 
     const char * Base::get_date(){
-        std::cout << Date::Date::to_str( dateNaissance).c_str() << std::endl;
-        return Date::Date::to_str( dateNaissance).c_str();
+        return strdup(Date::Date::to_str( dateNaissance).c_str());
     }
 
     const char * Base::get_sexe(){
