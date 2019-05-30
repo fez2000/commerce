@@ -1423,7 +1423,6 @@ void interface_suppression_article(){
     long long _id;
     char id[MAX],nomR[MAX];
     typeId ref;
-    std::string choixValide("12"),choixValide2("01");
     std::string ch;
     Cellule<Article::Base> * produit;
     std::string choixValide("12");
@@ -1470,8 +1469,7 @@ void interface_suppression_article(){
                 std::cout << "\033[32;1m\t     "<< produit->get().get_reference() <<"     \t"<< produit->get().get_libelle() <<"     \t\t"<< produit->get().get_prix() <<"     \t\t"<< produit->get().get_quantite() <<"     \t\t"<< produit->get().get_seuil() <<"\033[32;0m\n";                
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
                 std::cout <<"\n";
-                ref = _id;
-                gestionnaireArticle.supprimer(ref);
+                gestionnaireArticle.supprimer(_id);
             }else{
                 std::cout << "\n";            
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------##\n";    
@@ -1493,8 +1491,7 @@ void interface_suppression_article(){
                 std::cout << "\033[32;1m\t     "<< produit->get().get_reference() <<"     \t"<< produit->get().get_libelle() <<"     \t\t"<< produit->get().get_prix() <<"     \t\t"<< produit->get().get_quantite() <<"     \t\t"<< produit->get().get_seuil() <<"\033[32;0m\n";                
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
                 std::cout <<"\n";
-                ref = id;
-                gestionnaireArticle.supprimer(ref);
+                gestionnaireArticle.supprimer(_id);
             }else{
                 std::cout << "\n";            
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------##\n";    
