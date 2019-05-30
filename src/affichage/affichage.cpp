@@ -121,19 +121,20 @@ void autre_fonction(){
             system("exit");
             break;
         case '1': // Liste des articles achetes par un client
-               
+              system("clear");
+              interface_article_achete_par_un_client(); 
             break;
         case '2': // Liste des Clients d'un Article
                 system("clear");
                 interface_liste_client_article();
-               
                break;
           case '3': // Liste des Commandes en Cours d'un Client
             system("clear");
             interface_commande_client();  
                break;
           case '4': // les Statistiques sur les Ventes d'un Article
-               
+            system("clear");
+            interface_statistique();
                break;
           case '5': // Liste des articles avec Prix Unitaire
             system("clear");
@@ -401,10 +402,9 @@ void menu_general_livraison(){
     }
 }
 
-/*
-    Cette fonction nous permet d'avoir une interface
-    propre pour l'enregistrement de nos nouveau client
-*/
+// --------------------------------- Question 1.1: Enregistrement terminé--------------------------------------
+
+    //  Enregistrement client
 void interface_creation_client(){
     // differentes variables a utiliser dans notre fonction
     char nom[MAX], prenom[MAX], sexe[MAX];
@@ -455,8 +455,8 @@ void interface_creation_client(){
     std::cout <<"\n";
     do{
         std::cout <<"\t \033[33;1mVoulez-vous refaire un enregistrement? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour NON \n";
+        std::cout <<"\t [1] - pour OUI \n";
+        std::cout <<"\t [0] - pour NON \n";
         std::cout <<"\t Votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -473,9 +473,8 @@ void interface_creation_client(){
     }
 
 
-};   // fonction terminé
-
-
+}; 
+    // Enregistrement article
 void interface_creation_article(){
     // differentes variables a utiliser dans notre fonction
     double prixArticle;
@@ -523,8 +522,8 @@ void interface_creation_article(){
 
     do{
         std::cout <<"\t \033[33;1mVoulez-vous refaire un enregistrement? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour NON \n";
+        std::cout <<"\t [1] - pour OUI \n";
+        std::cout <<"\t [0] - pour NON \n";
         std::cout <<"\t Votre choix: \033[33;0m\t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -540,8 +539,8 @@ void interface_creation_article(){
             break;
     }
 
-};// termine
-
+};
+    // Enregistrement commande
 void interface_creation_commande(){
     // differentes variables a utiliser dans notre fonction
     typeId idClient;
@@ -578,8 +577,8 @@ void interface_creation_commande(){
  a1:       do{ 
             std::cout <<"\n\033[33;1m";
             std::cout <<"\t Voulez-vous faire la recherche du client via ID ou via NOM? \n";
-            std::cout <<"\t\t 1 - pour ID \n";
-            std::cout <<"\t\t 2 - pour NON \n\n";
+            std::cout <<"\t\t [1] - pour ID \n";
+            std::cout <<"\t\t [2] - pour NON \n\n";
             std::cout <<"\t Votre choix:\033[33;1m \t";
             std::cin >> choixUtilisateur;
         } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -607,8 +606,8 @@ void interface_creation_commande(){
     a2:         do{ 
                     std::cout <<"\n\033[33;1m";
                     std::cout <<"\t Voulez-vous faire la recherche de cette Article via ID ou via LIBELLE? \n";
-                    std::cout <<"\t\t 1 - pour ID \n";
-                    std::cout <<"\t\t 2 - pour LIBELLE \n\n";
+                    std::cout <<"\t\t [1] - pour ID \n";
+                    std::cout <<"\t\t [2] - pour LIBELLE \n\n";
                     std::cout <<"\t Votre choix:\033[33;0m \t";
                     std::cin >> choixU;
                 } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -656,8 +655,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n ";
                             std::cout <<"\t \033[36;1mVoulez-vous ANNULER la commande ou CHANGER l'article de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix:\033[36;0m \t";
                             std::cin >> choixUtilisateur;
                         } while (choix_non_valide(choixUtilisateur,choixValide2));
@@ -721,8 +720,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n ";
                             std::cout <<"\t \033[33;1mVoulez-vous ANNULER la commande ou CHANGER l'article de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix:\033[36;0m \t";
                             std::cin >> choixUtilisateur;
                         } while(choix_non_valide(choixUtilisateur,choixValide2));
@@ -747,8 +746,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n ";
                             std::cout <<"\t \033[36;1mVoulez-vous ANNULER la commande ou CHANGER le client de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix: \033[36;0m\t";
                             std::cin >> choixUtilisateur;
                         } while(choix_non_valide(choixUtilisateur,choixValide2));
@@ -794,8 +793,8 @@ void interface_creation_commande(){
     a3:             do{ 
                     std::cout <<"\n";
                     std::cout <<"\t \033[33;1mVoulez-vous faire la recherche de cette Article via ID ou via LIBELLE? \n";
-                    std::cout <<"\t\t 1 - pour ID \n";
-                    std::cout <<"\t\t 2 - pour LIBELLE \n\n";
+                    std::cout <<"\t\t [1] - pour ID \n";
+                    std::cout <<"\t\t [2] - pour LIBELLE \n\n";
                     std::cout <<"\t Votre choix:\033[33;0m \t";
                     std::cin >> choixU;
                 } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -842,8 +841,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n ";
                             std::cout <<"\t \033[33;1mVoulez-vous ANNULER la commande ou CHANGER l'article de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix: \033[33;0m\t";
                             std::cin >> choixUtilisateur;
                         } while (choix_non_valide(choixUtilisateur,choixValide2));
@@ -906,8 +905,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n ";
                             std::cout <<"\t \033[33;1mVoulez-vous ANNULER la commande ou CHANGER l'article de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix: \033[33;0m\t";
                             std::cin >> choixUtilisateur;
                         } while (choix_non_valide(choixUtilisateur,choixValide2));
@@ -932,8 +931,8 @@ void interface_creation_commande(){
                         do{
                             std::cout << " \n \033[33;1m";
                             std::cout <<"\t Voulez-vous ANNULER la commande ou CHANGER le client de la commande? \n";
-                            std::cout <<"\t 1 - pour CHANGER \n";
-                            std::cout <<"\t 0 - pour ANNULER \n";
+                            std::cout <<"\t [1] - pour CHANGER \n";
+                            std::cout <<"\t [0] - pour ANNULER \n";
                             std::cout <<"\t Votre choix: \033[33;0m\t";
                             std::cin >> choixUtilisateur;
                         } while (choix_non_valide(choixUtilisateur,choixValide2));
@@ -954,8 +953,8 @@ void interface_creation_commande(){
     do{
         std::cout << " \n\033[33;1m ";
         std::cout <<"\t Voulez-vous refaire un enregistrement? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour NON \n";
+        std::cout <<"\t [1] - pour OUI \n";
+        std::cout <<"\t [0] - pour NON \n";
         std::cout <<"\t Votre choix: \033[33;0m\t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide2));
@@ -971,8 +970,8 @@ void interface_creation_commande(){
             break;
     }
 
-};// termine
-
+};
+    // Enregistrement livraison -----------------------pas terminé-------------
 void interface_creation_livraison(){
     // differentes variables a utiliser dans notre fonction
     typeId idClient;
@@ -1031,8 +1030,8 @@ void interface_creation_livraison(){
     do{
         std::cout << " \n\033[33;1m ";
         std::cout <<"\t Voulez-vous cree une autre livraison? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour NON \n";
+        std::cout <<"\t [1] - pour OUI \n";
+        std::cout <<"\t [0] - pour NON \n";
         std::cout <<"\t Votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -1047,11 +1046,9 @@ void interface_creation_livraison(){
             interface_creation_livraison();    
             break;
     }
-};// termine
-
-/*
-    fonction de listage
-*/
+};
+// ---------------------------------- Question 1.2: Affichage de données terminé ------------------------------
+    // Lister les clients
 void interface_liste_client(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
@@ -1084,8 +1081,8 @@ void interface_liste_client(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU CLIENT \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU CLIENT \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
         system("clear");
@@ -1101,8 +1098,8 @@ void interface_liste_client(){
             menu_general_client();
             break;
     }   
-};//fonction termine
-
+};
+    // Lister les commandes
 void interface_liste_commande(){
     // differentes variables a utiliser dans notre fonction
     typeId idClient;
@@ -1164,8 +1161,8 @@ void interface_liste_commande(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU COMMANDE \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU COMMANDE \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
         system("clear");
@@ -1182,8 +1179,8 @@ void interface_liste_commande(){
             break;
     } 
 
-};//terminé
-
+};
+    // Lister les articles
 void interface_liste_article(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
@@ -1216,8 +1213,8 @@ void interface_liste_article(){
 
     do{
         std::cout <<"\n\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU DES ARTICLES \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU DES ARTICLES \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
         system("clear");
@@ -1233,8 +1230,8 @@ void interface_liste_article(){
             menu_general_article();
             break;
     }   
-};//TERMINÉ
-
+};
+    // Lister les livraisons ---------------------- pas terminé -------------------
 void interface_liste_livaison(){
     // differentes variables a utiliser dans notre fonction
     typeId idClient;
@@ -1294,8 +1291,8 @@ void interface_liste_livaison(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU COMMANDE \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU COMMANDE \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
         system("clear");
@@ -1313,10 +1310,8 @@ void interface_liste_livaison(){
     } 
 
 };
-/*
-    fonction de suppression
-*/
-// suppression client
+// ----------------------------------------- Question 1.3: Suppression de données ------------------------------
+    // suppression client
 void interface_suppression_client(){
     // differentes variables a utiliser dans notre fonction
     std::string choixUtilisateur;
@@ -1325,7 +1320,7 @@ void interface_suppression_client(){
     std::string nomR;
     std::string ch;
     Cellule<Client::Base> * personne ;
-    std::string choixValide("01");
+    std::string choixValide("01"),choixValide1("12");
 
     // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";    
@@ -1345,11 +1340,11 @@ void interface_suppression_client(){
  do{ 
         std::cout <<"\n\033[33;1m";
         std::cout <<"\t Voulez-vous faire la recherche du CLIENT a SUPPRIMER via son ID ou via son NOM? \n";
-        std::cout <<"\t\t 1 - pour ID \n";
-        std::cout <<"\t\t 2 - pour NOM \n\n";
+        std::cout <<"\t\t [1] - pour ID \n";
+        std::cout <<"\t\t [2] - pour NOM \n\n";
         std::cout <<"\t Votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
-    } while (choix_non_valide(choixUtilisateur,choixValide));
+    } while (choix_non_valide(choixUtilisateur,choixValide1));
 
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
@@ -1399,8 +1394,8 @@ void interface_suppression_client(){
     do{
         std::cout << "\n\033[33;1m";
         std::cout <<"\t Voulez-vous refaire une suppresion? \n";
-        std::cout <<"\t     1 - pour OUI \n";
-        std::cout <<"\t     0 - pour NON \n\n";
+        std::cout <<"\t     [1] - pour OUI \n";
+        std::cout <<"\t     [0] - pour NON \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
     } while (choix_non_valide(ch,choixValide));
@@ -1415,8 +1410,8 @@ void interface_suppression_client(){
             interface_suppression_client();
             break;
     }   
-};// fonction terminé
-
+};
+    // suppression article
 void interface_suppression_article(){
     // differentes variables a utiliser dans notre fonction
 
@@ -1447,8 +1442,8 @@ void interface_suppression_article(){
  resup:   do{ 
         std::cout <<"\n\033[33;1m";
         std::cout <<"\t Voulez-vous faire la recherche de l'Article a SUPPRIMER via son ID ou via son LIBELLE? \n";
-        std::cout <<"\t\t 1 - pour ID \n";
-        std::cout <<"\t\t 2 - pour LIBELLE \n\n";
+        std::cout <<"\t\t [1] - pour ID \n";
+        std::cout <<"\t\t [2] - pour LIBELLE \n\n";
         std::cout <<"\t Votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -1513,8 +1508,8 @@ void interface_suppression_article(){
 
     do{
         std::cout <<"\t\033[33;1m Voulez-vous refaire une suppresion? \n";
-        std::cout <<"\t 1 - pour OUI \n";
-        std::cout <<"\t 0 - pour NON \n\n";
+        std::cout <<"\t [1] - pour OUI \n";
+        std::cout <<"\t [0] - pour NON \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
     } while (choix_non_valide(ch,choixValide1));
@@ -1529,8 +1524,8 @@ void interface_suppression_article(){
             interface_suppression_article();
             break;
     }   
-};// fonction terminé
-
+};
+    // suppression commande
 void interface_suppression_commande(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
@@ -1597,7 +1592,7 @@ void interface_recherche_client(){
     // differentes variables a utiliser dans notre fonction
     int _id;
     char id[MAX],nomR[MAX];
-    std::string ch,choixValide("12");
+    std::string ch,choixValide("12"),choixValide1("01");
     Cellule<Client::Base> * personne ;
     Liste<Client::Base> liste;
     // petit menu de presentation
@@ -1618,8 +1613,8 @@ void interface_recherche_client(){
     do{ 
         std::cout <<"\n\033[33;1m";
         std::cout <<"\t Voulez-vous faire la recherche via ID ou via NOM? \n";
-        std::cout <<"\t\t 1 - pour ID \n";
-        std::cout <<"\t\t 2 - pour NON \n\n";
+        std::cout <<"\t\t [1] - pour ID \n";
+        std::cout <<"\t\t [2] - pour NON \n\n";
         std::cout <<"\t Votre choix:\033[33;0m \t";
         std::cin >> choixUtilisateur;
     } while (choix_non_valide(choixUtilisateur,choixValide));
@@ -1648,7 +1643,7 @@ void interface_recherche_client(){
         break;
         case '2': // recherche via nom
             do{std::cout <<"\n";            
-            std::cout <<"\t Entrer le NOM \t";
+            std::cout <<"\t\033[33;1m Entrer le NOM:\033[33;0m \t";
             std::cin.ignore();
             std::cin.getline(nomR,MAX);
             }while(strlen(nomR) == 0);
@@ -1657,29 +1652,29 @@ void interface_recherche_client(){
             if (!liste.est_vide()){
                 while(personne != liste.recup_sentinelle()){
                     std::cout <<"\n";
-                    std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
-                    std::cout << "\t##\t     "<< personne->get().get_numero() <<"     \t"<< personne->get().get_nom() <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\t##\n";                    
-                    std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";             
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
+                    std::cout << "\t\033[37;1m     "<< personne->get().get_numero() <<"     \t"<< personne->get().get_nom() <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\033[37;0m\n";                    
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";             
                     personne = personne->get_next();
                 }
                    
             }else{
                 std::cout <<"\n";            
-                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
-                std::cout << "\t##                      CE CLIENT N'EXISTE PAS DANS NOTRE BASE DE DONNEES                   ##\n";
-                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t\033[36;1m##-------------------------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t##\033[36;0m                      \033[31;1mCE CLIENT N'EXISTE PAS DANS NOTRE BASE DE DONNEES\033[31;0m                   \033[36;1m##\n";
+                std::cout << "\t##--------------------------------------------------------------------------------------------------------------##\033[36;0m\n";    
             }
         break;
     };
 
     do{
-        std::cout <<"\n";            
+        std::cout <<"\n\033[33;1m";            
         std::cout <<"\t Voulez-vous refaire une recherche? \n";
-        std::cout <<"\t\t 1 - pour OUI \n";
-        std::cout <<"\t\t 0 - pour NOM \n\n";
-        std::cout <<"\t Votre choix: \t";
+        std::cout <<"\t\t [1] - pour OUI \n";
+        std::cout <<"\t\t [0] - pour NOM \n\n";
+        std::cout <<"\t Votre choix:\033[36;0m \t";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2280,6 +2275,203 @@ void interface_modif_commande(){
 
 };//TERMINÉ
 
+
+
+
+
+// Question 2 pas terminé
+void interface_article_achete_par_un_client(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+    std::string choixValide1("12"),choixValide2("01");
+    int _id;
+    char id[MAX],nomR[MAX];
+    Cellule<Client::Base> * personne ;
+    Liste<Client::Base> liste;
+    // petit menu de presentation
+    std::cout << "\t\033[36;1m##############################################################################################################\n";       
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                          \033[36;1m##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |\033[36;0m   \033[32;1mLISTE ARTICLE ACHETE PAR UN CLIENT \033[32;0m           \033[36;1m|                              ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n\033[36;0m";
+    std::cout << "\n"; 
+
+    do{ 
+        std::cout <<"\n\033[33;1m";
+        std::cout <<"\t Voulez-vous faire la recherche via ID ou via NOM du client dont on veut les articles achete? \n";
+        std::cout <<"\t\t [1] - pour ID \n";
+        std::cout <<"\t\t [2] - pour NOM\n\n";
+        std::cout <<"\t Votre choix:\033[33;0m \t";
+        std::cin >> choixUtilisateur;
+    } while (choix_non_valide(choixUtilisateur,choixValide1));
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '1': // recherche via id
+            do{
+                std::cout <<"\n";            
+                std::cout <<"\t\033[33;1m Entrer l'ID:\033[33;0m \t";
+                std::cin.ignore();
+                std::cin.getline( id,MAX);
+                _id = convertion1(id);
+            }while(_id<0);
+            personne = gestionnaireClient.chercher_client(_id);
+            if(personne){
+                // fonction de recherche ici
+
+            }else{
+                std::cout << "\n";            
+                std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t##\033[36;0m                            \033[31;1mCE CLIENT N'EXISTE PAS DANS NOTRE BASE DE DONNEES\033[31;0m                                 \033[36;1m##\n";
+                std::cout << "\t##--------------------------------------------------------------------------------------------------------------##\033[36;0m\n";   
+            }
+            break;
+
+        case '2': // recherche via nom
+            do{std::cout <<"\n";            
+                std::cout <<"\t\033[33;1m Entrer le NOM:\033[33;0m \t";
+                std::cin.ignore();
+                std::cin.getline(nomR,MAX);
+            }while(strlen(nomR) == 0);
+            liste = gestionnaireClient.liste_ayant_nom(majuscule(nomR).c_str());
+            personne = liste.recup_tete();
+            if (!liste.est_vide()){
+                // fonction ici
+                /*
+                while(personne != liste.recup_sentinelle()){
+                    std::cout <<"\n";
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
+                    std::cout << "\t\033[37;1m     "<< personne->get().get_numero() <<"     \t"<< personne->get().get_nom() <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\033[37;0m\n";                    
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";             
+                    personne = personne->get_next();
+                }
+                   */
+            }else{
+                std::cout <<"\n";            
+                std::cout << "\t\033[36;1m##-------------------------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t##\033[36;0m                      \033[31;1mCE CLIENT N'EXISTE PAS DANS NOTRE BASE DE DONNEES\033[31;0m                   \033[36;1m##\n";
+                std::cout << "\t##--------------------------------------------------------------------------------------------------------------##\033[36;0m\n";    
+            }
+            
+        break;
+    };
+
+    do{
+        std::cout <<"\t \033[33;1mTapez: \n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0]- pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
+        std::cin >> ch;
+    } while (choix_non_valide(ch,choixValide2));
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            acceuil();
+            break;
+        case '1':
+            system("clear");
+            autre_fonction();
+            break;
+    }   
+};
+
+// Question 3 pas terminé
+void interface_liste_client_article(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch, nomR;
+    std::string choixValide1("12"),choixValide2("01");
+    typeId id;
+    // petit menu de presentation
+    std::cout << "\t\033[36;1m##############################################################################################################\n";       
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                          \033[36;1m##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |\033[36;0m             \033[32;1mCLIENT D'UN ARTICLE     \033[32;0m           \033[36;1m|                              ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n\033[36;0m";
+    std::cout << "\n"; 
+
+    do{ 
+        std::cout <<"\n\033[33;1m";
+        std::cout <<"\t Voulez-vous faire la recherche via ID ou via LIBELLE de l'aricle dont on veut les client? \n";
+        std::cout <<"\t\t [1] - pour ID \n";
+        std::cout <<"\t\t [2] - pour LIBELLE \n\n";
+        std::cout <<"\t Votre choix:\033[33;0m \t";
+        std::cin >> choixUtilisateur;
+    } while (choix_non_valide(choixUtilisateur,choixValide1));
+
+    switch (choixUtilisateur.c_str()[0]){
+        case '1': // recherche via id
+            std::cout <<"\n";            
+            std::cout <<"\t\033[33;1m Entrer l'ID:\033[33;0m \t";
+            std::cin >> id;
+            // fonction de recherche ici
+            /*
+            produit = gestionnaireArticle.chercher(id);
+            if (produit){
+                std::cout <<"\n";
+                std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
+                std::cout << "\t##\t     "<< produit->get().get_reference() <<"     \t"<< produit->get().get_libelle() <<"     \t\t"<< produit->get().get_prix() <<"     \t\t"<< produit->get().get_quantite() <<"     \t\t"<< produit->get().get_seuil() <<"\t##\n";                    
+                std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
+
+            }else{
+                std::cout << "\n";            
+                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t##                     CET ARTICLE N'EXISTE PAS DANS NOTRE BASE DE DONNEES                    ##\n";
+                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
+            }*/
+        break;
+        case '2': // recherche via nom
+            std::cout <<"\n";            
+            std::cout <<"\t \033[33;1mEntrer le LIBELLE:\033[33;0m \t";
+            std::cin >> nomR;
+            // fonction de recherche ici
+            /*
+            liste = gestionnaireArticle.liste_ayant_nom(majuscule(nomR).c_str());
+            produit = liste.recup_tete();
+            if(liste.est_vide()){
+                std::cout << "\n";            
+                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
+                std::cout << "\t##                     CET ARTICLE N'EXISTE PAS DANS NOTRE BASE DE DONNEES                   ##\n";
+                std::cout << "\t##------------------------------------------------------------------------------------------##\n";    
+            }else{
+                while(produit != liste.recup_sentinelle()){
+                    std::cout <<"\n";
+                    std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";            
+                    std::cout << "\t##\t     "<< produit->get().get_reference() <<"     \t"<< produit->get().get_libelle() <<"     \t\t"<< produit->get().get_prix() <<"     \t\t"<< produit->get().get_quantite() <<"     \t\t"<< produit->get().get_seuil() <<"\t##\n";                    
+                    std::cout << "\t##------------------------------------------------------------------------------------------------------##\n";
+                    produit = produit->get_next();
+                }
+            }*/
+            
+        break;
+    };
+
+    do{
+        std::cout <<"\t \033[33;1mTapez: \n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0]- pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
+        std::cin >> ch;
+    } while (choix_non_valide(ch,choixValide2));
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            acceuil();
+            break;
+        case '1':
+            system("clear");
+            autre_fonction();
+            break;
+    }   
+};
     // Question 4 terminé
 void interface_commande_client(){
     // differentes variables a utiliser dans notre fonction
@@ -2289,6 +2481,7 @@ void interface_commande_client(){
     Cellule<Client::Base> * p ;
     Cellule<Commande::Base> * com;
     Cellule<Article::Base> * article;
+    std::string choixValide1("01");
     // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";       
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
@@ -2314,17 +2507,18 @@ void interface_commande_client(){
             std::cout << "\t##\033[36;0m                                       \033[33;1mPAS DE COMMANDE POUR CE CLIENT\033[33;0m                                     \033[36;1m##\n";       
             std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
         }else{
-            std::cout << "\t##\033[36;0m                  \033[37;1mID\033[37;0m                \033[36;1m|\033[36;0m         \033[37;1mNOM CLIENT\033[37;0m    \033[36;1m|\033[36;0m      \033[37;1mARTICLE\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mQUANTITE\033[37;0m           \033[36;1m##\n";
+            std::cout << "\n\n";
+            std::cout << "\t##\033[36;0m                  \033[37;1mID\033[37;0m             \033[36;1m|\033[36;0m     \033[37;1mNOM CLIENT\033[37;0m     \033[36;1m|\033[36;0m       \033[37;1mARTICLE\033[37;0m       \033[36;1m|\033[36;0m           \033[37;1mQUANTITE\033[37;0m          \033[36;1m##\n";
             std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\n";
             std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
             com = liste.recup_tete();
             while ( com != liste.recup_sentinelle()){   
                 article = gestionnaireArticle.chercher(com->get().ref_article());
                 if(article){
-                std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"     \t\t\t"<< p->get().get_nom() <<"       \t\t"<< article->get().get_libelle() <<"\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
+                std::cout << "\t##\t\033[32;1m            "<< com->get().ref() <<" \t\t\t"<< p->get().get_nom() <<"   \t\t"<< article->get().get_libelle() <<"\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
                 std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
                 }else{
-                    std::cout << "\t##\t\033[32;1m              \t"<< com->get().ref() <<"     \t\t\t"<< p->get().get_nom() <<"        \t\t"<< com->get().ref_article() <<"\t\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
+                    std::cout << "\t##\t\033[32;1m            "<< com->get().ref() <<" \t\t\t"<< p->get().get_nom() <<"    \t\t"<< com->get().ref_article() <<"\t\t\t"<< com->get().nombre() <<" \033[32;0m\n";                                    
                     std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
                 }
                 
@@ -2341,11 +2535,11 @@ void interface_commande_client(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0]- pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide1));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2358,12 +2552,68 @@ void interface_commande_client(){
             break;
     }   
 };
+    // Question 5 pas terminé
+void interface_statistique(){
+    // differentes variables a utiliser dans notre fonction
+    std::string ch;
+    Cellule<Article::Base> * p ;
+    std::string choixValide1("01");
+    // petit menu de presentation
+    std::cout << "\t\033[36;1m##############################################################################################################\n";       
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##\033[36;0m                        \033[33;1mBIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL\033[33;0sm                          \033[36;1m##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                           ------------------------------------------------                               ##\n";
+    std::cout << "\t##                          |\033[36;0m                  \033[32;1mSTATISTIQUES       \033[32;0m            \033[36;1m|                             ##\n";
+    std::cout << "\t##                            -----------------------------------------------                               ##\n";
+    std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
+    std::cout << "\t##      ----------------------------------------------------------------------------------------------      ##\n\033[36;0m";  
 
+    p = gestionnaireArticle.recup_tete();
+    if(gestionnaireArticle.est_vide()){
+        std::cout << "\n\n\n";
+        std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\n";
+        std::cout << "\t##\033[36;0m                            \033[33;1mAUCUNE DONNEE DISPONIBLE\033[33;0m                                      \033[36;1m##\n";       
+        std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";       
+    }else
+    {   
+        std::cout << "\t##\033[36;0m                          \033[37;1mARTICLE\033[37;0m                    \033[36;1m|\033[36;0m                           \033[37;1mPRIX UNITAIRE           \033[37;0m \033[36;1m##\n";
+        std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\n";            
+        std::cout << "\t##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
+        while ( p != gestionnaireArticle.recup_sentinelle())
+        {
+            std::cout << "\t##\033[32;1m                        \t"<< p->get().get_libelle() <<"   \t\t\t\t"<< p->get().get_prix() <<"\033[32;0m\n"; 
+            std::cout << "\t\033[36;1m##----------------------------------------------------------------------------------------------------------##\033[36;0m\n";
+
+            p = p->get_next();
+        }   
+    } 
+
+    do{
+        std::cout <<"\t \033[33;1mTapez: \n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t Entrer votre choix:\033[33;0m \t";
+        std::cin >> ch;
+    } while (choix_non_valide(ch,choixValide1));
+
+    switch (ch.c_str()[0]){
+        case '0':
+            system("clear");
+            acceuil();
+            break;
+        case '1':
+            system("clear");
+            autre_fonction();
+            break;
+    }   
+};
     // Question 6 terminé
 void interface_article_prix_unitaire(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
     Cellule<Article::Base> * p ;
+    std::string choixValide1("01");
     // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";       
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
@@ -2397,11 +2647,11 @@ void interface_article_prix_unitaire(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide1));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2420,6 +2670,7 @@ void interface_quantite_a_ravitailler(){
     std::string ch;
     Liste<Article::Base> liste;
     Cellule<Article::Base> * p ;
+    std::string choixValide1("01");
     // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";       
     std::cout << "\t##-_-_-                                                                                                -_-_-##\n";
@@ -2451,11 +2702,11 @@ void interface_quantite_a_ravitailler(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide1));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2473,6 +2724,7 @@ void interface_capital(){
     // differentes variables a utiliser dans notre fonction
     std::string ch;
     long double capital;
+    std::string choixValide1("01");
 
     capital = gestionnaireArticle.capital();
     // petit menu de presentation
@@ -2492,11 +2744,11 @@ void interface_capital(){
 
     do{
         std::cout <<"\t \033[33;1mTapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix:\033[33;0m \t";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide1));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2519,6 +2771,7 @@ void interface_meilleur_client(){
     typeId idClient;
     const char * message1 = "CLIENT SUPPRIMER";
     const char * message2 = "PAS DE MEILLEUR CLIENT";
+    std::string choixValide1("01");
 
     // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";    
@@ -2557,11 +2810,11 @@ void interface_meilleur_client(){
     do{ 
         std::cout <<"\n\033[33;1m";
         std::cout <<"\t Tapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
+        std::cout <<"\t      [1] - pour RETOUR AU MENU \n";
+        std::cout <<"\t      [0] - pour RETOUR AU MENU PRINCIPAL \n\n";
         std::cout <<"\t Entrer votre choix: \t\033[33;0m";
         std::cin >> ch;
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
+    } while (choix_non_valide(ch,choixValide1));
 
     switch (ch.c_str()[0]){
         case '0':
@@ -2574,46 +2827,3 @@ void interface_meilleur_client(){
             break;
     }   
 };
-
-
-void interface_liste_client_article(){
-    // differentes variables a utiliser dans notre fonction
-    std::string ch;
-
-    // petit menu de presentation
-    std::cout << "\t##########################################################################################\n";    
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##                 BIENVENUE DANS LE LOGICIEL DE GESTION DU SUPERMARCHE XL              ##\n";
-    std::cout << "\t##                   ---------------------------------------------------                ##\n";
-    std::cout << "\t##                           ---------------------------------                          ##\n";
-    std::cout << "\t##                          |   LISTE CLIENTS D'UN ARTICLE     |                        ##\n";
-    std::cout << "\t##                            --------------------------------                          ##\n";
-    std::cout << "\t##                                                                                      ##\n";
-    std::cout << "\t##-_-_-                                                                            -_-_-##\n";
-    std::cout << "\t##         -----------------------------------------------------------------            ##\n";
-    
-        
-        // Fonction qui affiche la liste des client
-        std::cout << "\n"; 
-
-    do{
-        std::cout <<"\t Tapez: \n";
-        std::cout <<"\t      1 - pour RETOUR AU MENU \n";
-        std::cout <<"\t      0 - pour RETOUR AU MENU PRINCIPAL \n\n";
-        std::cout <<"\t Entrer votre choix: \t";
-        std::cin >> ch;
-        system("clear");
-    } while (ch.c_str()[0] != '0' && ch.c_str()[0] != '1');
-
-    switch (ch.c_str()[0]){
-        case '0':
-            system("clear");
-            acceuil();
-            break;
-        case '1':
-            system("clear");
-            autre_fonction();
-            break;
-    }   
-};
-
