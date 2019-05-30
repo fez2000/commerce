@@ -1420,10 +1420,10 @@ void interface_suppression_client(){
 void interface_suppression_article(){
     // differentes variables a utiliser dans notre fonction
 
-    std::string choixUtilisateur;
-    int id;
+    long long _id;
+    char id[MAX],nomR[MAX];
     typeId ref;
-    std::string nomR;
+    std::string choixValide("12"),choixValide2("01");
     std::string ch;
     Cellule<Article::Base> * produit;
     std::string choixValide("12");
@@ -1455,17 +1455,22 @@ void interface_suppression_article(){
 
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
-            std::cout <<"\n";            
-            std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
-            std::cin >> id;
-            produit = gestionnaireArticle.chercher(id);
+            do{
+                std::cout <<"\n";            
+                std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
+                std::cin.ignore();
+                std::cin.getline(id,MAX);
+                _id = convertion1(id); 
+            }while (_id<0);
+            
+            produit = gestionnaireArticle.chercher(_id);
             if (produit){
                 std::cout <<"\n";
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
                 std::cout << "\033[32;1m\t     "<< produit->get().get_reference() <<"     \t"<< produit->get().get_libelle() <<"     \t\t"<< produit->get().get_prix() <<"     \t\t"<< produit->get().get_quantite() <<"     \t\t"<< produit->get().get_seuil() <<"\033[32;0m\n";                
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
                 std::cout <<"\n";
-                ref = id;
+                ref = _id;
                 gestionnaireArticle.supprimer(ref);
             }else{
                 std::cout << "\n";            
@@ -1475,10 +1480,13 @@ void interface_suppression_article(){
             }
         break;
         case '2': // recherche via nom
-            std::cout <<"\n";            
+            do{std::cout <<"\n";            
             std::cout <<"\t Entrer le LIBELLE \t";
-            std::cin >> nomR;
-            produit = gestionnaireArticle.chercher(nomR.c_str());
+            std::cin.ignore();
+            std::cin.getline(nomR,MAX); 
+            }while (strlen(nomR) == 0);
+            
+            produit = gestionnaireArticle.chercher(nomR);
             if (produit){
                 std::cout <<"\n";
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
