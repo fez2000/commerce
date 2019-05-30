@@ -12,6 +12,19 @@
 #include "../relations/relations.h"
 
 
+std::string majuscule(const char * m){
+ size_t n = strlen(m),i = 0;
+ std::string r;
+ while ( i < n)
+ {
+    r.push_back(std::toupper(m[i]));
+    i++;
+ }
+  return r;  
+};
+std::string majuscule(std::string m){
+    return majuscule(m.c_str());
+};
 bool choix_non_valide(std::string choix, std::string listeValide ){
     long i = listeValide.size();
     if(choix.size() > 1 ) return true;
