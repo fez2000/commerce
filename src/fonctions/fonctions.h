@@ -33,4 +33,6 @@ std::string cat_many(int , ...);
     bool is_affirmatif(const char *);
     long long de_string_pour_long_long(std::string s);
     typeId convertion(char * chaine);
+    std::string majuscule(const char *);
+    std::string majuscule(std::string );
 #endif
