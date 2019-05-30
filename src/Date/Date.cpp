@@ -187,7 +187,7 @@ recommencer:        do{
             if(a < ERROR_CODE){
                 std::cout << decalage << invalideAnneeMsg << std::endl;
             }else{
-                std::cout << a <<"Fdf\n";
+                
                 date.mettre_annee(a);
                 break;
             }
