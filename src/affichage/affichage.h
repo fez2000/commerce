@@ -40,11 +40,14 @@
 
     void interface_creation_livraison();
     void interface_liste_livaison();
+    void interface_suppression_livraison();
+    void interface_recherche_livraison();
 
     void interface_quantite_a_ravitailler();
     void interface_article_prix_unitaire();
     void interface_commande_client();
     void interface_statistique();
     void interface_article_achete_par_un_client(); // question 2
+
 
 #endif
