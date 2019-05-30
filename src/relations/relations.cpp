@@ -61,14 +61,33 @@ int modifier_commande(typeId idCommande, typeId idClient, typeId idArticle, unsi
         if(pa == NULL){
             return ARTICLE_PAS_TROUVER;
         }else{
-            pa->get().ajouter_quantite(p->get().nombre());
             Cellule<Article::Base> * pa = gestionnaireArticle.chercher(idArticle);
-                pa->get().ajouter_quantite( - quantite);
-            
+             if((pa->get().get_quantite()-quantite + 0.0)<0){
+                return PAS_SUFFISANT; 
+             } 
+            int code = gestionnaireArticle.mettre_a_jour(pa->get().get_reference(),pa->get().get_libelle().c_str(),pa->get().get_prix(),pa->get().get_quantite()-quantite,pa->get().get_seuil());
+            if(code == ERROR_CODE){
+                return ERREUR_SYSTEME;
+            }
+             pa = gestionnaireArticle.chercher(p->get().ref_article());
+             code = gestionnaireArticle.mettre_a_jour(pa->get().get_reference(),pa->get().get_libelle().c_str(),pa->get().get_prix(),pa->get().get_quantite() + p->get().nombre(),pa->get().get_seuil());
+            if(code == ERROR_CODE){
+                return ERREUR_SYSTEME;
+            }
+           
+    
         }
     }else{
         Cellule<Article::Base> * pa = gestionnaireArticle.chercher(idArticle);
-        pa->get().ajouter_quantite(p->get().nombre() - quantite);
+            if((pa->get().get_quantite() + p->get().nombre()-quantite + 0.0)<0){
+                return PAS_SUFFISANT;
+            }
+            int code = gestionnaireArticle.mettre_a_jour(idArticle,pa->get().get_libelle().c_str(),pa->get().get_prix(), pa->get().get_quantite() + p->get().nombre()-quantite,pa->get().get_seuil());
+            if(code == ERROR_CODE){
+                return ERREUR_SYSTEME;
+            }
+        
+        
     }
     return gestionnaireCommande.modifier(idCommande,idClient,idArticle,quantite,p->get().status());    
     
@@ -190,6 +209,6 @@ typeId  meilleur_client_de(typeId idArticle){
         }
         taille--;
     }
-    std::cout << max->first <<std::endl; 
+    
     return max->first;
 }
