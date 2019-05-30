@@ -45,7 +45,9 @@ namespace Article{
         return this;
     };
     Base* Base::ajouter_quantite( long quantite){
+   
         this->quantite += quantite;
+ 
         return this;
     };
     bool Base::a_ravitailler(){
