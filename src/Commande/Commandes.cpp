@@ -123,16 +123,18 @@ namespace Commande{
         if (is >> taille >> maxNumeroGenerer){
             
             b.tete = b.sentinelle = new Cellule<Base>;
-            Cellule<Base> * c;
-            Base  a ;
-            
+            Cellule<Base> * c,*e;
+            Base * a ;
+                    
             b.maxNumeroGenerer = maxNumeroGenerer;
             while (taille >0 )
             {
-                is >> a;
-                c = new Cellule<Base>(a);
-                b.ajouter_trie(c);
-                b.table.insert(std::pair<typeId,Cellule<Base> * >(a.ref(),c));
+                a = new Base(); 
+                is >> *a;
+                c = new Cellule<Base>(*a);
+                e = b.ajouter_trie(c);
+        
+                b.table.insert(std::pair<typeId,Cellule<Base> * >(a->ref(),e));
                 taille--;
             }
             
@@ -142,13 +144,18 @@ namespace Commande{
     };
     int Commande::lancer_livraison(typeId idCommade){
         Cellule<Base> * p = table[idCommade];
-        if(p)p->get().en_cour();
+        if(p)p->set(p->get().en_cour());
         return sauvegarder();
     };
     int Commande::annuler(typeId id){
-        Cellule<Base> * p = table[id];
-        if(p)p->get().annuler();
+        Cellule<Base> * p = NULL;
+        p = table[id];
+        if(p)
+        {p->set(p->get().annuler());
         return sauvegarder();
+        }
+        
+        return SUCCESS_CODE;
     };
     int Commande::charger(){
         std::ifstream fichier;
@@ -175,6 +182,7 @@ namespace Commande{
         Cellule<Base> * c = b.tete;
         while (c!=b.sentinelle)
         {
+            
             os << '\n' << (*c);
             c=c->get_next();
         }

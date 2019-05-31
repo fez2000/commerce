@@ -37,9 +37,9 @@
             void modifier(typeId,typeId, unsigned long,int);
             bool est_livrer();
             bool est_annuler();
-            void livrer();
-            void en_cour();
-            void annuler();
+            Base livrer();
+            Base en_cour();
+            Base annuler();
             int status(void);
             typeId ref(void);
             typeId ref_client(void);
