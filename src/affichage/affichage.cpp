@@ -2253,7 +2253,7 @@ ench:    do{
                     personne = personne->get_next();
                 }
                 if(liste.recup_taille() != 1) goto ench;
-                
+                personne = liste.recup_tete();
                 std::cout <<"\n";
                 identifiant = personne->get().get_numero();
                                 
