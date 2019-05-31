@@ -1256,7 +1256,7 @@ void interface_liste_livaison(){
     std::string choixUtilisateur;
     std::string nomR;
     Cellule<Client::Base> * personne ;
-    Cellule<Commande::Base> * com ;       
+    Cellule<Livraison::Base> * com ;       
     std::string ch;
     std::string nomA;
     Cellule<Article::Base> * produit;
@@ -1265,9 +1265,7 @@ void interface_liste_livaison(){
     std::string reponce2;
     std::string reponce3;
 
-    const char * etat1 = "Livree";
-    const char * etat2 = "En Cour...";
-    bool s;
+    
     std::string choixValide("01");
 
     // petit menu de presentation
@@ -1283,25 +1281,22 @@ void interface_liste_livaison(){
     std::cout << "\t##         -------------------------------------------------------------------------------------             ##\033[36;0m\n";
 
         std::cout << "\n";    
-        com = gestionnaireCommande.recup_tete();
+        com = gestionnaireLivraison.recup_tete();
 
-        std::cout << "\t\t     \033[37;1mID\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mCLIENT\033[37;0m       \033[36;1m|\033[36;0m    \033[37;1mETAT\033[37;0m            \033[36;1m|\033[36;0m          \033[37;1mLIBELLE\033[37;1m          \033[36;1m|\033[36;0m     \033[37;1mQUANTITE\033[37;0m\n";
+        std::cout << "\t\t     \033[37;1mID\033[37;0m  \033[36;1m|\033[36;0m       \033[37;1mCLIENT\033[37;0m       \033[36;1m|\033[36;0m              \033[36;1m|\033[36;0m         \033[36;1m|\033[36;0m     \033[37;1mQUANTITE\033[37;0m\n";
         std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
         std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";
-        while (com != gestionnaireCommande.recup_sentinelle())
+        while (com != gestionnaireLivraison.recup_sentinelle())
         {   reponce1.clear();
             reponce2.clear();
             reponce3.clear();
             idClient = com->get().ref_client();
-            idArticle = com->get().ref_article();
+            
             personne = gestionnaireClient.chercher_client(idClient);
             reponce1.append((personne)? personne->get().get_nom():message);
             produit = gestionnaireArticle.chercher(idArticle);
-            reponce2.append((produit)? produit->get().get_libelle().c_str():message);
-            s = com->get().est_livrer();
-            reponce3 = (s)? etat1:etat2;
 
-            std::cout << "\t\033[32;1m\t     "<< com->get().ref() <<"     \t"<< reponce1 <<"   \t "<< reponce3 <<"     \t\t"<< reponce2<<"     \t\t"<<com->get().nombre() <<"\033[36;0m\n";    
+            std::cout << "\t\033[32;1m\t     "<< com->get().ref() << "  " <<com->get().ref_commande() <<"     \t"<< reponce1 <<"     \t\t"<<com->get().nombre() <<"\033[36;0m\n";    
             std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
             com = com->get_next();
         }
@@ -2091,7 +2086,7 @@ void interface_modif_article(){
                 std::cout << "\t \033[33;1mEntrer le seuil :\033[33;0m\t";
                 std::cin >> seuil;
 
-                gestionnaireArticle.mettre_a_jour(ref, nomArticle.c_str(),prixArticle,quantite,seuil);
+                gestionnaireArticle.mettre_a_jour(ref,majuscule(nomArticle.c_str()).c_str(),prixArticle,quantite,seuil);
             }else{
                 std::cout << "\n";            
                 std::cout << "\t\033[36;1m##-----------------------------------------------------------------------------------------------------------##\n";    

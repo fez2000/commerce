@@ -39,8 +39,7 @@ Liste<Article::Base> article_client(unsigned long idClient){
     if(!cmds.est_vide()){
         Cellule<Commande::Base> * i = cmds.recup_tete();
         while ( i!=cmds.recup_sentinelle())
-        {
-            article.ajouter_trie(gestionnaireArticle.chercher(i->get().ref()));
+        { if(gestionnaireArticle.chercher(i->get().ref())) article.ajouter_trie(gestionnaireArticle.chercher(i->get().ref()));
             i = i->get_next();
         }
     }
