@@ -2159,16 +2159,16 @@ void interface_modif_article(){
 // modification client
 void interface_modif_client(){
     // differentes variables a utiliser dans notre fonction
-    std::string nom;
-    std::string prenom;
+    char nom[MAX],prenom[MAX], nomR[MAX];
     Date::Date date;
     std::string sexe;
-    int id;
+    int _id;
+    char id[MAX];
     typeId identifiant;
-    std::string nomR;
     std::string ch;
     Cellule<Client::Base> * personne ;
-    std::string choixValide("12"),choixValide1("01");
+    Liste<Client::Base> liste;
+    std::string choixValide("12"),choixValide1("01"),sexeValide("FM");
     
         // petit menu de presentation
     std::cout << "\t\033[36;1m##############################################################################################################\n";    
@@ -2186,7 +2186,7 @@ void interface_modif_client(){
     std::cout << "\t##         ------------------------------------------------------------------------------------             ##\033[36;0m\n";
 
         
-    do{ 
+ench:    do{ 
         std::cout <<"\n";
         std::cout <<"\t \033[33;1mVoulez-vous faire la recherche du CLIENT a modifier via son ID ou via son NOM? \n";
         std::cout <<"\t\t [1] - pour ID \n";
@@ -2197,10 +2197,17 @@ void interface_modif_client(){
 
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
-            std::cout <<"\n";            
-            std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
-            std::cin >> id;
-            personne = gestionnaireClient.chercher_client(id);
+            std::cin.ignore();
+            do{
+                std::cout <<"\n";            
+                std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
+                std::cin.getline(id,MAX);
+                _id = convertion1(id);
+            }while (_id < 0);
+            
+            
+            
+            personne = gestionnaireClient.chercher_client(_id);
             if (personne){
                 std::cout <<"\n";
                 std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
@@ -2208,17 +2215,19 @@ void interface_modif_client(){
                 std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
 
                 std::cout <<"\n";
-                identifiant = id;
-                std::cout << "\t\033[33;1m Entrer NOM Client :\033[33;0m\t";
-                std::cin >>nom;
+                identifiant = _id;
+                do{ std::cout << "\t\033[33;1m Entrer NOM Client :\033[33;0m\t";
+                    std::cin.getline(nom,MAX);
+                }while(strlen(nom) == 0);
                 std::cout << "\t \033[33;1mEntrer PRENOM Client :\033[33;0m\t";
-                std::cin >> prenom;
+                std::cin.getline(prenom,MAX);
                 std::cout << "\t \033[33;1mEntrer DATE NAISSANCE Client:\033[33;0m\t";
                 date = Date::recup_date("\t\\033[32;1mt","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide\033[32;0m");
-                std::cout << "\t \033[33;1mEntrer SEXE Client(M/F) :\033[33;0m\t";
+                do{std::cout << "\t \033[33;1mEntrer SEXE Client(M/F) :\033[33;0m\t";
                 std::cin >> sexe;
-
-                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date,sexe.c_str());
+                }while (choix_non_valide(sexe,sexeValide));
+                
+                gestionnaireClient.mettre_a_jour_client(identifiant,majuscule(nom).c_str(),majuscule(prenom).c_str(),date,sexe.c_str());
             }else{
                 std::cout << "\n";            
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------##\n";    
@@ -2229,26 +2238,38 @@ void interface_modif_client(){
         case '2': // recherche via nom
             std::cout <<"\n";            
             std::cout <<"\t \033[33;1mEntrer le NOM:\033[33;0m \t";
-            std::cin >> nomR;
-            personne = gestionnaireClient.chercher_client(nomR.c_str());
-            if (personne){
-                std::cout <<"\n";
-                std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
-                std::cout << "\033[37;1m\t     "<< personne->get().get_numero() <<"     \t"<< personne->get().get_nom() <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\033[37;0m\n";                    
-                std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
+            std::cin.getline(nomR,MAX);
 
+            liste = gestionnaireClient.liste_ayant_nom(majuscule(nomR).c_str());
+            personne = liste.recup_tete();
+            if (!liste.est_vide()){
+                while (personne != liste.recup_sentinelle())
+                {
+                    std::cout <<"\n";
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
+                    std::cout << "\033[37;1m\t     "<< personne->get().get_numero() <<"     \t"<< personne->get().get_nom() <<"     \t\t"<< personne->get().get_prenom() <<"     \t\t"<< personne->get().get_date() <<"     \t\t"<< personne->get().get_sexe() <<"\033[37;0m\n";                    
+                    std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
+
+                    personne = personne->get_next();
+                }
+                if(liste.recup_taille() != 1) goto ench;
+                
                 std::cout <<"\n";
                 identifiant = personne->get().get_numero();
-                std::cout << "\t \033[33;1mEntrer NOM Client :\033[33;0m\t";
-                std::cin >>nom;
+                                
+                do{ std::cout << "\t\033[33;1m Entrer NOM Client :\033[33;0m\t";
+                    std::cin.getline(nom,MAX);
+                }while(strlen(nom) == 0);
                 std::cout << "\t \033[33;1mEntrer PRENOM Client :\033[33;0m\t";
-                std::cin >> prenom;
-                std::cout << "\t \033[33;1mEntrer DATE NAISSANCE Client :\033[33;0m\n";
-                date = Date::recup_date("\t\033[32;1m\t","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide\033[32;0m");
-                std::cout << "\t \033[33;1mEntrer SEXE Client(M/F) :\033[33;0m\t";
+                std::cin.getline(prenom,MAX);
+                std::cout << "\t \033[33;1mEntrer DATE NAISSANCE Client:\033[33;0m\t";
+                date = Date::recup_date("\t\\033[32;1mt","Date invalide","Jour:","Jour invalide","Mois:","Mois invalide","Annee:","Annee invalide\033[32;0m");
+                do{std::cout << "\t \033[33;1mEntrer SEXE Client(M/F) :\033[33;0m\t";
                 std::cin >> sexe;
-
-                gestionnaireClient.mettre_a_jour_client(identifiant, nom.c_str(),prenom.c_str(),date,sexe.c_str());               
+                }while (choix_non_valide(sexe,sexeValide));
+                
+                gestionnaireClient.mettre_a_jour_client(identifiant,majuscule(nom).c_str(),majuscule(prenom).c_str(),date,sexe.c_str());
+                               
             }else{
                 std::cout <<"\n";            
                 std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------##\n";    
