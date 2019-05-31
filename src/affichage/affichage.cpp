@@ -1022,6 +1022,7 @@ void interface_creation_livraison(){
             idClient = com->get().ref_client();
             quantite = com->get().nombre();
             gestionnaireLivraison.creer(idA,idClient,quantite);
+            gestionnaireCommande.lancer_livraison(idA);
             com->get().livrer();// A REVOIR
         }
     }else{
