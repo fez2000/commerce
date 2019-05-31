@@ -174,6 +174,14 @@ int annuler_commande(typeId id){
     if( code  != SUCCESS_CODE){
         return code;
     };
+    Cellule <Article::Base> * a = gestionnaireArticle.chercher(c->get().ref_article());
+    if(a){
+        code = gestionnaireArticle.mettre_a_jour(a->get().get_reference(),a->get().get_libelle().c_str(),a->get().get_prix(),a->get().get_quantite()+c->get().nombre(),a->get().get_seuil());
+        if( code  != SUCCESS_CODE){
+            return code;
+        };
+    }
+    
     Cellule<Livraison::Base> * l = gestionnaireLivraison.livraisons_apropos(c->get().ref());
     if(!l){
         return LIVRAISON_PAS_TROUVER;

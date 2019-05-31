@@ -14,10 +14,10 @@ public:
     ~Liste();
     bool est_vide();
     unsigned long nombre_element();
-    int ajouter(Cellule<T> *);
-    int ajouter_trie(Cellule<T> *);
-    int ajouter_apres(Cellule<T>* , Cellule<T> *);
-    int ajouter_avant(Cellule<T>* , Cellule<T> *);
+    Cellule<T> *  ajouter(Cellule<T> *);
+    Cellule<T> * ajouter_trie(Cellule<T> *);
+    Cellule<T> * ajouter_apres(Cellule<T>* , Cellule<T> *);
+    Cellule<T> * ajouter_avant(Cellule<T>* , Cellule<T> *);
     int enlever(Cellule<T> v);
     Cellule<T> * recup_tete();
     Cellule<T> * recup_sentinelle();
@@ -115,23 +115,23 @@ template <class T> unsigned long Liste<T>::nombre_element(){
 template <class T> bool Liste<T>::est_vide(){
     return taille == 0;
 };
-template <class T> int Liste<T>::ajouter(Cellule<T> * v){
+template <class T> Cellule<T> *  Liste<T>::ajouter(Cellule<T> * v){
     v->next(tete);
     tete->previous(v);
     tete = v;
     taille++;
-    return 1;
+    return v;
 };
-template <class T> int Liste<T>::ajouter_apres(Cellule<T> * v, Cellule<T> * a){
+template <class T> Cellule<T> *  Liste<T>::ajouter_apres(Cellule<T> * v, Cellule<T> * a){
     
     v->get_next()->previous(a);
     a->next(v->get_next());
     v->next(a);
     a->previous(v);
     taille++;
-    return 1;
+    return v;
 };
-template <class T> int Liste<T>::ajouter_avant(Cellule<T>*  v, Cellule<T>  *a){
+template <class T> Cellule<T> *  Liste<T>::ajouter_avant(Cellule<T>*  v, Cellule<T>  *a){
     if(v == tete){
         return ajouter(a);
     }
@@ -142,12 +142,12 @@ template <class T> int Liste<T>::ajouter_avant(Cellule<T>*  v, Cellule<T>  *a){
     v->previous(a);
     a->next(v);
     taille++;
-    return 1;
+    return v;
 };
-template <class T> int Liste<T>::ajouter_trie(Cellule<T> * a){
+template <class T> Cellule<T> *  Liste<T>::ajouter_trie(Cellule<T> * a){
     if(taille == 0){
-        ajouter(a);
-        return 0;
+      return  ajouter(a);
+
         
     }
     Cellule<T> * b = tete;

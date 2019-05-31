@@ -27,17 +27,20 @@ namespace Commande{
     bool Base::est_annuler(){
         return etat == ANNULER;
     };
-    void Base::annuler(){
-        etat = ANNULER;
+    Base Base::annuler(){
+        this->etat = 3;
+        return *this;
     }
     int Base::status(){
         return etat;
     }
-    void Base::livrer(){
+    Base Base::livrer(){
         etat = TERMINER;
+        return *this;
     }; 
-    void Base::en_cour(){
+    Base Base::en_cour(){
         etat = ENCOURLIVRAISON;
+        return *this;
     };
     unsigned long Base::ref_client(){
         return client;
