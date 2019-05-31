@@ -189,7 +189,7 @@ int annuler_commande(typeId id){
     return gestionnaireLivraison.supprimer(l->get().ref());
 }
 typeId  meilleur_client_de(typeId idArticle){
-    Liste<Commande::Base> c = gestionnaireCommande.commandes_pour(idArticle);
+    Liste<Commande::Base> c = gestionnaireCommande.commandes_livrer_pour(idArticle);
     if(c.est_vide()){
         return 0;
     }

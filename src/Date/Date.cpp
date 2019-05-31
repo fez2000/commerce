@@ -2,7 +2,7 @@
 namespace Date{
     std::string Date::to_str(Date d){
         std::string delimteur("/");
-      return   ::to_str<int>(d.jour) + delimteur + ::to_str<int>(d.mois) + delimteur + ::to_str<int>(d.annee);
+      return   ::to_str<int>(d.jour) + delimteur + ::to_str<int>(d.mois+1) + delimteur + ::to_str<int>(d.annee);
     };
     Date::Date (Date & a){
         jour = a.jour;

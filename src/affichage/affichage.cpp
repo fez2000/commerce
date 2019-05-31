@@ -2034,8 +2034,8 @@ void interface_modif_article(){
     double prixArticle;
     unsigned long quantite;
     unsigned long seuil;
-    std::string choixUtilisateur;
-    int id;
+    int _id;
+    char id[MAX];
     typeId ref;
     std::string nomR;
     std::string ch;
@@ -2067,10 +2067,13 @@ void interface_modif_article(){
 
     switch (choixUtilisateur.c_str()[0]){
         case '1': // recherche via id
-            std::cout <<"\n";            
+            std::cin.ignore();
+           do{ std::cout <<"\n";            
             std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
-            std::cin >> id;
-            produit = gestionnaireArticle.chercher(id);
+            std::cin.getline(id,MAX);
+            _id = convertion1(id);
+           }while(_id < 0);
+            produit = gestionnaireArticle.chercher(_id);
             if (produit){
                 std::cout <<"\n";
                 std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
@@ -2078,7 +2081,7 @@ void interface_modif_article(){
                 std::cout << "\t\033[36;1m##------------------------------------------------------------------------------------------------------##\033[36;0m\n"; 
 
                 std::cout <<"\n";
-                ref = id;
+                ref = _id;
                 std::cout << "\t\033[33;1m Entrer le Libelle de l'Article :\033[33;0m\t";
                 std::cin >>nomArticle;
                 std::cout << "\t \033[33;1mEntrer le prix unitaire de l'article :\033[33;0m\t";
@@ -2229,6 +2232,7 @@ ench:    do{
             }
         break;
         case '2': // recherche via nom
+            std::cin.ignore();
             std::cout <<"\n";            
             std::cout <<"\t \033[33;1mEntrer le NOM:\033[33;0m \t";
             std::cin.getline(nomR,MAX);

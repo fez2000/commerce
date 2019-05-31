@@ -93,6 +93,20 @@ namespace Commande{
         }
         return t;
     };
+    Liste<Base> Commande::commandes_livrer_pour(typeId id){
+        Liste<Base> t;
+        Cellule<Base> * i;
+
+        i=tete;
+        while(i!=sentinelle){
+            if(i->get().ref_article()==id){
+                if(i->get().status()==TERMINER)
+               t.ajouter(new Cellule<Base>(i->get())); 
+            }
+            i = i->get_next();
+        }
+        return t;
+    };
     Cellule<Base> * Commande::chercher(typeId ref){
         return table[ref];
     };

@@ -42,6 +42,7 @@
             Liste<Base> commandes_de(typeId);
             Liste<Base> commandes_encour_de(typeId);
             Liste<Base> commandes_pour(typeId);
+            Liste<Base> commandes_livrer_pour(typeId );
             int charger(const char *);
             int sauvegarder(const char *);
             friend std::ostream& operator<<(std::ostream &, const Commande &);
