@@ -12,6 +12,64 @@
 #include "../relations/relations.h"
 
 
+
+void get_str(char * mot,const char * msg){
+    do{            
+        std::cout <<msg;
+        std::cin.getline(mot,MAX);
+    }while (strlen(mot)==0);
+};
+long long get_long(char * chaine,const char * msg){
+    long long v;
+    std::cin.clear();
+    do{
+        std::cout << msg;
+        std::cin.getline(chaine,MAX);
+        v = convertion1(chaine);
+    }while (v < 0);
+    return v;
+}
+long double get_long_double(char * chaine,const char *msg){
+    long double v;
+    std::cin.clear();
+    do{
+        std::cout << msg;
+        std::cin.getline(chaine,MAX);
+        v = convertion2(chaine);
+    }while (v < 0);
+    return v;
+}
+long double convertion2(char * chaine){
+    unsigned i = 0;
+    long double nombre = 0;
+    long double finNombre = 0;
+    int x1 = 10,x2=0.1;
+    while(chaine[i] != '\0'){
+        
+        if( chaine[i] > 47 && chaine[i] <  59){
+            nombre =  nombre * x1 +  chaine[i] - 48;
+            
+        }else{
+            if(!(chaine[i]==',' || chaine[i]=='.')){
+                return -1;
+            }
+            
+        }
+        i++;
+    }
+    while(chaine[i] != '\0'){
+        
+        if( chaine[i] > 47 && chaine[i] <  59){
+            finNombre =  finNombre * x2 +  chaine[i] - 48;
+            
+        }else{
+            
+                return -1;
+        }
+        i++;
+    }
+    return nombre + finNombre ;
+};
 std::string majuscule(const char * m){
  size_t n = strlen(m),i = 0;
  std::string r;

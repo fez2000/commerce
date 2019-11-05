@@ -168,7 +168,7 @@ void autre_fonction(){
 */
 
 void menu_general_client(){
-    std::string choixUtilisateur;
+    
     std::string choixValide("012345");
     do
     {
@@ -225,7 +225,7 @@ void menu_general_client(){
 
 // acceuil Article
 void menu_general_article(){
-    std::string choixUtilisateur;
+    
     std::string choixValide("012345");
     do
     {
@@ -281,7 +281,7 @@ void menu_general_article(){
 }
 // acceuil commande
 void menu_general_commande(){
-    std::string choixUtilisateur;
+    
     std::string choixValide("012345");
     do
     {
@@ -343,7 +343,7 @@ void menu_general_commande(){
     }
 }
 void menu_general_livraison(){
-    std::string choixUtilisateur;
+    
     std::string choixValide("012345");
     do
     {
@@ -480,10 +480,11 @@ void interface_creation_client(){
     // Enregistrement article
 void interface_creation_article(){
     // differentes variables a utiliser dans notre fonction
-    double prixArticle;
-    long long quantite;
-    unsigned long seuil;
-    char nomArticle[MAX];
+    double _prixArticle;
+     
+    long long _quantite;
+    unsigned long _seuil;
+    char nomArticle[MAX],seuil[MAX],quantite[MAX],prixArticle[MAX];
     std::string choixValide("01");
 
     // petit menu de presentation
@@ -509,17 +510,11 @@ void interface_creation_article(){
         std::cin.getline(nomArticle,MAX);
         if(strlen(nomArticle) == 0) goto articleNotNull; 
 
-        std::cout <<"\n";
-        std::cout << "\t \033[33;1mEntrer le Prix Unitaire de l'Article :\033[33;0m\t";
-        std::cin >> prixArticle;
-        std::cout <<"\n";
-        std::cout << "\t \033[33;1mEntrer la Quantite en Stock :\033[33;0m\t";
-        std::cin >> quantite;
-        std::cout <<"\n";
-        std::cout << "\t \033[33;1mEntrer le Seuil Critique de l'Article :\033[33;0m\t";
-        std::cin >> seuil;
+        _prixArticle = get_long_double(prixArticle,"\n\t \033[33;1mEntrer le Prix Unitaire de l'Article :\033[33;0m\t");
+        _quantite = get_long(quantite,"\n\t \033[33;1mEntrer la Quantite en Stock :\033[33;0m\t") ;
+        _seuil = get_long(seuil,"\n\t \033[33;1mEntrer le Seuil Critique de l'Article :\033[33;0m\t");
     // Enregistrement de notre article
-    gestionnaireArticle.creer(majuscule(nomArticle).c_str(), prixArticle, quantite, seuil);
+    gestionnaireArticle.creer(majuscule(nomArticle).c_str(), _prixArticle,_quantite, _seuil);
     std::cout <<"\n";
 
 
@@ -587,13 +582,8 @@ void interface_creation_commande(){
         } while (choix_non_valide(choixUtilisateur,choixValide));
 
     switch (choixUtilisateur.c_str()[0]){
-        case '1': // recherche via id
-    idinvalide:            std::cout <<"\n";            
-            std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
-            std::cin.ignore();
-            std::cin.getline(id,MAX);
-            _id = convertion1(id);
-            if(_id<0)goto idinvalide;
+        case '1': // recherche via id            
+            _id = get_long(id,"\n\t \033[33;1mEntrer l'ID:\033[33;0m \t");
             personne = gestionnaireClient.chercher_client(_id);
             if (personne){
                 std::cout <<"\n";
@@ -617,12 +607,9 @@ void interface_creation_commande(){
 
                 switch (choixU.c_str()[0]){
                     case '1': // recherche via id
-    invalideid2:                        std::cout <<"\n";            
-                        std::cout <<"\t \033[33;1mEntrer l'ID:\033[33;0m \t";
-                        std::cin.ignore();
-                        std::cin.getline(idA,MAX);
-                        _idA = convertion1(idA);
-                        if(_idA < 0)goto invalideid2;
+                        
+                        _idA = get_long(idA,"\n\t \033[33;1mEntrer l'ID:\033[33;0m \t");
+                        
                         produit = gestionnaireArticle.chercher(_idA);
                     if (produit){
                         std::cout <<"\n";
@@ -631,11 +618,7 @@ void interface_creation_commande(){
                         std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
                         
                         idArticle = produit->get().get_reference();// recuperation de l'id du produit
-                        do{ std::cout << "\n";
-                            std::cout << "\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t";  
-                            std::cin.getline(quantite,MAX);
-                            _quantite = convertion1(quantite);
-                        }while(_quantite < 0);  
+                        _quantite = get_long(quantite,"\n\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t"); 
                         code = commander_article(idClient,idArticle,_quantite); 
                         switch (code)
                         {
@@ -676,12 +659,8 @@ void interface_creation_commande(){
                     }
                     break;
                 case '2': // recherche via nom
-                    do{
-                        std::cout <<"\n";            
-                        std::cout <<"\t \033[33;1mEntrer le LIBELLE:\033[33;0m \t";
-                        std::cin.getline(nomA,MAX);
-                    }while (strlen(nomA)==0);
                     
+                    get_str(nomA,"\n\t \033[33;1mEntrer le LIBELLE:\033[33;0m \t");
                     listeA =  gestionnaireArticle.liste_ayant_nom( majuscule(nomA).c_str());
                     produit = listeA.recup_tete();
                     if (!listeA.est_vide()){
@@ -695,12 +674,9 @@ void interface_creation_commande(){
                         if(listeA.recup_taille() != 1)goto a2;
                         produit = listeA.recup_tete();
                         idArticle = produit->get().get_reference();// recuperation de l'id du produit
-                        do{std::cout << "\n";
-                        std::cout << "\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t";  
-                        std::cin.ignore();
-                        std::cin.getline(quantite,MAX);
-                        _quantite = convertion1(quantite);  
-                        }while(_quantite < 0);
+                        
+                        _quantite = get_long(quantite,"\n\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t");  
+                        
                         code = commander_article(idClient,idArticle,_quantite); 
                         switch (code)
                         {
@@ -767,13 +743,8 @@ void interface_creation_commande(){
             }
         break;
         case '2': // recherche via nom
-            do{
-                std::cout <<"\n";            
-                std::cout <<"\t \033[33;1mEntrer le NOM:\033[33;0m \t";
-            
-                std::cin.ignore();
-                std::cin.getline(nomR,MAX);
-            }while (strlen(nomR) == 0);
+           
+            get_str(nomR,"\n\t \033[33;1mEntrer le NOM:\033[33;0m \t");
             listeC = gestionnaireClient.liste_ayant_nom(majuscule(nomR).c_str());
             personne = listeC.recup_tete();
             
@@ -815,12 +786,8 @@ void interface_creation_commande(){
                         std::cout << "\t\033[36;1m##--------------------------------------------------------------------------------------------------------------------------##\033[36;0m\n";            
                         
                         idArticle = produit->get().get_reference();// recuperation de l'id du produit
-                        do{ std::cout << "\n";
-                        std::cout << "\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t"; 
-                        std::cin.ignore(); 
-                        std::cin.getline(quantite,MAX);
-                        _quantite = convertion1(quantite);  
-                        }while(_quantite < 0);    
+                         
+                        _quantite = get_long(quantite,"\n\t \033[33;1mEntrer la Quantite de l'Article a commander:\033[33;0m\t");   
                         code = commander_article(idClient,idArticle,_quantite); 
                         switch (code)
                         {

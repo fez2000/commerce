@@ -16,14 +16,18 @@ enum Mois {JANVIER,FEVRIER,MARS,AVRIL,MAI,JUIN,JUILLET,AOUT,SEPTEMBRE,OCTOBRE,NO
 enum  { PAS_DERREUR,PAS_TROUVER,PAS_UN_NOMBRE,ID_INVALID,PAS_SUFFISANT,ARTICLE_PAS_TROUVER,CLIENT_PAS_TROUVER, CMD_PAS_TROUVER, LIVRAISON_PAS_TROUVER, ERREUR_SYSTEME, CMD_DEJA_ANNULER,CMD_DEJA_LIVRER,ERREUR_FIC_LANG };
 typedef unsigned long typeId;
 typedef long long typeQte;
-template < typename T> std::string to_str(T nombre){
-    std::stringstream strs;
-    strs << nombre;
-    std::string g(strs.str().c_str());
-    return g;
-};
-long convertion1(char * chaine);
-std::string cat_many(int , ...);
+    template < typename T> std::string to_str(T nombre){
+        std::stringstream strs;
+        strs << nombre;
+        std::string g(strs.str().c_str());
+        return g;
+    };
+    void get_str(char *,const char *);
+    long double get_long_double(char * chaine,const char *msa);
+    long long get_long(char * chaine,const char * msg);
+    long double convertion2(char * chaine);
+    long convertion1(char * chaine);
+    std::string cat_many(int , ...);
     bool est_premier(long );
     long prochain_nb_premier(long);
     bool choix_non_valide(std::string choix, std::string listeValide );
